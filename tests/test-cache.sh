@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="${1:-http://10.7.3.153:8080/api/status}"
+URL="${1:-http://app.cn-project.test:8080/api/status}"
 
 echo "Initial request:"
 curl -i "$URL"
