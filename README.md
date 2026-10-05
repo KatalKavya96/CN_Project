@@ -1,23 +1,32 @@
-# Private Network Service Platform
+# CN Project — Private Network Service Platform
 
-Computer Networks course project.
-
-## Two-Mac Architecture
+## Two-Mac Deployment
 
 ### Mac 1
-- Private DNS Server
-- Test Client
-- Backend B on port 3002
+- IP: 10.7.29.7
+- DNS
+- Client
+- Backend B :3002
 
 ### Mac 2
-- nginx Reverse Proxy
-- TLS Termination
+- IP: 10.7.3.153
+- nginx Edge
+- Backend A :3001
+- TLS
 - Load Balancer
-- Backend A on port 3001
 
-## Request Flow
+## Flow
 
 Client
 → DNS
 → nginx Edge
 → Backend A / Backend B
+
+## Core Tests
+
+```bash
+./tests/test-backends.sh
+./tests/test-load-balancing.sh
+./tests/test-dns.sh
+./tests/test-cache.sh
+```
