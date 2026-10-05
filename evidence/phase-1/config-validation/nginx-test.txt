@@ -1,0 +1,2 @@
+nginx: the configuration file /Users/ronitsingh/Desktop/CN_Project/edge/nginx.conf syntax is ok
+nginx: configuration file /Users/ronitsingh/Desktop/CN_Project/edge/nginx.conf test is successful
