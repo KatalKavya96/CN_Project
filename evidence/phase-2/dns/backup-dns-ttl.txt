@@ -1,0 +1,21 @@
+
+; <<>> DiG 9.10.6 <<>> @10.7.13.163 app.cn-project.test
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 4600
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.13.163
+
+;; Query time: 2 msec
+;; SERVER: 10.7.13.163#53(10.7.13.163)
+;; WHEN: Mon Oct 05 15:52:18 IST 2026
+;; MSG SIZE  rcvd: 64
+
