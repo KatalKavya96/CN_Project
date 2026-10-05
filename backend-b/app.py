@@ -4,6 +4,21 @@ import json
 ETAG = '"B-v1"'
 
 class Handler(BaseHTTPRequestHandler):
+    def do_HEAD(self):
+        if self.path not in ["/", "/api/status"]:
+            self.send_error(404)
+            return
+
+        body = b'{"backend": "B", "status": "ok"}'
+
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("X-Backend", "B")
+        self.send_header("Cache-Control", "max-age=60")
+        self.send_header("ETag", '"B-v1"')
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+
     def do_GET(self):
         if self.headers.get("If-None-Match") == ETAG:
             self.send_response(304)
