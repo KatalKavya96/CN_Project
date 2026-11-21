@@ -1,0 +1,295 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>CN Project: Mac 3 DNS evidence</title>
+<style>body{font:16px/1.5 system-ui;max-width:1050px;margin:32px auto;padding:0 20px;color:#182534}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f2f5f8;padding:16px;font-size:12px}a{color:#0759a6}h2{margin-top:32px}</style><body>
+<h1>Phase 2: Backup DNS on Priyanshu’s Mac</h1><p>Kavya Katal · Ronit Singh · Priyanshu Tomar</p>
+<p>23 November 2026 IST. Primary DNS: Mac 1. Backup DNS: Mac 3. Edges and backends stay on Macs 1 and 2.</p>
+<p>Actual logs and packet exports; excerpts below are not terminal screenshots. Historical artifacts remain unchanged.</p>
+<p><a href="README.md">Evidence index</a> · <a href="manifest.json">SHA-256 manifest</a> · <a href="../../../docs/tomorrow-demo.md">Three-person demo guide</a></p>
+<h2>Migration and original evidence preservation</h2>
+<p><a href="migration-20261122T211927/summary.json">Full source</a></p>
+<pre>{
+  &quot;activated_mac3&quot;: true,
+  &quot;legacy_mac2_dns_stopped&quot;: true,
+  &quot;prior_evidence_files&quot;: 163,
+  &quot;prior_evidence_changed&quot;: [],
+  &quot;restoration_errors&quot;: []
+}
+</pre>
+<h2>Phase 2 complete acceptance suite</h2>
+<p><a href="final-20261123/summary.txt">Full source</a></p>
+<pre>UTC: 2026-11-22T21:21:26.875545+00:00
+PASSED: by-name baseline on both Macs; primary DNS stop and OS failover; OS cache TTL and DNS edge migration; by-name backend failover and recovery; backend isolation and rollback; final by-name health
+</pre>
+<h2>Phase 1 failures and restoration</h2>
+<p><a href="../../phase-1/failures-20261122T212149/summary.json">Full source</a></p>
+<pre>{
+  &quot;utc&quot;: &quot;2026-11-22T21:22:17.324778+00:00&quot;,
+  &quot;results&quot;: {
+    &quot;wrong_dns_mac1&quot;: &quot;PASS (client-scoped resolver; system DNS unchanged)&quot;,
+    &quot;wrong_dns_mac2&quot;: &quot;PASS (client-scoped resolver; system DNS unchanged)&quot;,
+    &quot;wrong_record_mac1&quot;: &quot;PASS&quot;,
+    &quot;wrong_record_mac2&quot;: &quot;PASS&quot;,
+    &quot;both_backends_mac1&quot;: &quot;PASS&quot;,
+    &quot;both_backends_mac2&quot;: &quot;PASS&quot;,
+    &quot;restored_mac1&quot;: &quot;PASS (plain HTTPS and A/B)&quot;,
+    &quot;restored_mac2&quot;: &quot;PASS (plain HTTPS and A/B)&quot;
+  }
+}
+</pre>
+<h2>Final live health and default TLS trust</h2>
+<p><a href="../../recovery/2026-11-23T025332/recovery-summary.json">Full source</a></p>
+<pre>{
+  &quot;started_utc&quot;: &quot;2026-11-22T21:23:32.106287+00:00&quot;,
+  &quot;tests&quot;: {
+    &quot;mac1_dns_and_lan&quot;: &quot;PASS&quot;,
+    &quot;mac1_backend_endpoints&quot;: &quot;PASS: GET /, GET /api/status, HEAD&quot;,
+    &quot;mac2_dns_and_lan&quot;: &quot;PASS&quot;,
+    &quot;mac2_backend_endpoints&quot;: &quot;PASS: GET /, GET /api/status, HEAD&quot;,
+    &quot;mac1_primary&quot;: &quot;PASS: default-trust HTTPS with A/B&quot;,
+    &quot;mac1_standby&quot;: &quot;PASS: default-trust HTTPS with A/B&quot;,
+    &quot;mac1_both_hostnames_plain_https&quot;: &quot;PASS&quot;,
+    &quot;mac2_primary&quot;: &quot;PASS: default-trust HTTPS with A/B&quot;,
+    &quot;mac2_standby&quot;: &quot;PASS: default-trust HTTPS with A/B&quot;,
+    &quot;mac2_both_hostnames_plain_https&quot;: &quot;PASS&quot;
+  },
+  &quot;evidence_preserved&quot;: true,
+  &quot;status&quot;: &quot;LIVE SETUP RESTORED AND VERIFIED ON BOTH MACS&quot;,
+  &quot;original_files_checked&quot;: 223,
+  &quot;finished_utc&quot;: &quot;2026-11-22T21:23:52.679449+00:00&quot;
+}
+</pre>
+<h2>Current DNS service and client state</h2>
+<p><a href="final-state.txt">Full source</a></p>
+<pre>UTC: 2026-11-22T21:25:02.971081+00:00
+Final state: legacy Mac 2 DNS intentionally stopped.
+
+Mac 1: sudo -n /usr/local/sbin/cn-project-resolver status
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.26.237
+
+
+Mac 2: sudo -n /usr/local/sbin/cn-project-resolver status
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.26.237
+
+
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-status
+Exit: 0
+67200
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 02:52:05 dnsmasq[67200]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:52:05 dnsmasq[67200]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:52:05 dnsmasq[67200]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:52:16 dnsmasq[67200]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:52:29 dnsmasq[67200]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:52:30 dnsmasq[67200]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:53:07 dnsmasq[67200]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:53:08 dnsmasq[67200]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:53:32 dnsmasq[67200]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:53:34 dnsmasq[67200]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:53:34 dnsmasq[67200]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:34 dnsmasq[67200]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:53:34 dnsmasq[67200]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:53:39 dnsmasq[67200]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:53:39 dnsmasq[67200]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:39 dnsmasq[67200]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:53:39 dnsmasq[67200]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:53:46 dnsmasq[67200]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:53:46 dnsmasq[67200]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:47 dnsmasq[67200]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:53:47 dnsmasq[67200]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:53:47 dnsmasq[67200]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:53:47 dnsmasq[67200]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:52 dnsmasq[67200]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:53:52 dnsmasq[67200]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+
+
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin dns-status
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 01:58:56 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 01:58:56 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 01:58:56 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 01:58:56 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 01:58:56 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 01:59:01 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 01:59:01 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 01:59:01 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 01:59:01 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 01:59:09 dnsmasq[9151]: query[SVCB] _dns.resolver.arpa from 10.7.18.166
+Nov 23 01:59:09 dnsmasq[9151]: config error is REFUSED (EDE: not ready)
+Nov 23 02:06:19 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:06:19 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:06:19 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:06:19 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:32:52 dnsmasq[9151]: query[SVCB] _dns.resolver.arpa from 10.7.26.228
+Nov 23 02:32:52 dnsmasq[9151]: config error is REFUSED (EDE: not ready)
+Nov 23 02:49:28 dnsmasq[9151]: query[SVCB] _dns.resolver.arpa from 10.7.18.166
+Nov 23 02:49:28 dnsmasq[9151]: config error is REFUSED (EDE: not ready)
+Nov 23 02:49:30 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:49:50 dnsmasq[9151]: exiting on receipt of SIGTERM
+
+
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-status
+Exit: 0
+2602
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 02:51:03 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:51:23 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:52:00 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:52:03 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:52:16 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:52:28 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:52:30 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:52:30 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:52:30 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:52:31 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:52:31 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.26.228
+Nov 23 02:52:31 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:52:31 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.26.228
+Nov 23 02:53:01 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:53:01 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.26.228
+Nov 23 02:53:06 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:53:08 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:53:08 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:08 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:53:21 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:53:21 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:34 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:53:34 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:34 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:53:34 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:53:34 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:53:39 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:53:39 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:53:40 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:53:40 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+
+
+Mac 1: dig @10.7.18.166 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.18.166 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+</pre>
+<h2>DNS packet fields from real capture</h2>
+<p><a href="final-20261123/dns-packets.tsv">Full source</a></p>
+<pre>frame.number	ip.src	udp.srcport	ip.dst	udp.dstport	dns.qry.name	dns.a	dns.resp.ttl	_ws.col.info
+1	10.7.26.228	60744	10.7.26.237	53	app.cn-project.test			Standard query 0x81d1 AAAA app.cn-project.test
+2	10.7.26.237	53	10.7.26.228	60744	app.cn-project.test			Standard query response 0x81d1 AAAA app.cn-project.test
+3	10.7.26.228	57485	10.7.26.237	53	app.cn-project.test			Standard query 0xd8f8 A app.cn-project.test
+4	10.7.26.237	53	10.7.26.228	57485	app.cn-project.test	10.7.18.166	30	Standard query response 0xd8f8 A app.cn-project.test A 10.7.18.166
+194	10.7.18.166	54174	10.7.26.228	53	app.cn-project.test			Standard query 0xb1f3 A app.cn-project.test OPT
+195	10.7.26.228	54079	10.7.26.237	53	app.cn-project.test			Standard query 0xc22f AAAA app.cn-project.test
+196	10.7.26.237	53	10.7.26.228	54079	app.cn-project.test			Standard query response 0xc22f AAAA app.cn-project.test
+197	10.7.26.228	49825	10.7.26.237	53	app.cn-project.test			Standard query 0x32a5 A app.cn-project.test
+198	10.7.26.237	53	10.7.26.228	49825	app.cn-project.test	10.7.18.166	30	Standard query response 0x32a5 A app.cn-project.test A 10.7.18.166
+224	10.7.26.228	52084	10.7.26.237	53	app.cn-project.test			Standard query 0x3544 A app.cn-project.test
+225	10.7.26.237	53	10.7.26.228	52084	app.cn-project.test	10.7.18.166	30	Standard query response 0x3544 A app.cn-project.test A 10.7.18.166
+248	10.7.26.228	59849	10.7.26.237	53	app.cn-project.test			Standard query 0xf813 A app.cn-project.test OPT
+249	10.7.26.237	53	10.7.26.228	59849	app.cn-project.test	10.7.26.228	30	Standard query response 0xf813 A app.cn-project.test A 10.7.26.228 OPT
+250	10.7.26.228	57451	10.7.26.237	53	app.cn-project.test			Standard query 0x128f AAAA app.cn-project.test
+251	10.7.26.237	53	10.7.26.228	57451	app.cn-project.test			Standard query response 0x128f AAAA app.cn-project.test
+303	10.7.18.166	54464	10.7.26.228	53	app.cn-project.test			Standard query 0x270b AAAA app.cn-project.test
+304	10.7.26.228	53	10.7.18.166	54464	app.cn-project.test			Standard query response 0x270b AAAA app.cn-project.test
+347	10.7.18.166	57030	10.7.26.228	53	app.cn-project.test			Standard query 0x548a A app.cn-project.test
+348	10.7.26.228	53	10.7.18.166	57030	app.cn-project.test	10.7.18.166	30	Standard query response 0x548a A app.cn-project.test A 10.7.18.166
+536	10.7.18.166	57445	10.7.26.228	53	app.cn-project.test			Standard query 0x4d9b A app.cn-project.test
+537	10.7.26.228	53	10.7.18.166	57445	app.cn-project.test	10.7.18.166	30	Standard query response 0x4d9b A app.cn-project.test A 10.7.18.166
+1110	10.7.18.166	57916	10.7.26.228	53	app.cn-project.test			Standard query 0xa411 A app.cn-project.test
+1111	10.7.26.228	53	10.7.18.166	57916	app.cn-project.test	10.7.18.166	30	Standard query response 0xa411 A app.cn-project.test A 10.7.18.166
+</pre>
+<h2>DNS, TCP, TLS and verified HTTPS</h2>
+<p><a href="protocol-20261122T212320/capture-request.txt">Full source</a></p>
+<pre>UTC: 2026-11-22T21:23:21.932601+00:00
+Explicit DNS lookup followed by HTTPS to the returned address.
+This is protocol evidence, not proof of OS cache or resolver failover.
+
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.26.237 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 17900
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 9 msec
+;; SERVER: 10.7.26.237#53(10.7.26.237)
+;; WHEN: Mon Nov 23 02:53:21 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+* Added app.cn-project.test:8443:10.7.18.166 to DNS cache
+* Hostname app.cn-project.test was found in DNS cache
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host &quot;app.cn-project.test&quot; matched cert&#x27;s &quot;app.cn-project.test&quot;
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+&gt; GET /api/status HTTP/1.1
+&gt; Host: app.cn-project.test:8443
+&gt; User-Agent: curl/8.7.1
+&gt; Accept: */*
+&gt; 
+* Request completely sent off
+&lt; HTTP/1.1 200 OK
+&lt; Server: nginx/1.31.6
+&lt; Date: Sun, 22 Nov 2026 21:23:21 GMT
+&lt; Content-Type: application/json
+&lt; Content-Length: 32
+&lt; Connection: keep-alive
+&lt; X-Backend: A
+&lt; Cache-Control: max-age=60
+&lt; ETag: &quot;A-v1&quot;
+&lt; X-Edge: mac2
+&lt; 
+{ [32 bytes data]
+
+100    32  100    32    0     0    478      0 --:--:-- --:--:-- --:--:--   484
+* Connection #0 to host app.cn-project.test left intact
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}</pre>
+<p>Original evidence hashes verified: 163; changed: 0.</p></body></html>

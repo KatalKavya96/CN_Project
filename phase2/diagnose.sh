@@ -6,7 +6,7 @@ echo '=== macOS resolver configuration ==='
 scutil --dns
 echo '=== System hostname lookup ==='
 dscacheutil -q host -a name app.cn-project.test
-for server in "$MAC1_IP" "$MAC2_IP"; do
+for server in "$MAC1_IP" "${BACKUP_DNS_IP:-$MAC2_IP}"; do
   echo "=== Direct DNS query: $server ==="
   dig @"$server" app.cn-project.test +time=2 +tries=1
 done

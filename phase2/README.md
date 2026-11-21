@@ -4,6 +4,12 @@ Both Macs use the addresses in `lab.env`. Current network: Mac 1
 `10.7.26.228/19`, Mac 2 `10.7.18.166/19`, interface `en0`.
 Run commands from the repository root. Never run `setup_repo.sh` over this checkout.
 
+Updated 23 November: backup DNS is now Priyanshu's Mac 3, `10.7.26.237:53`.
+Only DNS moved. Both client resolvers list Mac 1 then Mac 3; Ronit's legacy DNS
+is stopped. `BACKUP_DNS_IP` selects Mac 3 in the Python orchestration.
+See [setup and rollback](MAC3-SETUP.md) and
+[current migration evidence](../evidence/phase-2/mac3-dns/README.md).
+
 ## Generated configurations and certificates
 
 Run `bash phase2/render.sh mac1` on Kavya's Mac and
@@ -33,6 +39,11 @@ The admin DNS service uses `/private/var/db/cn-project/dnsmasq.conf`;
 it does not use `.runtime/dnsmasq.conf`. Do not run both DNS instances.
 The installer also configures both project DNS addresses in
 `/etc/resolver/cn-project.test` and saves the previous resolver file.
+
+The following original helper DNS actions apply to Kavya's primary DNS.
+On Priyanshu use `sudo -n /usr/local/sbin/cn-project-backup` with the same
+`dns-*` action. Do not start Ronit's legacy DNS. Firewall/cache actions still
+use the original helper on both client Macs.
 
 ```bash
 sudo -n /usr/local/sbin/cn-project-admin dns-start
@@ -64,7 +75,7 @@ to bypass DNS; it cannot prove DNS behavior. Omitting it uses the OS resolver.
 `X-Edge` distinguishes the two edges, and `X-Backend` distinguishes the backends.
 `dig @server` tests DNS directly; `dscacheutil` and curl test the macOS resolver.
 
-Run `python3 phase2/final-tests.py` on Mac 1 for the complete two-Mac live suite.
+Run `python3 phase2/final-tests.py` on Mac 1 for both client Macs with backup DNS on Mac 3.
 It saves commands, exit codes and packet captures and restores services after
 each controlled failure. To repeat only OS cutover with a new evidence folder:
 
@@ -111,10 +122,13 @@ To repeat the three Phase 1 failure cases from Mac 1, run
 temporary client resolver on each Mac, real wrong DNS records with standby
 nginx stopped, and both backends stopped. It restores DNS, the standby and both
 backends and verifies A/B recovery. Evidence is in
-`evidence/phase-1/failures-2026-11-22/`. This test does not change global DNS
+timestamped `evidence/phase-1/failures-*` folders. The original November 22
+folder is preserved. This test does not change global DNS
 preferences or firewall/trust settings.
 
-On both Macs run `dns-primary`, `dns-start`, `firewall-off`, and `cache-flush`.
+Run `dns-primary` and `dns-start` on Kavya using the original helper and on
+Priyanshu using `cn-project-backup`. Run `firewall-off` and `cache-flush` on
+both client Macs. Leave Ronit's legacy DNS stopped.
 Restore both backends and verify A/B responses through Mac 2. Existing TCP
 connections can outlive DNS TTL, so use new curl processes for cutover evidence.
 

@@ -1,0 +1,15 @@
+
+UTC: 2026-11-22T21:23:39.076632+00:00
+Mac 2
+Command: /sbin/ping -c 3 10.7.26.228
+Exit: 0
+PING 10.7.26.228 (10.7.26.228): 56 data bytes
+64 bytes from 10.7.26.228: icmp_seq=0 ttl=64 time=5.414 ms
+64 bytes from 10.7.26.228: icmp_seq=1 ttl=64 time=9.432 ms
+64 bytes from 10.7.26.228: icmp_seq=2 ttl=64 time=9.703 ms
+
+--- 10.7.26.228 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 5.414/8.183/9.703/1.961 ms
+
+

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the live two-Mac acceptance tests and restore normal service afterward."""
+"""Test both client/edge Macs with the selected backup DNS and restore service."""
 from datetime import datetime, timezone
 import argparse
 from pathlib import Path
@@ -7,17 +7,19 @@ import shlex
 import signal
 import subprocess
 import time
+from dns_control import augment_lab, control_commands
 
 ROOT = Path(__file__).resolve().parent.parent
 REMOTE_ROOT = "/Users/ronitsingh/Desktop/CN_Project"
 parser = argparse.ArgumentParser()
 parser.add_argument("--only", choices=["cutover"])
-parser.add_argument("--out-dir", default="evidence/phase-2/final")
+parser.add_argument("--out-dir", default="evidence/phase-2/mac3-dns/final-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S"))
 args = parser.parse_args()
 OUT = ROOT / args.out_dir
 OUT.mkdir(parents=True, exist_ok=True)
 env = dict(line.split("=", 1) for line in (ROOT / "phase2/lab.env").read_text().splitlines()
            if line and not line.startswith("#"))
+env = augment_lab(ROOT, env)
 SSH = ["/usr/bin/ssh", "-i", str(Path.home() / ".ssh/id_ed25519_cn_project"),
        "-o", "BatchMode=yes", "-o", "ConnectTimeout=5", "-o", "StrictHostKeyChecking=yes",
        "-o", "UserKnownHostsFile=/private/tmp/cn-project-ronit-known-hosts", "ronitsingh@" + env["MAC2_IP"]]
@@ -41,7 +43,9 @@ def run(mac, command, filename, expected=0, timeout=45):
     return result
 
 def admin(mac, action, filename="admin-actions.txt"):
-    return run(mac, HELPER + [action], filename)
+    for target, command in control_commands(env, mac, action):
+        result = run(target, command, filename)
+    return result
 
 def https(mac, filename, edge=None):
     root = str(ROOT) if mac == 1 else REMOTE_ROOT
@@ -112,7 +116,7 @@ def cutover():
         for mac in (1, 2):
             admin(mac, "dns-standby", "cutover-actions.txt")
         time.sleep(1)
-        for server in (env["MAC1_IP"], env["MAC2_IP"]):
+        for server in (env["MAC1_IP"], env["BACKUP_DNS_IP"]):
             result = run(1, ["/usr/bin/dig", "@" + server, "app.cn-project.test", "+time=2", "+tries=1"], "cutover-authoritative.txt")
             assert env["MAC1_IP"] in result.stdout.split("ANSWER SECTION:")[-1]
         for mac in (1, 2):
@@ -182,7 +186,8 @@ def final_health():
 
 capture_log = (OUT / "packet-capture.log").open("w")
 capture = subprocess.Popen(["/usr/sbin/tcpdump", "-i", "en0", "-n", "-s", "0", "-U", "-w",
-                            str(OUT / "dns-failover-cutover.pcap"), "host", env["MAC2_IP"], "and", "(port 53 or port 8443)"],
+                            str(OUT / "dns-failover-cutover.pcap"),
+                            "(host " + env["MAC2_IP"] + " or host " + env["BACKUP_DNS_IP"] + ") and (port 53 or port 8443)"],
                            stdout=capture_log, stderr=capture_log)
 try:
     groups = [("by-name baseline on both Macs", baseline), ("primary DNS stop and OS failover", dns_failover),

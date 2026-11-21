@@ -18,6 +18,17 @@ explicit passive upstream failure handling, upstream logs and edge headers,
 reversible PF isolation, and limited root-owned administrator controls.
 Client verification uses the public CA certificate without disabling TLS checks.
 
+## Current deployment update: 23 November 2026
+
+Phase 2 backup DNS moved from Ronit's Mac to Priyanshu's Mac at
+`10.7.26.237:53`. Both existing clients now list primary Mac 1 and backup Mac 3.
+Primary DNS, both backends, both nginx edges, certificates, and Phase 1 roles
+retain their deployment. Ronit's legacy DNS is stopped but retained for rollback.
+The original observations below describe the original two-Mac tests; their files
+are preserved. Fresh migration, failover, TTL/cutover, HA, and isolation results
+are indexed in [Mac 3 evidence](../evidence/phase-2/mac3-dns/README.md).
+Priyanshu operates only DNS and receives no TLS private keys.
+
 ## A. Backup DNS
 
 Both DNS server configurations provide the same records and TTL 30.

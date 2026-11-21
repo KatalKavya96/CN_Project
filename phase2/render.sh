@@ -30,7 +30,7 @@ log-facility=$RUNTIME/dnsmasq.log
 EOF
 cat > "$RUNTIME/resolver.conf" <<EOF
 nameserver $MAC1_IP
-nameserver $MAC2_IP
+nameserver ${BACKUP_DNS_IP:-$MAC2_IP}
 EOF
 cat > "$RUNTIME/nginx.conf" <<EOF
 pid $RUNTIME/nginx.pid;

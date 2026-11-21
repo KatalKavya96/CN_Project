@@ -1,0 +1,15 @@
+
+UTC: 2026-11-22T21:21:59.071843+00:00
+Mac 1
+Command: /opt/homebrew/bin/nginx -s quit -c /Users/kavyakatal/Desktop/CN_Project/.runtime/nginx.conf
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:22:00.553927+00:00
+Mac 2
+Command: /usr/bin/nc -vz -G 2 10.7.26.228 8443
+Exit: 1
+
+nc: connectx to 10.7.26.228 port 8443 (tcp) failed: Connection refused
+

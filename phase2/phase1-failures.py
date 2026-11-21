@@ -6,13 +6,15 @@ import json
 import shlex
 import subprocess
 import time
+from dns_control import augment_lab, control_commands
 
 ROOT = Path(__file__).resolve().parent.parent
 REMOTE_ROOT = "/Users/ronitsingh/Desktop/CN_Project"
-OUT = ROOT / "evidence/phase-1/failures-2026-11-22"
+OUT = ROOT / "evidence/phase-1" / datetime.now(timezone.utc).strftime("failures-%Y%m%dT%H%M%S")
 OUT.mkdir(parents=True, exist_ok=True)
 env = dict(line.split("=", 1) for line in (ROOT / "phase2/lab.env").read_text().splitlines()
            if line and not line.startswith("#"))
+env = augment_lab(ROOT, env)
 SSH = ["/usr/bin/ssh", "-i", str(Path.home() / ".ssh/id_ed25519_cn_project"),
        "-o", "BatchMode=yes", "-o", "ConnectTimeout=5", "-o", "StrictHostKeyChecking=yes",
        "-o", "UserKnownHostsFile=/private/tmp/cn-project-ronit-known-hosts", "ronitsingh@" + env["MAC2_IP"]]
@@ -30,7 +32,9 @@ def run(mac, command, filename, expected=0, timeout=30):
     return result
 
 def admin(mac, action, filename="restoration.txt"):
-    return run(mac, HELPER + [action], filename)
+    for target, command in control_commands(env, mac, action):
+        result = run(target, command, filename)
+    return result
 
 def request(mac, filename, edge=None, failure=False):
     command = ["/usr/bin/curl", "--noproxy", "*", "--http1.1", "--connect-timeout", "4", "--max-time", "12", "-v", "-i"]

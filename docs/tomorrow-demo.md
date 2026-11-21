@@ -1,4 +1,4 @@
-# Tomorrow's Two-Mac Demo: Commands, Roles, and Spoken Explanation
+# Tomorrow's Three-Member Demo: Commands, Roles, and Spoken Explanation
 
 Follow this order. Read the explanation, run the command, point to the expected
 output, then move on. Plan roughly 20-25 minutes plus faculty questions.
@@ -9,14 +9,15 @@ The live faculty challenge and viva are performed by you, not by a script.
 | Person | Machine | Current IP | Responsibility |
 | --- | --- | --- | --- |
 | Kavya | Mac 1 | 10.7.26.228 | Present topology, run client requests, control primary DNS and Backend B, show Wireshark and standby edge |
-| Ronit | Mac 2 | 10.7.18.166 | Explain nginx/TLS, control Backend A and backup DNS, show upstream logs and firewall evidence |
+| Ronit | Mac 2 | 10.7.18.166 | Explain nginx/TLS, control Backend A, show upstream logs and firewall evidence |
+| Priyanshu | Mac 3 | 10.7.26.237 | Operate Phase 2 backup DNS; show failover queries, TTL 30 and synchronized cutover records |
 
-Both Macs use `en0`, mask `255.255.224.0` (/19), and gateway `10.7.0.1`.
+All three Macs use `en0`, mask `255.255.224.0` (/19), and gateway `10.7.0.1`.
 Normal edge is Mac 2. Standby edge is Mac 1. Both listen on HTTPS 8443.
 
 ## Before the evaluator arrives
 
-Connect to the same Wi-Fi, plug in power, and leave lids open. On both Macs,
+Connect to the same Wi-Fi, plug in power, and leave lids open. On all three Macs,
 run `caffeinate -dimsu` in a separate tab and leave that tab running.
 
 Kavya, main Terminal tab:
@@ -37,7 +38,25 @@ git log -1 --oneline
 ipconfig getifaddr en0
 ```
 
-The addresses must still match the table above. If either has changed, fix
+Priyanshu, main Terminal tab:
+
+```bash
+cd /Users/priyanshutomar/CN_Project
+git status --short
+git log -1 --oneline
+ipconfig getifaddr en0
+backup() { sudo -n /usr/local/sbin/cn-project-backup "$@"; }
+backup dns-primary
+backup dns-start
+backup dns-status
+```
+
+Priyanshu says: "I run only the Phase 2 backup DNS. Both names answer the
+primary edge's address with TTL 30. I will show requests arriving here when
+Kavya stops the primary DNS, then update this server during edge cutover."
+Mac 3 needs no backend, nginx, or certificate trust changes.
+
+The addresses must still match the table above. If any has changed, fix
 the lab configuration before presenting. Changing `phase2/lab.env` alone
 does not update the installed root-owned DNS configs and resolver files.
 Never run `setup_repo.sh` or reinstall the admin helper over this deployment.
@@ -54,11 +73,22 @@ web() { /usr/bin/curl --noproxy '*' --connect-timeout 5 --max-time 30 "$@" "$CN_
 `web` uses normal DNS and default certificate trust. It adds neither `-k`,
 `--cacert`, nor `--resolve`. All ordinary requests below use this function.
 
-On BOTH main tabs, restore the normal starting state:
+On Kavya's tab, restore primary DNS:
 
 ```bash
 admin dns-primary
 admin dns-start
+```
+
+On Ronit's tab, leave the retired DNS stopped:
+
+```bash
+admin dns-stop
+```
+
+On BOTH client tabs:
+
+```bash
 admin firewall-off
 admin cache-flush
 ```
@@ -111,9 +141,10 @@ Kavya opens `docs/architecture.md`, scrolling to the Phase 2 deployment.
 
 Kavya says:
 
-> We combined the four logical roles across two Macs. My Mac hosts primary
-> DNS, Backend B, and the standby edge. Ronit's Mac hosts primary nginx,
-> Backend A, and backup DNS. Both machines also act as clients.
+> Phase 1 combined the four logical roles across two Macs. My Mac hosts primary
+> DNS and Backend B; Phase 2 adds my standby edge. Ronit's Mac hosts primary
+> nginx and Backend A. Both machines also act as clients. In Phase 2, Priyanshu's Mac
+> independently hosts backup DNS; all other services retain their roles.
 
 Ronit says:
 
@@ -162,13 +193,13 @@ dscacheutil -q host -a name app.cn-project.test
 Ronit:
 
 ```bash
-dig @10.7.18.166 app.cn-project.test
+dig @10.7.26.237 app.cn-project.test
 dscacheutil -q host -a name app.cn-project.test
 ```
 
 Expect both names to resolve to `10.7.18.166`. In the full dig answer, show
 TTL `30`. In `scutil --dns`, show the `cn-project.test` resolver listing BOTH
-`10.7.26.228` and `10.7.18.166`.
+`10.7.26.228` and `10.7.26.237`.
 
 Kavya says:
 
@@ -312,7 +343,7 @@ Kavya repeats step 5. Expect A and B again.
 Ronit says:
 
 > After the failure interval, requests can try the recovered backend again.
-> Stopping this entire Mac would also stop the edge and backup DNS: that is
+> Stopping this entire Mac would also stop the edge: that is
 > fate sharing. A standby plus manual DNS cutover provides controlled recovery,
 > but automatic edge HA additionally needs health monitoring and traffic steering.
 
@@ -334,7 +365,12 @@ dig @10.7.26.228 app.cn-project.test +time=1 +tries=1
 admin cache-flush
 dscacheutil -q host -a name app.cn-project.test
 web -sS -i
-admin dns-status
+```
+
+Priyanshu shows the backup answering both clients:
+
+```bash
+backup dns-status
 ```
 
 The explicit primary query should fail. Both OS lookups and HTTPS should
@@ -415,10 +451,16 @@ admin cache-flush
 web -sS -D - -o /dev/null | tr -d '\r' | awk '/^HTTP|^X-Edge:/'
 ```
 
-Expect `X-Edge: mac2`. Then, on BOTH Macs, change each DNS server's record:
+Expect `X-Edge: mac2`. Kavya changes the primary DNS record:
 
 ```bash
 admin dns-standby
+```
+
+Priyanshu changes the backup DNS record immediately afterward:
+
+```bash
+backup dns-standby
 ```
 
 Do not flush Kavya's cache yet. Kavya shows live server data and her cached
@@ -426,7 +468,7 @@ client's destination:
 
 ```bash
 dig @10.7.26.228 app.cn-project.test
-dig @10.7.18.166 app.cn-project.test
+dig @10.7.26.237 app.cn-project.test
 dscacheutil -q host -a name app.cn-project.test
 web -sS -D - -o /dev/null | tr -d '\r' | awk '/^HTTP|^X-Edge:/'
 ```
@@ -466,10 +508,16 @@ Expect adoption of Mac 1. In our saved run, macOS returned an old answer on
 the first post-TTL lookup while refreshing, then the new answer on the next
 poll at about 39 seconds. Describe measured behavior, not an exact promise.
 
-Restore DNS on BOTH Macs:
+Kavya restores primary DNS:
 
 ```bash
 admin dns-primary
+```
+
+Priyanshu restores backup DNS:
+
+```bash
+backup dns-primary
 ```
 
 Then flush BOTH client caches and prove immediate return to the primary:
@@ -507,7 +555,7 @@ Useful manual commands on Kavya's Mac:
 ```bash
 scutil --dns
 dig @10.7.26.228 app.cn-project.test
-dig @10.7.18.166 app.cn-project.test
+dig @10.7.26.237 app.cn-project.test
 dscacheutil -q host -a name app.cn-project.test
 nc -vz -G 3 10.7.18.166 8443
 web -v
@@ -595,14 +643,28 @@ Say: "The hostname and host are valid, but no service listens on port 8444."
 ## Recovery and final normal state
 
 If interrupted during any failure, first undo the specific fault. Then run
-these commands on BOTH main tabs:
+these DNS commands on Kavya's main tab:
 
 ```bash
 admin dns-primary
 admin dns-start
+```
+
+Priyanshu:
+
+```bash
+backup dns-primary
+backup dns-start
+```
+
+On BOTH client tabs:
+
+```bash
 admin firewall-off
 admin cache-flush
 ```
+
+Keep Ronit's legacy DNS stopped. Do not run `admin dns-start` on Ronit's Mac.
 
 Kavya:
 

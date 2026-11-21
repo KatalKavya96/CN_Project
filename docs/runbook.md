@@ -1,7 +1,7 @@
 # Final Demonstration Runbook
 
 For exact per-person commands and spoken explanations, follow
-[Tomorrow's two-Mac demo guide](tomorrow-demo.md).
+[Tomorrow's three-member demo guide](tomorrow-demo.md).
 
 Run commands from the repo root. Current IP inventory is in `phase2/lab.env`.
 Both Macs must be awake, on the same LAN, with primary DNS records restored,
@@ -12,7 +12,8 @@ limitation. Keep evidence files open so they are found quickly.
 ## 1. Topology and service inventory
 
 Show `docs/architecture.md` Phase 2 section. Mac 1 is primary DNS, client,
-Backend B, and standby edge. Mac 2 is backup DNS, primary edge, and Backend A.
+Backend B, and standby edge. Mac 2 is primary edge and Backend A.
+Priyanshu's Mac 3 is Phase 2 backup DNS only; keep its lid open and power connected.
 Explain that stopping Backend A means stopping its process, not the whole Mac.
 
 ## 2. LAN connectivity
@@ -84,7 +85,8 @@ Show `firewall-status` counters. Run `firewall-off` on both Macs before migratio
 Explain the two-host limitation for an independent blocked Backend B client.
 
 TTL and cutover: prime each client's OS cache while records point at Mac 2.
-Run `dns-standby` on both DNS servers. Show direct DNS immediately reports Mac 1,
+Run `dns-standby` on Kavya's original helper and Priyanshu's backup helper.
+Show direct DNS immediately reports Mac 1,
 while any observed old cached answer still uses Mac 2. After expiry show
 new requests use Mac 1 and `X-Edge: mac1`. Repeat and manually `cache-flush`
 to show immediate adoption. Record actual timestamps; do not promise exact
@@ -104,13 +106,15 @@ silent filter or unavailable host; TLS error means certificate/trust/hostname;
 
 ## 11. Individual viva
 
-Both members explain DNS failure versus app failure, TTL and existing TCP
+All three members explain DNS failure versus app failure, TTL and existing TCP
 connections, passive checks versus active probes, source/destination sockets,
 local CA trust and SANs, PF states and rollback, and the combined-role SPOFs.
 Swap roles during rehearsal so each can explain the other Mac's configuration.
 
 ## Restore after every demonstration
 
-On both Macs: `dns-primary`, `dns-start`, `firewall-off`, `cache-flush` using
-the admin helper. Start the local backend if stopped, keep both edges running,
+On Kavya: `dns-primary` and `dns-start` using the original admin helper.
+On Priyanshu: the same two actions using `/usr/local/sbin/cn-project-backup`.
+On both client Macs: `firewall-off` and `cache-flush` using the original helper.
+Keep Ronit's legacy DNS stopped. Start the local backend if stopped, keep both edges running,
 and rerun by-name HTTPS with `--expect both`. Never leave an injected fault active.

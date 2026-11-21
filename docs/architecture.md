@@ -118,21 +118,22 @@ Saved Phase 1 evidence is under [`evidence/phase-1/`](../evidence/phase-1/). It 
 - TLS `ServerHello`
 - encrypted TLS Application Data
 
-## Phase 2 Deployment: 22 November 2026
+## Phase 2 Deployment: updated 23 November 2026
 
 | Machine | Current address | Interface | Services |
 | --- | --- | --- | --- |
 | Mac 1 - Kavya | `10.7.26.228/19` | `en0` | Primary DNS :53, Backend B :3002, standby nginx :8080/:8443, client |
-| Mac 2 - Ronit | `10.7.18.166/19` | `en0` | Backup DNS :53, Backend A :3001, primary nginx :8080/:8443, client |
+| Mac 2 - Ronit | `10.7.18.166/19` | `en0` | Backend A :3001, primary nginx :8080/:8443, client; legacy DNS stopped |
+| Mac 3 - Priyanshu | `10.7.26.237/19` | `en0` | Phase 2 backup DNS :53 only |
 
-Both machines have subnet mask `255.255.224.0`. These DHCP addresses must be
+All three machines have subnet mask `255.255.224.0`. These DHCP addresses must be
 rechecked on the demonstration network. Both clients list both DNS servers
 in their scoped resolver for `cn-project.test`.
 The observed gateway is `10.7.0.1`; full interface inventories are saved in
 `evidence/phase-2/baseline/mac1-final-inventory.txt` and `mac2-final-inventory.txt`.
 
 ```text
-                       DNS: primary Mac 1 / backup Mac 2
+                       DNS: primary Mac 1 / backup Mac 3
                                       |
 Client -- TCP/TLS :8443 --> primary edge Mac 2
                                       |-- local Backend A 127.0.0.1:3001
@@ -166,7 +167,8 @@ standby edge, which needs LAN access to Backend A. Loopback traffic and clients
 sharing an edge's source address cannot be distinguished by these IP rules.
 
 A stopped Backend A process on Mac 2 models an application failure; stopping
-the whole Mac also loses primary nginx and backup DNS. This role coupling is
+the whole Mac also loses primary nginx. Backup DNS is independent on Mac 3.
+The coupling between Backend A and its edge is
 fate sharing. Standby nginx plus manual DNS cutover reduces recovery work but
 is not automatic host failover. Automatic edge recovery also needs health
 monitoring and a traffic steering mechanism. The Wi-Fi/router remains a shared

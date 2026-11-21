@@ -1,0 +1,15 @@
+
+UTC: 2026-11-22T21:21:16.034487+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --connect-timeout 3 --max-time 4 -i http://10.7.18.166:3001/api/status
+Exit: 28
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0
+curl: (28) Failed to connect to 10.7.18.166 port 3001 after 3001 ms: Timeout was reached
+

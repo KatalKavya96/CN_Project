@@ -1,0 +1,39 @@
+
+UTC: 2026-11-22T21:20:19.357490+00:00
+Mac 1
+Command: /usr/bin/ssh -i /Users/kavyakatal/.ssh/id_ed25519_cn_project -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/Users/kavyakatal/Desktop/CN_Project/phase2/ssh-known-hosts priyanshutomar@10.7.26.237 'sudo -n /usr/local/sbin/cn-project-backup dns-status'
+Exit: 0
+2602
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 02:49:56 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:56 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:56 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:56 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:56 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:57 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:57 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:49:57 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:57 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:57 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:57 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:57 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:57 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:50:11 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.26.228
+Nov 23 02:50:11 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:50:11 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:50:11 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:50:12 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:50:14 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.18.166
+Nov 23 02:50:14 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:50:14 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:50:14 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:50:18 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.26.228
+Nov 23 02:50:18 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:50:18 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:50:18 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:50:19 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.18.166
+Nov 23 02:50:19 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:50:19 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:50:19 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+
+

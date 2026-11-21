@@ -9,12 +9,16 @@ from pathlib import Path
 import signal
 import subprocess
 import time
+from dns_control import augment_lab, mac3_active, mac3_command
 
 ROOT = Path(__file__).resolve().parent.parent
 env = dict(line.split("=", 1) for line in (ROOT / "phase2/lab.env").read_text().splitlines()
            if line and not line.startswith("#"))
+env = augment_lab(ROOT, env)
 runtime = ROOT / ".runtime"
 out = ROOT / "evidence/phase-2/ttl/client-cache-and-cutover.txt"
+if mac3_active(env):
+    out = ROOT / "evidence/phase-2/mac3-dns" / datetime.now(timezone.utc).strftime("ttl-%Y%m%dT%H%M%S") / "client-cache-and-cutover.txt"
 out.parent.mkdir(parents=True, exist_ok=True)
 ssh = ["/usr/bin/ssh", "-i", str(Path.home() / ".ssh/id_ed25519_cn_project"),
        "-o", "BatchMode=yes", "-o", "ConnectTimeout=5", "-o", "StrictHostKeyChecking=yes",
@@ -37,12 +41,14 @@ def run(command):
     return result.stdout
 
 def change(action):
+    if mac3_active(env):
+        run(mac3_command(env, action))
     run(ssh + ["sudo -n /usr/local/sbin/cn-project-admin " + action])
     run(helper + [action])
     time.sleep(0.4)
 
 def lookup(cached=True):
-    command = ["/usr/bin/dig", "@127.0.0.1", "-p", "1053"] if cached else ["/usr/bin/dig", "@" + env["MAC2_IP"]]
+    command = ["/usr/bin/dig", "@127.0.0.1", "-p", "1053"] if cached else ["/usr/bin/dig", "@" + env["BACKUP_DNS_IP"]]
     text = run(command + ["app.cn-project.test", "+time=2", "+tries=1"])
     answers = [line.split() for line in text.splitlines()
                if line.startswith("app.cn-project.test.") and "\tA\t" in line]
@@ -66,7 +72,7 @@ try:
     with (runtime / "client-cache.log").open("w") as log:
         cache = subprocess.Popen(["/opt/homebrew/sbin/dnsmasq", "--keep-in-foreground", "--port=1053",
                                   "--listen-address=127.0.0.1", "--bind-interfaces", "--no-resolv", "--no-hosts",
-                                  "--server=/cn-project.test/" + env["MAC2_IP"], "--cache-size=100"],
+                                  "--server=/cn-project.test/" + env["BACKUP_DNS_IP"], "--cache-size=100"],
                                  stdin=subprocess.DEVNULL, stdout=log, stderr=log)
     time.sleep(0.5)
     if cache.poll() is not None:
@@ -92,7 +98,10 @@ try:
     https(lookup(), "mac2")
     record("PASS: manual client DNS-cache flush immediately adopted restored primary edge")
 finally:
-    for command in [ssh + ["sudo -n /usr/local/sbin/cn-project-admin dns-primary"], helper + ["dns-primary"]]:
+    restore_commands = [ssh + ["sudo -n /usr/local/sbin/cn-project-admin dns-primary"], helper + ["dns-primary"]]
+    if mac3_active(env):
+        restore_commands.insert(0, mac3_command(env, "dns-primary"))
+    for command in restore_commands:
         result = subprocess.run(command, capture_output=True, text=True, timeout=15)
         record("Restore primary records: " + str(result.returncode) + "\n" + result.stdout + result.stderr)
     if cache is not None and cache.poll() is None:

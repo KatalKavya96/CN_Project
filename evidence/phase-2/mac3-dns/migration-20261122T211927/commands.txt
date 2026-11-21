@@ -1,0 +1,911 @@
+
+UTC: 2026-11-22T21:19:27.516455+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-resolver status
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:27.534250+00:00
+Mac 1: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:27.667595+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:27 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:27.684604+00:00
+Mac 1: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:27.752916+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:27 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:27.840791+00:00
+Mac 1: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:27.876257+00:00
+Mac 1: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:27.896106+00:00
+Mac 1: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:27.933569+00:00
+Mac 1: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:28.161608+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-resolver status
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:28.395545+00:00
+Mac 2: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:28.661982+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:28 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:28.895686+00:00
+Mac 2: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:29.151017+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:29 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:29.375338+00:00
+Mac 2: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:29.698948+00:00
+Mac 2: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:29.921415+00:00
+Mac 2: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:30.181101+00:00
+Mac 2: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:30.221168+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-22T21:19:30.466869+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-22T21:19:30.734694+00:00
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-22T21:19:30.961838+00:00
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-start
+Exit: 0
+Mac 3 backup DNS already running
+
+
+
+UTC: 2026-11-22T21:19:31.009529+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-resolver use-mac3
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.26.237
+
+
+
+UTC: 2026-11-22T21:19:31.322868+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-resolver use-mac3
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.26.237
+
+
+
+UTC: 2026-11-22T21:19:31.352715+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-stop
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:33.378216+00:00
+Mac 1: dig @10.7.26.228 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-22T21:19:33.432180+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:40.937538+00:00
+Mac 1: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:41.057891+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:41 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:41.094499+00:00
+Mac 1: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:41.149180+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:41 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:41.378895+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:48.904349+00:00
+Mac 2: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:49.167708+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:49 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:49.452848+00:00
+Mac 2: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:49.714722+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:49 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:49.993888+00:00
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-status
+Exit: 0
+2602
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 02:49:27 dnsmasq[3171]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:29 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:29 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:29 dnsmasq[3174]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:29 dnsmasq[3174]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:29 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:29 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:30 dnsmasq[3175]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:30 dnsmasq[3175]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:30 dnsmasq[2602]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 02:49:36 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.26.228
+Nov 23 02:49:36 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:49:36 dnsmasq[2602]: query[SVCB] _dns.resolver.arpa from 10.7.26.228
+Nov 23 02:49:36 dnsmasq[2602]: config error is REFUSED (EDE: not ready)
+Nov 23 02:49:40 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:49:40 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:41 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:41 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:41 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:41 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:44 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:44 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:49:44 dnsmasq[2602]: query[SVCB] _dns.resolver.arpa from 10.7.18.166
+Nov 23 02:49:44 dnsmasq[2602]: config error is REFUSED (EDE: not ready)
+Nov 23 02:49:48 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:48 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:49 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:49 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:49 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:49 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:50.129475+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-start
+Exit: 0
+
+dnsmasq: syntax check OK.
+
+
+UTC: 2026-11-22T21:19:50.523993+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin dns-stop
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:50.558281+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-stop
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:52.581028+00:00
+Mac 1: dig @10.7.26.228 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-22T21:19:53.594714+00:00
+Mac 1: dig @10.7.18.166 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.18.166 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-22T21:19:53.637395+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:53.749884+00:00
+Mac 1: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:53.858983+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:53 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:53.899734+00:00
+Mac 1: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:53.967680+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:53 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:54.492341+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:54.962762+00:00
+Mac 2: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:55.635094+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:55 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:55.907650+00:00
+Mac 2: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:56.151473+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:56.419944+00:00
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-status
+Exit: 0
+2602
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 02:49:41 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:41 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:41 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:41 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:44 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:44 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:49:44 dnsmasq[2602]: query[SVCB] _dns.resolver.arpa from 10.7.18.166
+Nov 23 02:49:44 dnsmasq[2602]: config error is REFUSED (EDE: not ready)
+Nov 23 02:49:48 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:48 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:49 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:49 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:49 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:49 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:53 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.26.228
+Nov 23 02:49:53 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:49:53 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:49:53 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:53 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:53 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:53 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:49:53 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:49:54 dnsmasq[2602]: query[AAAA] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:54 dnsmasq[2602]: config app.cn-project.test is NODATA-IPv6
+Nov 23 02:49:54 dnsmasq[2602]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:49:54 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:49:55 dnsmasq[2602]: query[AAAA] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:55 dnsmasq[2602]: config api.cn-project.test is NODATA-IPv6
+Nov 23 02:49:55 dnsmasq[2602]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:49:55 dnsmasq[2602]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+
+
+
+UTC: 2026-11-22T21:19:56.567323+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-start
+Exit: 0
+
+dnsmasq: syntax check OK.
+
+
+UTC: 2026-11-22T21:19:56.595490+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:56.625380+00:00
+Mac 1: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:56.723366+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:56.755974+00:00
+Mac 1: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:56.814124+00:00
+Mac 1: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:56.823376+00:00
+Mac 1: scutil --dns
+Exit: 0
+DNS configuration
+
+resolver #1
+  nameserver[0] : 8.8.8.8
+  nameserver[1] : 10.5.7.1
+  if_index : 14 (en0)
+  flags    : Request A records
+  reach    : 0x00000002 (Reachable)
+
+resolver #2
+  domain   : local
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300000
+
+resolver #3
+  domain   : 254.169.in-addr.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300200
+
+resolver #4
+  domain   : 8.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300400
+
+resolver #5
+  domain   : 9.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300600
+
+resolver #6
+  domain   : a.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300800
+
+resolver #7
+  domain   : b.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 301000
+
+resolver #8
+  domain   : cn-project.test
+  nameserver[0] : 10.7.26.228
+  nameserver[1] : 10.7.26.237
+  flags    : Request A records
+  reach    : 0x00030002 (Reachable,Local Address,Directly Reachable Address)
+
+DNS configuration (for scoped queries)
+
+resolver #1
+  nameserver[0] : 8.8.8.8
+  nameserver[1] : 10.5.7.1
+  if_index : 14 (en0)
+  flags    : Scoped, Request A records
+  reach    : 0x00000002 (Reachable)
+
+
+
+UTC: 2026-11-22T21:19:57.058213+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:19:57.302700+00:00
+Mac 2: dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:57.537765+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:57 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:57.781765+00:00
+Mac 2: dscacheutil -q host -a name api.cn-project.test
+Exit: 0
+name: api.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T21:19:58.037769+00:00
+Mac 2: curl --noproxy '*' --connect-timeout 10 --max-time 35 -sS -i https://api.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:19:58 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:19:58.270091+00:00
+Mac 2: scutil --dns
+Exit: 0
+DNS configuration
+
+resolver #1
+  nameserver[0] : 8.8.8.8
+  nameserver[1] : 10.5.7.1
+  if_index : 11 (en0)
+  flags    : Request A records
+  reach    : 0x00000002 (Reachable)
+
+resolver #2
+  domain   : local
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300000
+
+resolver #3
+  domain   : 254.169.in-addr.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300200
+
+resolver #4
+  domain   : 8.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300400
+
+resolver #5
+  domain   : 9.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300600
+
+resolver #6
+  domain   : a.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300800
+
+resolver #7
+  domain   : b.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 301000
+
+resolver #8
+  domain   : cn-project.test
+  nameserver[0] : 10.7.26.228
+  nameserver[1] : 10.7.26.237
+  flags    : Request A records
+  reach    : 0x00020002 (Reachable,Directly Reachable Address)
+
+DNS configuration (for scoped queries)
+
+resolver #1
+  nameserver[0] : 8.8.8.8
+  nameserver[1] : 10.5.7.1
+  if_index : 11 (en0)
+  flags    : Scoped, Request A records
+  reach    : 0x00000002 (Reachable)
+
+
+
+UTC: 2026-11-22T21:19:58.306956+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-22T21:19:58.327841+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-start
+Exit: 0
+Project DNS already running
+
+

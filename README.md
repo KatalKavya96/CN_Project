@@ -1,7 +1,7 @@
 # CN Project - Private Network Service Platform
 
-Kavya Katal and Ronit Singh. Two-Mac local deployment covering Phase 1
-(build and observe) and Phase 2 (harden, recover, troubleshoot).
+Kavya Katal, Ronit Singh, and Priyanshu Tomar. Phase 1 retains its two-Mac
+deployment; Phase 2 uses Priyanshu's third Mac only for backup DNS.
 
 ## Start here
 
@@ -12,18 +12,20 @@ Kavya Katal and Ronit Singh. Two-Mac local deployment covering Phase 1
 - [Phase 2 final report](docs/phase2-report.md)
 - [Evidence index](evidence/phase-2/README.md)
 - [Evidence for every Phase 1 and Phase 2 requirement](evidence/submission/README.md)
+- [Current Mac 3 DNS migration and fresh acceptance evidence](evidence/phase-2/mac3-dns/README.md)
 
 The application stays simple: DNS -> TCP -> TLS -> HTTP -> nginx -> backend.
 Everything runs locally; there is no cloud dependency in the service path.
 
 ## Current lab inventory
 
-Recorded 22 November 2026. DHCP addresses must be rechecked before the demo.
+Updated 23 November 2026. DHCP addresses must be rechecked before the demo.
 
 | Machine | Address | Interface | Services |
 | --- | --- | --- | --- |
 | Mac 1 - Kavya | `10.7.26.228/19` | `en0` | Primary DNS :53, Backend B :3002, standby nginx :8080/:8443, client |
-| Mac 2 - Ronit | `10.7.18.166/19` | `en0` | Backup DNS :53, Backend A :3001, primary nginx :8080/:8443, client |
+| Mac 2 - Ronit | `10.7.18.166/19` | `en0` | Backend A :3001, primary nginx :8080/:8443, client; legacy DNS stopped |
+| Mac 3 - Priyanshu | `10.7.26.237/19` | `en0` | Phase 2 backup DNS :53 only |
 
 Subnet mask: `255.255.224.0`; gateway: `10.7.0.1`.
 Both DNS servers normally map `app.cn-project.test` and `api.cn-project.test`
@@ -42,11 +44,21 @@ Do not also start the development `.runtime/dnsmasq.conf` instance on port 53.
 The one-time installer is `bash phase2/install-admin.sh mac1` or `mac2`.
 Do not rerun an installer over an existing installation.
 
-On either Mac, start managed DNS with:
+On Kavya's Mac, start primary DNS with:
 
 ```bash
 sudo -n /usr/local/sbin/cn-project-admin dns-start
 ```
+
+On Priyanshu's Mac, start backup DNS with:
+
+```bash
+cd /Users/priyanshutomar/CN_Project
+sudo -n /usr/local/sbin/cn-project-backup dns-start
+```
+
+Both client resolver files list `10.7.26.228` then `10.7.26.237`. Keep Ronit's
+legacy DNS stopped. See [DNS setup and rollback](phase2/MAC3-SETUP.md).
 
 On Mac 1 start Backend B and, if it is not already running, standby nginx:
 
@@ -102,4 +114,6 @@ deliberately stops primary DNS and Backend A, changes DNS, and applies PF
 rules, saving observations and restoring service. Read its summary under
 `evidence/phase-2/final/`. Run it only during a planned demonstration window.
 The course's individual viva and faculty-injected fault still require both
-students to understand and operate the system.
+members to understand and operate the system. Historical evidence books and
+manifests describe their original two-Mac capture; new migration evidence is
+saved separately, preserving every original artifact.
