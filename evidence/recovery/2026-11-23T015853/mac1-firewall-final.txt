@@ -1,0 +1,36 @@
+
+UTC: 2026-11-22T20:29:08.902656+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-status
+Exit: 0
+Status: Disabled for 0 days 02:42:51          Debug: Urgent
+
+State Table                          Total             Rate
+  current entries                        0               
+  searches                            3902            0.4/s
+  inserts                               10            0.0/s
+  removals                              10            0.0/s
+Counters
+  match                               2956            0.3/s
+  bad-offset                             0            0.0/s
+  fragment                               0            0.0/s
+  short                                  0            0.0/s
+  normalize                              0            0.0/s
+  memory                                 0            0.0/s
+  bad-timestamp                          0            0.0/s
+  congestion                             0            0.0/s
+  ip-option                              5            0.0/s
+  proto-cksum                            0            0.0/s
+  state-mismatch                         0            0.0/s
+  state-insert                           0            0.0/s
+  state-limit                            0            0.0/s
+  src-limit                              0            0.0/s
+  synproxy                               0            0.0/s
+  dummynet                               0            0.0/s
+  invalid-port                           0            0.0/s
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+No ALTQ support in kernel
+ALTQ related functions disabled
+

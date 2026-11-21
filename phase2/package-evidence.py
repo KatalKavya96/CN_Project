@@ -69,6 +69,29 @@ items = [
           ["docs/tomorrow-demo.md", "docs/runbook.md", "docs/viva.md"]),
 ]
 
+recoveries = sorted((ROOT / "evidence/recovery").glob("*/recovery-summary.json"))
+recovery = None
+for candidate in reversed(recoveries):
+    snapshot = json.loads(candidate.read_text())
+    if snapshot.get("status") == "LIVE SETUP RESTORED AND VERIFIED ON BOTH MACS" and snapshot.get("evidence_preserved"):
+        recovery = candidate.parent
+        break
+if recovery is not None:
+    prefix = str(recovery.relative_to(ROOT)) + "/"
+    for item in items:
+        if item["code"] == "P1-A":
+            item["files"] += [prefix + f"mac{mac}-{kind}.txt" for mac in (1, 2) for kind in ("inventory", "ping")]
+        elif item["code"] == "P1-B":
+            item["files"] += [prefix + "mac1-dns.txt", prefix + "mac2-dns.txt"]
+        elif item["code"] == "P1-C":
+            item["status"] = "Recorded"
+            item["note"] = "Both backends bind to 0.0.0.0 and implement / and /api/status. The recovery logs record successful direct GET /, GET /api/status and HEAD on the correct local backend port from each service host."
+            item["files"] += [prefix + "mac1-backend-endpoints.txt", prefix + "mac2-backend-endpoints.txt"]
+        elif item["code"] == "P1-E":
+            item["files"] += [prefix + "mac1-plain-trust.txt", prefix + "mac2-plain-trust.txt"]
+        elif item["code"] == "P1-D":
+            item["files"] += [prefix + "mac1-primary-https.txt", prefix + "mac2-primary-https.txt"]
+
 def collect(command):
     started = datetime.now(timezone.utc).isoformat()
     try:
@@ -80,7 +103,8 @@ def collect(command):
 backend_commands = [["/usr/bin/curl", "--noproxy", "*", "--max-time", "5", "-sS", "-i", "http://127.0.0.1:3002" + path]
                     for path in ("/", "/api/status")]
 backend_commands.append(["/usr/bin/curl", "--noproxy", "*", "--max-time", "5", "-sS", "-I", "http://127.0.0.1:3002/api/status"])
-(OUT / "backend-b-current.txt").write_text("\n".join(collect(command) for command in backend_commands))
+if not (OUT / "backend-b-current.txt").exists():
+    (OUT / "backend-b-current.txt").write_text("\n".join(collect(command) for command in backend_commands))
 
 tshark = "/Applications/Wireshark.app/Contents/MacOS/tshark"
 pcap = str(ROOT / (P2 + "baseline/dns-tcp-tls-current.pcap"))
@@ -131,9 +155,9 @@ for item in items:
 index += ["", "## Scope and remaining live checks", "",
           "- Wrong DNS uses a temporary explicitly configured client resolver, not macOS global DNS preferences.",
           "- The third-source rejection test for Backend B is unavailable in the two-Mac arrangement.",
-          "- Backend A's separate direct-root response needs a live Ronit connection; its source and direct /api/status results are included.",
+          ("- Both backend root/status/HEAD endpoints have fresh recovery exports linked above." if recovery else "- Backend A's separate direct-root response needs a live Ronit connection; its source and direct /api/status results are included."),
           "- Faculty-injected fault, spoken presentation and individual viva remain live evaluation tasks.",
-          "- Ronit's saved IP currently responds to ping but SSH and HTTPS time out. Earlier passing captures are retained as historical evidence, not presented as fresh health checks.",
+          ("- The completed recovery snapshot verifies SSH access, LAN, DNS and plain HTTPS on both Macs. Keep both laptops open and powered; each log retains its observation time." if recovery else "- Ronit's saved IP currently responds to ping but SSH and HTTPS time out. Earlier passing captures are retained as historical evidence, not presented as fresh health checks."),
           "- manifest.json contains source-file sizes and SHA-256 digests; packet tables are generated directly from the original pcap.", ""]
 (OUT / "README.md").write_text("\n".join(index))
 
