@@ -1,0 +1,560 @@
+{
+  "assembled_utc": "2026-11-22T20:05:34.811211+00:00",
+  "note": "Original tests retain their original collection dates. Generated HTML displays log excerpts, not terminal screenshots.",
+  "requirements": [
+    {
+      "code": "P1-A",
+      "title": "Private LAN and topology",
+      "status": "Recorded",
+      "note": "Inventory includes IPv4, /19 mask, gateway, en0 and MAC. The wrong-DNS logs also contain actual successful peer pings in both directions.",
+      "files": [
+        "docs/architecture.md",
+        "evidence/phase-2/baseline/mac1-final-inventory.txt",
+        "evidence/phase-2/baseline/mac2-final-inventory.txt",
+        "evidence/phase-1/failures-2026-11-22/wrong-dns-mac1.txt",
+        "evidence/phase-1/failures-2026-11-22/wrong-dns-mac2.txt"
+      ]
+    },
+    {
+      "code": "P1-B",
+      "title": "Private DNS and two client resolvers",
+      "status": "Recorded",
+      "note": "Both clients' scoped resolvers list primary and backup. Both private names have DNS proof; the final by-name requests use the OS resolver.",
+      "files": [
+        "evidence/phase-2/final/mac1-resolver.txt",
+        "evidence/phase-2/final/mac2-resolver.txt",
+        "evidence/phase-2/final/baseline-os-lookups.txt",
+        "evidence/phase-2/dns-failover/backup-api-direct.txt",
+        "evidence/phase-2/dns-failover/backup-direct.txt"
+      ]
+    },
+    {
+      "code": "P1-C",
+      "title": "Backend source, interfaces, ports and endpoints",
+      "status": "Source and status evidence",
+      "note": "Both sources implement / and /api/status and bind to 0.0.0.0. Direct status responses for A and B are saved. Fresh /, /api/status and HEAD evidence for B is collected here. A separate direct-root A capture needs Ronit's live connection; it is not fabricated.",
+      "files": [
+        "backend-a/app.py",
+        "backend-b/app.py",
+        "evidence/phase-2/final/isolation-allowed-edge.txt",
+        "evidence/submission/backend-b-current.txt"
+      ]
+    },
+    {
+      "code": "P1-D",
+      "title": "Reverse proxy and load balancing",
+      "status": "Recorded",
+      "note": "By-name HTTP 200 responses from both clients show A/B upstreams and X-Edge mac2.",
+      "files": [
+        "evidence/phase-2/final/baseline-by-name.txt",
+        "evidence/phase-2/baseline/mac2-upstream-log.txt",
+        "phase2/render.sh"
+      ]
+    },
+    {
+      "code": "P1-E",
+      "title": "Default-trust HTTPS on both Macs",
+      "status": "Recorded",
+      "note": "These final curl commands use neither --cacert nor -k. Both logs show hostname match, SSL certificate verify ok, HTTP 200 and exit 0.",
+      "files": [
+        "evidence/phase-2/final/default-trust-mac1-verified.txt",
+        "evidence/phase-2/final/default-trust-mac2-verified.txt",
+        "tls/generated/server.ext"
+      ]
+    },
+    {
+      "code": "P1-F",
+      "title": "Cache-Control, ETags and conditional 304",
+      "status": "Recorded",
+      "note": "Saved real headers include max-age=60 and matching 304 responses from both backends. A validator sent to the other backend can correctly return 200.",
+      "files": [
+        "evidence/phase-2/baseline/cache-headers.txt",
+        "evidence/phase-2/baseline/conditional-attempt-1.txt",
+        "evidence/phase-2/baseline/conditional-attempt-2.txt"
+      ]
+    },
+    {
+      "code": "P1-G",
+      "title": "DNS, TCP, TLS and reliable transport",
+      "status": "Recorded",
+      "note": "Use the original pcap plus the generated packet tables. Frames 1-2 are DNS, 3-5 the TCP handshake, 6 ClientHello/SNI, and 9 ServerHello. Client TCP port is 50549 and edge port 8443. TLS 1.3 encrypts later handshake messages; curl separately proves certificate verification.",
+      "files": [
+        "evidence/phase-2/baseline/dns-tcp-tls-current.pcap",
+        "evidence/submission/protocol-flow.tsv",
+        "evidence/submission/dns-packets.tsv",
+        "evidence/submission/tcp-reliability.tsv",
+        "evidence/submission/tls-packets.tsv",
+        "evidence/phase-2/final/default-trust-mac1-verified.txt"
+      ]
+    },
+    {
+      "code": "P1-F1",
+      "title": "Wrong client DNS server",
+      "status": "Recorded: client-scoped",
+      "note": "An isolated resolver on each client forwards to unavailable 127.0.0.2:53. Queries fail while ping and DNS-independent verified HTTPS work. Global macOS DNS preferences are unchanged.",
+      "files": [
+        "evidence/phase-1/failures-2026-11-22/wrong-dns-mac1.txt",
+        "evidence/phase-1/failures-2026-11-22/wrong-dns-mac2.txt"
+      ]
+    },
+    {
+      "code": "P1-F2",
+      "title": "Wrong IP in project DNS",
+      "status": "Recorded",
+      "note": "The real project records point to Mac 1 while its edge is stopped: DNS succeeds, TCP fails. The correct edge still works with --resolve. Records and standby are restored.",
+      "files": [
+        "evidence/phase-1/failures-2026-11-22/wrong-record-mac1.txt",
+        "evidence/phase-1/failures-2026-11-22/wrong-record-mac2.txt",
+        "evidence/phase-1/failures-2026-11-22/wrong-record-restoration.txt"
+      ]
+    },
+    {
+      "code": "P1-F3",
+      "title": "One backend stopped",
+      "status": "Recorded",
+      "note": "Both clients get B-only successful requests while A is stopped, then A/B after restart.",
+      "files": [
+        "evidence/phase-2/final/backend-a-down-by-name.txt",
+        "evidence/phase-2/final/backend-a-restored-by-name.txt"
+      ]
+    },
+    {
+      "code": "P1-F4",
+      "title": "Both backends stopped",
+      "status": "Recorded",
+      "note": "Both clients resolve DNS and verify TLS but receive HTTP 502. Restoration returns both clients to HTTP 200 and A/B.",
+      "files": [
+        "evidence/phase-1/failures-2026-11-22/both-backends-down-mac1.txt",
+        "evidence/phase-1/failures-2026-11-22/both-backends-down-mac2.txt",
+        "evidence/phase-1/failures-2026-11-22/both-backends-restoration.txt"
+      ]
+    },
+    {
+      "code": "P1-F5",
+      "title": "Wrong destination port",
+      "status": "Recorded",
+      "note": "Correct domain and IP with wrong port 8444 gives TCP connection refusal; this is not a DNS or certificate failure.",
+      "files": [
+        "evidence/phase-2/troubleshooting/wrong-port-dns-bypassed.txt"
+      ]
+    },
+    {
+      "code": "P2-A",
+      "title": "Backup DNS with primary stopped",
+      "status": "Recorded",
+      "note": "A direct query confirms primary unavailability, then both flushed OS clients resolve and complete HTTPS through backup DNS. Primary is restored.",
+      "files": [
+        "evidence/phase-2/final/primary-stopped-direct-query.txt",
+        "evidence/phase-2/final/primary-down-os-lookup.txt",
+        "evidence/phase-2/final/primary-down-by-name-https.txt",
+        "evidence/phase-2/final/backup-query-log.txt",
+        "evidence/phase-2/final/primary-restored.txt"
+      ]
+    },
+    {
+      "code": "P2-B",
+      "title": "TTL, changed records and cache flushing",
+      "status": "Recorded",
+      "note": "The isolated client cache shows an exact countdown. Real macOS clients also retain old answers, refresh after expiry and adopt changed records immediately after flush. The first exact-35-second check failed; the measured-refresh recheck passed. Both observations are retained.",
+      "files": [
+        "evidence/phase-2/ttl/client-cache-and-cutover.txt",
+        "evidence/phase-2/final-cutover-recheck/cutover-immediate-os-cache.txt",
+        "evidence/phase-2/final-cutover-recheck/cutover-after-ttl-os-cache.txt",
+        "evidence/phase-2/final-cutover-recheck/cutover-fresh-client-flush.txt",
+        "evidence/phase-2/final-cutover-recheck/summary.txt"
+      ]
+    },
+    {
+      "code": "P2-C",
+      "title": "Backend isolation and rollback",
+      "status": "Recorded: two-Mac scope",
+      "note": "Direct Mac 1-to-A traffic is blocked; edge-to-A/B and both clients' HTTPS continue. PF counters and rollback are saved. Independent rejection by B requires an unrelated third source IP, unavailable here.",
+      "files": [
+        "evidence/phase-2/final/isolation-rules.txt",
+        "evidence/phase-2/final/isolation-blocked-client.txt",
+        "evidence/phase-2/final/isolation-allowed-edge.txt",
+        "evidence/phase-2/final/isolation-https-by-name.txt",
+        "evidence/phase-2/final/isolation-counters.txt",
+        "evidence/phase-2/final/isolation-rollback.txt"
+      ]
+    },
+    {
+      "code": "P2-D",
+      "title": "Backend HA and SPOF explanation",
+      "status": "Recorded",
+      "note": "Passive detection and retry maintain B-only service during A failure, then restore A/B. Process failure is distinguished from host failure; the edge and shared LAN failure points are documented.",
+      "files": [
+        "evidence/phase-2/final/backend-a-down-by-name.txt",
+        "evidence/phase-2/final/backend-a-restored-by-name.txt",
+        "docs/architecture.md",
+        "docs/phase2-report.md"
+      ]
+    },
+    {
+      "code": "P2-E",
+      "title": "Standby edge and DNS cutover",
+      "status": "Recorded",
+      "note": "Actual by-name clients first use mac2, then a flushed client uses mac1, then the expired client adopts mac1. These final requests do not use --resolve. DNS is restored to mac2.",
+      "files": [
+        "evidence/phase-2/final-cutover-recheck/cutover-authoritative.txt",
+        "evidence/phase-2/final-cutover-recheck/cutover-immediate-by-name.txt",
+        "evidence/phase-2/final-cutover-recheck/cutover-fresh-client-by-name.txt",
+        "evidence/phase-2/final-cutover-recheck/cutover-after-ttl-by-name.txt",
+        "evidence/phase-2/final-cutover-recheck/cutover-restored-by-name.txt",
+        "evidence/phase-2/final-cutover-recheck/dns-failover-cutover.pcap"
+      ]
+    },
+    {
+      "code": "P2-F",
+      "title": "Faculty-injected troubleshooting",
+      "status": "Prepared; evaluation pending",
+      "note": "Real wrong-port and wrong-hostname drills plus diagnostics on both Macs are saved. The faculty's live injected fault and the students' spoken diagnosis cannot be pre-recorded as completed.",
+      "files": [
+        "evidence/phase-2/troubleshooting/wrong-port-dns-bypassed.txt",
+        "evidence/phase-2/troubleshooting/wrong-tls-hostname.txt",
+        "evidence/phase-2/final/diagnostics-mac1.txt",
+        "evidence/phase-2/final/diagnostics-mac2.txt",
+        "phase2/diagnose.sh"
+      ]
+    },
+    {
+      "code": "DOC-A",
+      "title": "Architecture and request flow",
+      "status": "Prepared",
+      "note": "Network topology, combined roles, current and historical addresses, ports, protocol mapping and SPOFs.",
+      "files": [
+        "docs/architecture.md",
+        "docs/request-flow.md"
+      ]
+    },
+    {
+      "code": "DOC-B",
+      "title": "Configuration bundle and backend launch",
+      "status": "Prepared",
+      "note": "Configuration sources, generated local edge config, firewall template, rollback and TLS setup notes. No private key material is included.",
+      "files": [
+        "evidence/submission/configuration-bundle.txt",
+        "phase2/README.md",
+        "phase2/render.sh",
+        "phase2/install-admin.sh",
+        "phase2/admin-control.sh",
+        "phase2/services.py"
+      ]
+    },
+    {
+      "code": "DOC-C",
+      "title": "Phase 2 final report",
+      "status": "Prepared",
+      "note": "Changes from Phase 1, expected/observed behavior, troubleshooting findings and learning paragraphs for all six extensions.",
+      "files": [
+        "docs/phase2-report.md",
+        "evidence/phase-2/acceptance-summary.md"
+      ]
+    },
+    {
+      "code": "DOC-D",
+      "title": "Final presentation and individual viva",
+      "status": "Prepared; performance pending",
+      "note": "The full 11-step role-by-role guide and viva questions are available. Both students must participate and answer during the evaluation.",
+      "files": [
+        "docs/tomorrow-demo.md",
+        "docs/runbook.md",
+        "docs/viva.md"
+      ]
+    }
+  ],
+  "files": {
+    "docs/architecture.md": {
+      "bytes": 7604,
+      "sha256": "8395ad0c0be0d8dab7c16ad8466d1d367a7f6b407ab489eeaecf7683c5852ce1"
+    },
+    "evidence/phase-2/baseline/mac1-final-inventory.txt": {
+      "bytes": 675,
+      "sha256": "c6558d16b33fcca0000c505952a252dc2a053dd6e081d6be126b5192497f802f"
+    },
+    "evidence/phase-2/baseline/mac2-final-inventory.txt": {
+      "bytes": 4478,
+      "sha256": "99bc7fe7d19850a58d47ee9b76e15d41807a94a54987c38c9b9faf370647a057"
+    },
+    "evidence/phase-1/failures-2026-11-22/wrong-dns-mac1.txt": {
+      "bytes": 7293,
+      "sha256": "8495a8c24e6bef96a2ed565eb55516700fa66832dbf33a4997cb10efcd923f4a"
+    },
+    "evidence/phase-1/failures-2026-11-22/wrong-dns-mac2.txt": {
+      "bytes": 7290,
+      "sha256": "49bc91383b584fed4d4b1117de517d30ffdfd9a4b2aa93f8b48657e96b42c324"
+    },
+    "evidence/phase-2/final/mac1-resolver.txt": {
+      "bytes": 1660,
+      "sha256": "d93aff603b4da8937a1b7ac162808bb504c021e6942758de8e3c0313add968ed"
+    },
+    "evidence/phase-2/final/mac2-resolver.txt": {
+      "bytes": 1646,
+      "sha256": "03b8ad52eb1d522ce4ca482cbb3a8e2f823218637a09b3644558e35097d8a9e9"
+    },
+    "evidence/phase-2/final/baseline-os-lookups.txt": {
+      "bytes": 344,
+      "sha256": "9005a25867c5f97409ae600ddd6c7eab55a850805f6a2c091d3a723ea1c26bda"
+    },
+    "evidence/phase-2/dns-failover/backup-api-direct.txt": {
+      "bytes": 557,
+      "sha256": "aa8e96799ed32db410e27f8be484128ed9c9eca18d22ce2f4354a1919a26797f"
+    },
+    "evidence/phase-2/dns-failover/backup-direct.txt": {
+      "bytes": 557,
+      "sha256": "7413ba5c93f83cd5bc63be69262e69a9d80df67295284065b19682553d9f1d76"
+    },
+    "backend-a/app.py": {
+      "bytes": 1621,
+      "sha256": "6b3cb4d87ec862062ac7eaef97db3b48a4da870ce6cc4bdb2b87e8bc7ba55231"
+    },
+    "backend-b/app.py": {
+      "bytes": 1621,
+      "sha256": "a92bd70c9db476ab2a6267cf586e26b87659a3262a08caff74f4b2b9a69fc49b"
+    },
+    "evidence/phase-2/final/isolation-allowed-edge.txt": {
+      "bytes": 774,
+      "sha256": "e7da4923571444d869ff3eb91b181321dbb3ba731504b2ed1f29b91a35e71808"
+    },
+    "evidence/submission/backend-b-current.txt": {
+      "bytes": 676,
+      "sha256": "61e9e395b32b4c3bdfa6ab5a746274dbc3323e360019c79ec4b40cb2c15c8de2"
+    },
+    "evidence/phase-2/final/baseline-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "0ffb4e8e85bf58253b4249493ab6a8ea70e3cf3a33e03393f6d93131f49f1a21"
+    },
+    "evidence/phase-2/baseline/mac2-upstream-log.txt": {
+      "bytes": 2873,
+      "sha256": "b069eaa33e3f318b97a42c6e48dc25c2611a1e5489ef2f77b36bd302a2514a4f"
+    },
+    "phase2/render.sh": {
+      "bytes": 2479,
+      "sha256": "b00571bdc4f4eabf8d7410b9270f6d5de8e802f566419f0d1869ba7228e2dc4f"
+    },
+    "evidence/phase-2/final/default-trust-mac1-verified.txt": {
+      "bytes": 2129,
+      "sha256": "927a35295d46028e7ff6a9e429f0140c5fd0ccf1429f41b4e2d6f95d42fe30fd"
+    },
+    "evidence/phase-2/final/default-trust-mac2-verified.txt": {
+      "bytes": 2050,
+      "sha256": "ff0dfbb5eac88ef7be43f634f3e371045116cf51982d07c37a82013cc51d2ef4"
+    },
+    "tls/generated/server.ext": {
+      "bytes": 223,
+      "sha256": "a4dbacbb7aa86b19c53aab30f7fcc2aab6873fad0b81b67c6e488308d8d5d309"
+    },
+    "evidence/phase-2/baseline/cache-headers.txt": {
+      "bytes": 223,
+      "sha256": "782a923b0905cda02f9ae245c2c72ed6c295b14c2c90724cb7b90852a10768bc"
+    },
+    "evidence/phase-2/baseline/conditional-attempt-1.txt": {
+      "bytes": 181,
+      "sha256": "46f63284c7619c6279df8423a8289905984134c3afd550e25751ab2487a789c4"
+    },
+    "evidence/phase-2/baseline/conditional-attempt-2.txt": {
+      "bytes": 181,
+      "sha256": "9131be326e1836bd1c473d21db81cace447f6beeb74f355f32b520fe8fcf1729"
+    },
+    "evidence/phase-2/baseline/dns-tcp-tls-current.pcap": {
+      "bytes": 5451,
+      "sha256": "bf47f0bfd1d6687b1358bcbab7bd49a2c9b110be0728410fcd74da75c4038d25"
+    },
+    "evidence/submission/protocol-flow.tsv": {
+      "bytes": 3432,
+      "sha256": "0bf0a65ecc5f49749f909a300f54bceda56e0f61114f6ee53e7998da1d4d0de2"
+    },
+    "evidence/submission/dns-packets.tsv": {
+      "bytes": 342,
+      "sha256": "367552d85a6df26fa50df67a4c9f7981e57a758efa1ef4703b14a5d5dc91a249"
+    },
+    "evidence/submission/tcp-reliability.tsv": {
+      "bytes": 2721,
+      "sha256": "9df7dec28aa4ab2da92e17bd2e6280d66e4abf5462fe6661cc39c2ce52b8ebd4"
+    },
+    "evidence/submission/tls-packets.tsv": {
+      "bytes": 458,
+      "sha256": "e49442013e4e1acd167b30148a551a44edeca31073465a16ba4440b3d3390017"
+    },
+    "evidence/phase-1/failures-2026-11-22/wrong-record-mac1.txt": {
+      "bytes": 4270,
+      "sha256": "0aff2bb4feca230c0c888a6b6a64dd43d4c03db5c26f5d857eb099e80a833d1b"
+    },
+    "evidence/phase-1/failures-2026-11-22/wrong-record-mac2.txt": {
+      "bytes": 4276,
+      "sha256": "65119d4304bd15e65aa3f1936307da586717a8b08ad17cfd515b5471d7a1d6ea"
+    },
+    "evidence/phase-1/failures-2026-11-22/wrong-record-restoration.txt": {
+      "bytes": 4988,
+      "sha256": "5c22454be6a7869a49a4d41b600c9201fbeec0c5545c15a1c463bce9c1e1b3a6"
+    },
+    "evidence/phase-2/final/backend-a-down-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "80fec7f62c3bf0fb852f6b2ff72ae83781e0bc7c8af5455e8d70b007d013683b"
+    },
+    "evidence/phase-2/final/backend-a-restored-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "9e04dcb37e2279f2dc2e6822d5dab40f253527ff8c3e70ccc544e8558b4ee102"
+    },
+    "evidence/phase-1/failures-2026-11-22/both-backends-down-mac1.txt": {
+      "bytes": 3196,
+      "sha256": "12fdb0e88cc9a20407fc5172d33dbfb4ab35c0493cdab0b24233ad299b77a3b8"
+    },
+    "evidence/phase-1/failures-2026-11-22/both-backends-down-mac2.txt": {
+      "bytes": 3119,
+      "sha256": "a332ebcfd3b720018d5aafc477193573744ff4aac771dba4b5c4e456e92327b0"
+    },
+    "evidence/phase-1/failures-2026-11-22/both-backends-restoration.txt": {
+      "bytes": 39142,
+      "sha256": "bf4c2a1f4fb0479f7a7dc7caaa1a7598ae3f2e7bc8f4eea9acdf4170463b1a32"
+    },
+    "evidence/phase-2/troubleshooting/wrong-port-dns-bypassed.txt": {
+      "bytes": 767,
+      "sha256": "635c35c013d3a48f633692dc25b25656f75a299a360a6d03f0852d709f055ee7"
+    },
+    "evidence/phase-2/final/primary-stopped-direct-query.txt": {
+      "bytes": 297,
+      "sha256": "030ef5cdbc956d29e7c3b05cef1c2bd7d374a3a2c8bcda6d32b17361d062abc9"
+    },
+    "evidence/phase-2/final/primary-down-os-lookup.txt": {
+      "bytes": 344,
+      "sha256": "ac2b2f735c2dc73aa32009cc99939e7af704bc61d36f87ac8f67661fc0d4fcc1"
+    },
+    "evidence/phase-2/final/primary-down-by-name-https.txt": {
+      "bytes": 988,
+      "sha256": "e69be89eb0c560ec19605582fb6dc825f3187e875ee14937c8229e0577faf06b"
+    },
+    "evidence/phase-2/final/backup-query-log.txt": {
+      "bytes": 2353,
+      "sha256": "992327dbcd52ddf047758b6f49a21e84c00f51eae1fec88d62168c1399c6c352"
+    },
+    "evidence/phase-2/final/primary-restored.txt": {
+      "bytes": 375,
+      "sha256": "731948b8834ff7719fed35b32820dca854084f0b7b880303f9934bb9be8b9fd3"
+    },
+    "evidence/phase-2/ttl/client-cache-and-cutover.txt": {
+      "bytes": 15515,
+      "sha256": "4c75f75687f658bf3f27ee1c93c23b8ccf9d2d1fe793ab1b399d938a422bcc5f"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-immediate-os-cache.txt": {
+      "bytes": 344,
+      "sha256": "57ccda76f803c78971b97e058d01296ae6e666b229ac9c217377848834a7e334"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-after-ttl-os-cache.txt": {
+      "bytes": 516,
+      "sha256": "68c16b952b6a084452f438ba1a35a4c5ce3fa6a76d9cda0b8f4935efad9e70f1"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-fresh-client-flush.txt": {
+      "bytes": 117,
+      "sha256": "f6e8b3a0c037fd10e643dcf81a0e271a81d75e3a392cfbe980177dcd3fc42672"
+    },
+    "evidence/phase-2/final-cutover-recheck/summary.txt": {
+      "bytes": 82,
+      "sha256": "a72ad47fbaad966c950735c068a27afaba854b7d95d170cf35f1dc32761d3411"
+    },
+    "evidence/phase-2/final/isolation-rules.txt": {
+      "bytes": 2293,
+      "sha256": "849eeaa6929028561007cdfd4666675353b26322543448893774bd3bbaaaf8eb"
+    },
+    "evidence/phase-2/final/isolation-blocked-client.txt": {
+      "bytes": 728,
+      "sha256": "233e7167b0c6ad7e11c8faf862132d17c7563f405b09acaa9b0693f16609b6f1"
+    },
+    "evidence/phase-2/final/isolation-https-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "897a041940e33facd63933c608e8990cf6736ff0b59d11e980ee3a31ef318911"
+    },
+    "evidence/phase-2/final/isolation-counters.txt": {
+      "bytes": 4250,
+      "sha256": "2eb28e90afb81e32df0bb16038a64d2caba0813add7d631a736e33c371fe44cd"
+    },
+    "evidence/phase-2/final/isolation-rollback.txt": {
+      "bytes": 520,
+      "sha256": "dab39bcd791b2a0f490ba13d56347a9b691a7a192babf6f94bc7e402f7b69a03"
+    },
+    "docs/phase2-report.md": {
+      "bytes": 11052,
+      "sha256": "a34ace7837cef02c2638c4dd103a11823837fd4f09c9905358b37ef303db2d1e"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-authoritative.txt": {
+      "bytes": 1367,
+      "sha256": "1359ffb5e2df4a6c3592edb8eef02abf82e5e835f097e25b2047e379b663f8ad"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-immediate-by-name.txt": {
+      "bytes": 988,
+      "sha256": "a3aae4eeb5a0625945e53ccdf7bc273f1a3cf55a4e91f820ff588de9be51ac9c"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-fresh-client-by-name.txt": {
+      "bytes": 494,
+      "sha256": "842990ded6d62a48940bd9be1607d25016967d8bae64468c30572d7f4e9ae316"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-after-ttl-by-name.txt": {
+      "bytes": 988,
+      "sha256": "45565506eef283b97dbbbd9fbe346119645b2738c1ae3c739df6192153816485"
+    },
+    "evidence/phase-2/final-cutover-recheck/cutover-restored-by-name.txt": {
+      "bytes": 988,
+      "sha256": "1996a970946b047a46934ae10f29a2a623bb278434ab214aff06492057231198"
+    },
+    "evidence/phase-2/final-cutover-recheck/dns-failover-cutover.pcap": {
+      "bytes": 32139,
+      "sha256": "18aae2d31e2dc0221b256aee64ff137c7936836471e07ae8beb7c5e820772d4a"
+    },
+    "evidence/phase-2/troubleshooting/wrong-tls-hostname.txt": {
+      "bytes": 1884,
+      "sha256": "5ba644b3675c1014b12e66c98d508f125077cc00aa3c22d0c2c1d7ce3b0f76e4"
+    },
+    "evidence/phase-2/final/diagnostics-mac1.txt": {
+      "bytes": 3981,
+      "sha256": "131c1587546f8e281596008af5a9d9452a24275e0088d75a3c5b64bb6eb9b6fa"
+    },
+    "evidence/phase-2/final/diagnostics-mac2.txt": {
+      "bytes": 3965,
+      "sha256": "62188904faab5ff62423e75cf6da133e1a1928afefccf161ee99ece6d2db7e2b"
+    },
+    "phase2/diagnose.sh": {
+      "bytes": 935,
+      "sha256": "5634420b59d7fa1cefe29e8dfabe9ba9552f4dc605e8b8cd06f4d91c3e55d4a4"
+    },
+    "docs/request-flow.md": {
+      "bytes": 3195,
+      "sha256": "e1786c2bf34f5f0e2605c2ba506e6567938a8e9146d87b44a9b42588e95048e2"
+    },
+    "evidence/submission/configuration-bundle.txt": {
+      "bytes": 12400,
+      "sha256": "052d5aacf8fee0e996934bdf1cd2f6c0587400800a684735d3bfe6133efb5b1b"
+    },
+    "phase2/README.md": {
+      "bytes": 6784,
+      "sha256": "85aa505c989c7995fb4692a2b4ca80de463a5af4549ea6f8d4f58e21f6b8ebe5"
+    },
+    "phase2/install-admin.sh": {
+      "bytes": 2956,
+      "sha256": "4cbf75e23c2df197c163e86ff65bca72a75e6a5cd79ca5736b2e87d3611bf6a8"
+    },
+    "phase2/admin-control.sh": {
+      "bytes": 2585,
+      "sha256": "c71d69fa982b7af0216370605aed74ea4a674b4fbfa7253d9a4c6417a4eb4705"
+    },
+    "phase2/services.py": {
+      "bytes": 1619,
+      "sha256": "7402b129498a7a2db944c9b79dd08d4cc6bb9563945827dadb5226aa6af05089"
+    },
+    "evidence/phase-2/acceptance-summary.md": {
+      "bytes": 3093,
+      "sha256": "b46ceaa5ad5f3daf07b234aa6533ac9ecee7ae01070cf0c0aedb816ab16969d1"
+    },
+    "docs/tomorrow-demo.md": {
+      "bytes": 18877,
+      "sha256": "bb74affc3abaf6b6d739e2588421c900049775f269d9d161ee4cb43878bbd6f0"
+    },
+    "docs/runbook.md": {
+      "bytes": 5061,
+      "sha256": "f3ed5d60db8aa9c282f669b48a3d2f3b09452d10b127c25c67bf0ab5fb63f365"
+    },
+    "docs/viva.md": {
+      "bytes": 3986,
+      "sha256": "351dec709ed666eaa17c355207528e145fe9ff2346d1934f3fe7e12ffaeab95f"
+    }
+  }
+}

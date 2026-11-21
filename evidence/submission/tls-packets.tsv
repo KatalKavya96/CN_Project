@@ -1,0 +1,11 @@
+frame.number	tls.handshake.type	tls.handshake.extensions_server_name	tls.record.content_type	_ws.col.info
+6	1	app.cn-project.test	22	Client Hello (SNI=app.cn-project.test)
+9	2		22,20	Server Hello, Change Cipher Spec, Application Data, Application Data
+10				Application Data, Application Data
+12			20	Change Cipher Spec
+13				Application Data
+14				Application Data
+16				Application Data
+17				Application Data
+19				Application Data
+21				Application Data

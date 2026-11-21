@@ -11,6 +11,7 @@ Kavya Katal and Ronit Singh. Two-Mac local deployment covering Phase 1
 - [Final demonstration runbook](docs/runbook.md)
 - [Phase 2 final report](docs/phase2-report.md)
 - [Evidence index](evidence/phase-2/README.md)
+- [Evidence for every Phase 1 and Phase 2 requirement](evidence/submission/README.md)
 
 The application stays simple: DNS -> TCP -> TLS -> HTTP -> nginx -> backend.
 Everything runs locally; there is no cloud dependency in the service path.
