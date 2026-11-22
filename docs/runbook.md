@@ -1,10 +1,13 @@
 # Final Demonstration Runbook
 
+For exact per-person commands and spoken explanations, follow
+[Tomorrow's two-Mac demo guide](tomorrow-demo.md).
+
 Run commands from the repo root. Current IP inventory is in `phase2/lab.env`.
 Both Macs must be awake, on the same LAN, with primary DNS records restored,
 both backends running, primary and standby edges ready, and project PF rules off.
-The current report lists incomplete demonstrations; finish them before claiming
-all requirements passed. Keep evidence files open so they are found quickly.
+The acceptance summary records completed tests and the two-Mac firewall proof
+limitation. Keep evidence files open so they are found quickly.
 
 ## 1. Topology and service inventory
 
@@ -26,7 +29,7 @@ The system lookup uses `dscacheutil`, not plain dig.
 ## 4. Verified HTTPS by name
 
 ```bash
-/usr/bin/curl --noproxy '*' --cacert .runtime/ca.crt -v https://app.cn-project.test:8443/api/status
+/usr/bin/curl --noproxy '*' -v https://app.cn-project.test:8443/api/status
 ```
 
 Show certificate verification and HTTP 200. No `-k`.
