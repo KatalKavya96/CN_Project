@@ -1,0 +1,702 @@
+{
+  "result": "PASS",
+  "scope": "VISIBLE PACKET SEQUENCE ONLY",
+  "dns_required": true,
+  "certificate_required": false,
+  "streams_checked": 46,
+  "matching_streams": 36,
+  "matches": [
+    {
+      "stream": "8",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        194,
+        195,
+        196
+      ],
+      "client_hello_frame": 197,
+      "server_hello_frame": 200,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        204,
+        207
+      ]
+    },
+    {
+      "stream": "9",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        219,
+        220,
+        221
+      ],
+      "client_hello_frame": 222,
+      "server_hello_frame": 225,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        229,
+        232
+      ]
+    },
+    {
+      "stream": "10",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        245,
+        246,
+        247
+      ],
+      "client_hello_frame": 248,
+      "server_hello_frame": 251,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        255,
+        258
+      ]
+    },
+    {
+      "stream": "13",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        314,
+        315,
+        316
+      ],
+      "client_hello_frame": 317,
+      "server_hello_frame": 320,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        324,
+        327
+      ]
+    },
+    {
+      "stream": "14",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        339,
+        340,
+        341
+      ],
+      "client_hello_frame": 342,
+      "server_hello_frame": 345,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        349,
+        352
+      ]
+    },
+    {
+      "stream": "15",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        362,
+        363,
+        364
+      ],
+      "client_hello_frame": 365,
+      "server_hello_frame": 368,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        372,
+        375
+      ]
+    },
+    {
+      "stream": "16",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        385,
+        386,
+        387
+      ],
+      "client_hello_frame": 388,
+      "server_hello_frame": 391,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        395,
+        397
+      ]
+    },
+    {
+      "stream": "17",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        411,
+        412,
+        413
+      ],
+      "client_hello_frame": 414,
+      "server_hello_frame": 417,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        421,
+        423
+      ]
+    },
+    {
+      "stream": "18",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        436,
+        437,
+        438
+      ],
+      "client_hello_frame": 439,
+      "server_hello_frame": 442,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        448,
+        451
+      ]
+    },
+    {
+      "stream": "19",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        461,
+        462,
+        463
+      ],
+      "client_hello_frame": 464,
+      "server_hello_frame": 467,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        473,
+        476
+      ]
+    },
+    {
+      "stream": "20",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        486,
+        487,
+        488
+      ],
+      "client_hello_frame": 489,
+      "server_hello_frame": 492,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        496,
+        499
+      ]
+    },
+    {
+      "stream": "21",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        510,
+        511,
+        512
+      ],
+      "client_hello_frame": 513,
+      "server_hello_frame": 516,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        520,
+        523
+      ]
+    },
+    {
+      "stream": "22",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        533,
+        534,
+        535
+      ],
+      "client_hello_frame": 536,
+      "server_hello_frame": 539,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        543,
+        548
+      ]
+    },
+    {
+      "stream": "23",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        558,
+        559,
+        560
+      ],
+      "client_hello_frame": 561,
+      "server_hello_frame": 564,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        568,
+        571
+      ]
+    },
+    {
+      "stream": "24",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        581,
+        582,
+        583
+      ],
+      "client_hello_frame": 584,
+      "server_hello_frame": 587,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        591,
+        594
+      ]
+    },
+    {
+      "stream": "25",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        604,
+        605,
+        606
+      ],
+      "client_hello_frame": 607,
+      "server_hello_frame": 610,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        614,
+        617
+      ]
+    },
+    {
+      "stream": "26",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        624,
+        627,
+        629
+      ],
+      "client_hello_frame": 630,
+      "server_hello_frame": 633,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        637,
+        639
+      ]
+    },
+    {
+      "stream": "27",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        652,
+        653,
+        654
+      ],
+      "client_hello_frame": 655,
+      "server_hello_frame": 658,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        662,
+        665
+      ]
+    },
+    {
+      "stream": "28",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        676,
+        680,
+        681
+      ],
+      "client_hello_frame": 682,
+      "server_hello_frame": 685,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        689,
+        692
+      ]
+    },
+    {
+      "stream": "29",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        701,
+        702,
+        703
+      ],
+      "client_hello_frame": 704,
+      "server_hello_frame": 707,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        711,
+        714
+      ]
+    },
+    {
+      "stream": "30",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        725,
+        726,
+        727
+      ],
+      "client_hello_frame": 728,
+      "server_hello_frame": 731,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        735,
+        738
+      ]
+    },
+    {
+      "stream": "31",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        747,
+        748,
+        749
+      ],
+      "client_hello_frame": 750,
+      "server_hello_frame": 752,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        756,
+        759
+      ]
+    },
+    {
+      "stream": "32",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        769,
+        770,
+        771
+      ],
+      "client_hello_frame": 772,
+      "server_hello_frame": 775,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        779,
+        782
+      ]
+    },
+    {
+      "stream": "33",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        788,
+        790,
+        793
+      ],
+      "client_hello_frame": 794,
+      "server_hello_frame": 797,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        801,
+        804
+      ]
+    },
+    {
+      "stream": "34",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        811,
+        814,
+        816
+      ],
+      "client_hello_frame": 817,
+      "server_hello_frame": 820,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        824,
+        827
+      ]
+    },
+    {
+      "stream": "35",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        837,
+        838,
+        839
+      ],
+      "client_hello_frame": 840,
+      "server_hello_frame": 843,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        847,
+        850
+      ]
+    },
+    {
+      "stream": "36",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        857,
+        861,
+        862
+      ],
+      "client_hello_frame": 863,
+      "server_hello_frame": 866,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        870,
+        873
+      ]
+    },
+    {
+      "stream": "37",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        881,
+        885,
+        886
+      ],
+      "client_hello_frame": 887,
+      "server_hello_frame": 890,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        894,
+        897
+      ]
+    },
+    {
+      "stream": "38",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        907,
+        908,
+        909
+      ],
+      "client_hello_frame": 910,
+      "server_hello_frame": 913,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        917,
+        920
+      ]
+    },
+    {
+      "stream": "39",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        929,
+        930,
+        931
+      ],
+      "client_hello_frame": 932,
+      "server_hello_frame": 935,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        939,
+        942
+      ]
+    },
+    {
+      "stream": "40",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        952,
+        953,
+        954
+      ],
+      "client_hello_frame": 955,
+      "server_hello_frame": 958,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        962,
+        965
+      ]
+    },
+    {
+      "stream": "41",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        974,
+        975,
+        976
+      ],
+      "client_hello_frame": 977,
+      "server_hello_frame": 980,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        984,
+        987
+      ]
+    },
+    {
+      "stream": "42",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        997,
+        998,
+        999
+      ],
+      "client_hello_frame": 1000,
+      "server_hello_frame": 1003,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        1007,
+        1010
+      ]
+    },
+    {
+      "stream": "43",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        1017,
+        1021,
+        1022
+      ],
+      "client_hello_frame": 1023,
+      "server_hello_frame": 1026,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        1030,
+        1033
+      ]
+    },
+    {
+      "stream": "44",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        1043,
+        1044,
+        1045
+      ],
+      "client_hello_frame": 1046,
+      "server_hello_frame": 1049,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        1053,
+        1056
+      ]
+    },
+    {
+      "stream": "45",
+      "client": "10.7.26.228",
+      "edge": "10.7.18.166",
+      "dns_response_frame": 193,
+      "tcp_handshake_frames": [
+        1065,
+        1066,
+        1067
+      ],
+      "client_hello_frame": 1068,
+      "server_hello_frame": 1071,
+      "tls_version": "TLS 1.3",
+      "certificate_frame": null,
+      "encrypted_record_frames": [
+        1075,
+        1078
+      ]
+    }
+  ],
+  "limitations": [
+    "Encrypted TLS 1.3 inner message types, Finished and HTTP content are not identified.",
+    "Record length does not establish an encrypted alert, handshake success or HTTP success.",
+    "Pair with certificate-verified curl output for trust and HTTP status evidence.",
+    "DNS correlation currently covers captured IPv4 UDP query/response pairs; cached/DNS-TCP lookups need --skip-dns."
+  ],
+  "capture": "evidence/rehearsal/2026-11-23T143307/phase2/dns-failover-cutover.pcap",
+  "sha256": "09a6283983898ebaa56409f57695e6b4a1dc77ebb3da5aeb56a9eed34ae80abe"
+}

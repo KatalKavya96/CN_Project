@@ -6,4 +6,6 @@ __pycache__/
 *.key
 *.pem
 *.crt
+*.csr
+*.srl
 .runtime/

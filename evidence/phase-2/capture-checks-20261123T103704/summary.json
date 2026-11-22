@@ -1,0 +1,56 @@
+{
+  "scope": "VISIBLE PACKET SEQUENCE ONLY; encrypted message content is not identified",
+  "captures": [
+    {
+      "capture": "evidence/phase-2/baseline/dns-tcp-tls-current.pcap",
+      "result": "PASS",
+      "scope": "VISIBLE PACKET SEQUENCE ONLY",
+      "matching_streams": 1,
+      "report": "phase-2--baseline--dns-tcp-tls-current.pcap.json"
+    },
+    {
+      "capture": "evidence/phase-2/final/dns-failover-cutover.pcap",
+      "result": "PASS",
+      "scope": "VISIBLE PACKET SEQUENCE ONLY",
+      "matching_streams": 35,
+      "report": "phase-2--final--dns-failover-cutover.pcap.json"
+    },
+    {
+      "capture": "evidence/phase-2/final-cutover-recheck/dns-failover-cutover.pcap",
+      "result": "PASS",
+      "scope": "VISIBLE PACKET SEQUENCE ONLY",
+      "matching_streams": 3,
+      "report": "phase-2--final-cutover-recheck--dns-failover-cutover.pcap.json"
+    },
+    {
+      "capture": "evidence/phase-2/mac3-dns/final-20261123/dns-failover-cutover.pcap",
+      "result": "PASS",
+      "scope": "VISIBLE PACKET SEQUENCE ONLY",
+      "matching_streams": 44,
+      "report": "phase-2--mac3-dns--final-20261123--dns-failover-cutover.pcap.json"
+    },
+    {
+      "capture": "evidence/phase-2/mac3-dns/protocol-20261122T212320/dns-tcp-tls-current.pcap",
+      "result": "PASS",
+      "scope": "VISIBLE PACKET SEQUENCE ONLY",
+      "matching_streams": 1,
+      "report": "phase-2--mac3-dns--protocol-20261122T212320--dns-tcp-tls-current.pcap.json"
+    },
+    {
+      "capture": "evidence/phase-2/tls12-certificate-20261123T103526-hb_yht3c/tls12-handshake.pcap",
+      "result": "PASS",
+      "scope": "VISIBLE PACKET SEQUENCE ONLY",
+      "matching_streams": 1,
+      "report": "phase-2--tls12-certificate-20261123T103526-hb_yht3c--tls12-handshake.pcap.json"
+    },
+    {
+      "capture": "evidence/rehearsal/2026-11-23T143307/phase2/dns-failover-cutover.pcap",
+      "result": "PASS",
+      "scope": "VISIBLE PACKET SEQUENCE ONLY",
+      "matching_streams": 36,
+      "report": "rehearsal--2026-11-23T143307--phase2--dns-failover-cutover.pcap.json"
+    }
+  ],
+  "regression_tests": "10 passed",
+  "services_changed": false
+}

@@ -32,7 +32,7 @@ TTL:
 30 seconds
 ```
 
-DNS maps the hostname to the nginx edge IP address. It does not create a connection or send the HTTP request. After DNS resolution, the client knows that `app.cn-project.test` should be reached at `10.7.18.166`. Phase 2 also lists backup DNS `10.7.18.166:53`; during controlled cutover, both DNS servers point the name to standby edge `10.7.26.228`.
+DNS maps the hostname to the nginx edge IP address. It does not create a connection or send the HTTP request. After DNS resolution, the client knows that `app.cn-project.test` should be reached at `10.7.18.166`. Phase 2 clients also list backup DNS `10.7.26.237:53` on Priyanshu's Mac; during controlled cutover, both DNS servers point the name to standby edge `10.7.26.228`.
 
 ## 2. TCP Connection
 

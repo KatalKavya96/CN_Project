@@ -1,0 +1,15 @@
+test_capture_cannot_be_an_output_path (test_capture_checker.CaptureChecks) ... ok
+test_client_reset_before_reply_is_rejected (test_capture_checker.CaptureChecks) ... ok
+test_coalesced_tls12_certificate_is_recognized (test_capture_checker.CaptureChecks) ... ok
+test_dns_after_syn_is_rejected (test_capture_checker.CaptureChecks) ... ok
+test_existing_report_is_never_overwritten (test_capture_checker.CaptureChecks) ... ok
+test_explicit_dns_bypass_is_labelled (test_capture_checker.CaptureChecks) ... ok
+test_other_clients_dns_is_rejected (test_capture_checker.CaptureChecks) ... ok
+test_positive_visible_sequence (test_capture_checker.CaptureChecks) ... ok
+test_tls13_does_not_claim_visible_certificate (test_capture_checker.CaptureChecks) ... ok
+test_wrong_dns_answer_is_rejected (test_capture_checker.CaptureChecks) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.075s
+
+OK

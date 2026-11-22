@@ -1,0 +1,80 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 6031,
+      "sha256": "5060355e29194da299a36e4861ab6edafcf50e9b5f7c4f0d4ccc32803199ab73"
+    },
+    "docs/capture-evidence.md": {
+      "bytes": 3245,
+      "sha256": "c5621fab2e07eaca3157acafef440008e65cf2ef459d02cf339bdc0488b9e470"
+    },
+    "docs/repository-map.md": {
+      "bytes": 3249,
+      "sha256": "23475921ef6d7aba0643739ad6ed26c30c0bd54c11b85522a3902578eb6d0ada"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/README.md": {
+      "bytes": 2493,
+      "sha256": "b830babe5b7e1726ccb372c6e71a20be7c36dcba4b629062b3e43eaa27425f60"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/phase-2--baseline--dns-tcp-tls-current.pcap.json": {
+      "bytes": 1145,
+      "sha256": "8c2193827ab4c4bfa948490b764d11862fd3cd545e2ebd75f8f5c21014451f27"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/phase-2--final--dns-failover-cutover.pcap.json": {
+      "bytes": 14971,
+      "sha256": "5b13cfa2b1defae4366b760ffc8dbc7faf69ec95c016506fac1464884a2f76c2"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/phase-2--final-cutover-recheck--dns-failover-cutover.pcap.json": {
+      "bytes": 1968,
+      "sha256": "c28c54f668979d8798f395356e87e1b57ee257d3cf8c17e2f04b4418845f9b7d"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/phase-2--mac3-dns--final-20261123--dns-failover-cutover.pcap.json": {
+      "bytes": 18538,
+      "sha256": "6027a9f8e2f256ebb20a22099d20f8c31f1be8c6f15241edd8618744ceb13c41"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/phase-2--mac3-dns--protocol-20261122T212320--dns-tcp-tls-current.pcap.json": {
+      "bytes": 1170,
+      "sha256": "428ca70a81905772d4b99334fc04a9f9bfad9bf5d72e2f5ef8f9856a925da201"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/phase-2--tls12-certificate-20261123T103526-hb_yht3c--tls12-handshake.pcap.json": {
+      "bytes": 1186,
+      "sha256": "e99d2406e88b2dd13ef210e40fb7c3cf4e5b0a0f3b7c2551a716d2a975f911e8"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/preservation.json": {
+      "bytes": 406,
+      "sha256": "ff870b2c5f9b9f1a751f4a4355f90342cca29a0789d543e5f004cd0fb7b77dac"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/regression-tests.txt": {
+      "bytes": 923,
+      "sha256": "cc1fe9434ff57422658c5713e26c947033c0ff9216d278e036d479b3fe690621"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/rehearsal--2026-11-23T143307--phase2--dns-failover-cutover.pcap.json": {
+      "bytes": 15414,
+      "sha256": "72b0f72a28953cc36f2820430ef4dce3f8b35860861afc5ef236bb4dd959cf68"
+    },
+    "evidence/phase-2/capture-checks-20261123T103704/summary.json": {
+      "bytes": 2142,
+      "sha256": "37114cd2095e6b9513c8f6aa7b879818da3164ef409886deac38c2b6cdc34db6"
+    },
+    "phase2/README.md": {
+      "bytes": 8735,
+      "sha256": "3e52f553aaf6585b53a7e1075e2cb2ca731472f4c925e4e341f9489fca5dbc0a"
+    },
+    "phase2/capture-tls12.py": {
+      "bytes": 5005,
+      "sha256": "ffdc84713b663b85398fd70c0b2f87861076fd1e35f4a862c63238e99fc8ccdd"
+    },
+    "phase2/check-capture.py": {
+      "bytes": 9261,
+      "sha256": "ca1026e5b1cf2db52e83b60f55ceb123ac93aca8d6cdd9afe3663f8539475b7d"
+    },
+    "tests/test_capture_checker.py": {
+      "bytes": 4630,
+      "sha256": "9974228d1d3e6f46d0d54165a793acfd1af92663a68d8708463452382a725cd3"
+    },
+    "tls/README.md": {
+      "bytes": 1813,
+      "sha256": "2c1fd1e99b980034f3f8d2419187500d51fc4840dfaeb004e9014d6acf8f397c"
+    }
+  }
+}
