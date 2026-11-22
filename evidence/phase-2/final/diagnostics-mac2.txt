@@ -1,0 +1,162 @@
+=== macOS resolver configuration ===
+DNS configuration
+
+resolver #1
+  nameserver[0] : 8.8.8.8
+  nameserver[1] : 10.5.7.1
+  if_index : 11 (en0)
+  flags    : Request A records
+  reach    : 0x00000002 (Reachable)
+
+resolver #2
+  domain   : local
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300000
+
+resolver #3
+  domain   : 254.169.in-addr.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300200
+
+resolver #4
+  domain   : 8.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300400
+
+resolver #5
+  domain   : 9.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300600
+
+resolver #6
+  domain   : a.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 300800
+
+resolver #7
+  domain   : b.e.f.ip6.arpa
+  options  : mdns
+  timeout  : 5
+  flags    : Request A records
+  reach    : 0x00000000 (Not Reachable)
+  order    : 301000
+
+resolver #8
+  domain   : cn-project.test
+  nameserver[0] : 10.7.26.228
+  nameserver[1] : 10.7.18.166
+  flags    : Request A records
+  reach    : 0x00020002 (Reachable,Directly Reachable Address)
+
+DNS configuration (for scoped queries)
+
+resolver #1
+  nameserver[0] : 8.8.8.8
+  nameserver[1] : 10.5.7.1
+  if_index : 11 (en0)
+  flags    : Scoped, Request A records
+  reach    : 0x00000002 (Reachable)
+=== System hostname lookup ===
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+=== Direct DNS query: 10.7.26.228 ===
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 24078
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 8 msec
+;; SERVER: 10.7.26.228#53(10.7.26.228)
+;; WHEN: Sun Nov 22 23:19:11 IST 2026
+;; MSG SIZE  rcvd: 64
+
+=== Direct DNS query: 10.7.18.166 ===
+
+; <<>> DiG 9.10.6 <<>> @10.7.18.166 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 55489
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 4 msec
+;; SERVER: 10.7.18.166#53(10.7.18.166)
+;; WHEN: Sun Nov 22 23:19:11 IST 2026
+;; MSG SIZE  rcvd: 64
+
+=== TCP: 10.7.18.166:8443 ===
+=== DNS-independent verified HTTPS: 10.7.18.166 ===
+Connection to 10.7.18.166 port 8443 [tcp/pcsync-https] succeeded!
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 17:49:11 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}=== TCP: 10.7.26.228:8443 ===
+=== DNS-independent verified HTTPS: 10.7.26.228 ===
+Connection to 10.7.26.228 port 8443 [tcp/pcsync-https] succeeded!
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:49:11 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac1
+
+{"backend": "A", "status": "ok"}=== HTTPS through the OS resolver ===
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 17:49:11 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}

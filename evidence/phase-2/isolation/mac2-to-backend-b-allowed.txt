@@ -1,0 +1,12 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 17:35:27 GMT
+Content-Type: application/json
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+Content-Length: 32
+
+{"backend": "B", "status": "ok"}100    32  100    32    0     0    862      0 --:--:-- --:--:-- --:--:--   864

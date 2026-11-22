@@ -1,0 +1,22 @@
+
+UTC: 2026-11-22T17:45:19.526885+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-start
+Exit: 0
+
+dnsmasq: syntax check OK.
+
+
+UTC: 2026-11-22T17:45:19.674633+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T17:45:19.699018+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+

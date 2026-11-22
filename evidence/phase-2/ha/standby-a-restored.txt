@@ -1,0 +1,125 @@
+UTC: 2026-11-22T17:24:47.169709+00:00
+Mode: explicit edge; DNS bypassed
+Command: /usr/bin/curl --http1.1 --noproxy '*' --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 3 --max-time 12 -sS -i --resolve app.cn-project.test:8443:10.7.26.228 https://app.cn-project.test:8443/api/status
+
+Request 1; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac1
+
+{"backend": "B", "status": "ok"}
+
+
+Request 2; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac1
+
+{"backend": "B", "status": "ok"}
+
+
+Request 3; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac1
+
+{"backend": "A", "status": "ok"}
+
+
+Request 4; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac1
+
+{"backend": "B", "status": "ok"}
+
+
+Request 5; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac1
+
+{"backend": "A", "status": "ok"}
+
+
+Request 6; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac1
+
+{"backend": "B", "status": "ok"}
+
+
+Request 7; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac1
+
+{"backend": "A", "status": "ok"}
+
+
+Request 8; exit=0
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Sun, 22 Nov 2026 17:24:47 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac1
+
+{"backend": "B", "status": "ok"}
+
+Observed backends: A, B
+Result: PASS

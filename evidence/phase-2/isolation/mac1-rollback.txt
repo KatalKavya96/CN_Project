@@ -1,0 +1,6 @@
+No ALTQ support in kernel
+ALTQ related functions disabled
+rules cleared
+No ALTQ support in kernel
+ALTQ related functions disabled
+pf disabled

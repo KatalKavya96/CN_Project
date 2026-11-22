@@ -1,0 +1,16 @@
+
+UTC: 2026-11-22T17:45:20.594888+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-standby
+Exit: 0
+10.7.26.228 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-22T17:45:20.644975+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-standby
+Exit: 0
+10.7.26.228 app.cn-project.test api.cn-project.test
+
+

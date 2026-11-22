@@ -1,8 +1,9 @@
 #!/bin/bash
 
 echo "Mac 1:"
-ping -c 3 10.7.25.0
+source "$(dirname "$0")/../phase2/lab.env"
+ping -c 3 "$MAC1_IP"
 
 echo
 echo "Mac 2:"
-ping -c 3 10.7.13.163
+ping -c 3 "$MAC2_IP"

@@ -1,0 +1,23 @@
+2026-11-22T22:45:28+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.003
+2026-11-22T22:49:51+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=10.7.26.228:3002, 127.0.0.1:3001 upstream_status=502, 200 time=0.000, 0.004
+2026-11-22T22:49:51+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.003
+2026-11-22T22:49:52+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.003
+2026-11-22T22:49:52+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.003
+2026-11-22T22:49:52+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:49:52+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:49:52+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.001
+2026-11-22T22:49:52+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=10.7.26.228:3002, 127.0.0.1:3001 upstream_status=502, 200 time=0.000, 0.003
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.001
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:50:33+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.003
+2026-11-22T22:53:44+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:53:44+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=10.7.26.228:3002, 127.0.0.1:3001 upstream_status=502, 200 time=0.000, 0.003
+2026-11-22T22:53:44+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:53:44+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:53:44+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
+2026-11-22T22:53:44+05:30 client=10.7.26.228 edge=mac2 status=200 upstream=127.0.0.1:3001 upstream_status=200 time=0.002
