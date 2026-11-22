@@ -13,8 +13,8 @@
       "sha256": "ec7ab19226b04378a194174232d9d991510c89457244b313faea9c59cfacc95e"
     },
     "docs/final-project-report.md": {
-      "bytes": 19803,
-      "sha256": "3f7e32724e872ad75a6c7bed3904170a3c9ec3fea9b54007bb6c8a4a57620909"
+      "bytes": 19800,
+      "sha256": "baa5f5024aac28a88acf6ed516be3e050b07925785bf5ec94890766391a88837"
     },
     "docs/final-project-report.tex": {
       "bytes": 26720,
@@ -39,6 +39,10 @@
     "output/pdf/CN_Project_Viva_Command_Menu.pdf": {
       "bytes": 140970,
       "sha256": "8096effe71d3056cbdbf8aa134e3be9c96e2cb1810d7ba97132da897e88f170a"
+    },
+    ".gitattributes": {
+      "bytes": 87,
+      "sha256": "8782f87556a3278871a41d2e022da0cf432f535c3df37b15aeaa1fcfa44e220b"
     }
   }
 }
