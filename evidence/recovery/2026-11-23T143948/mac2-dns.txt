@@ -1,0 +1,112 @@
+
+UTC: 2026-11-23T09:09:56.645375+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.26.228 app.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21347
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 19 msec
+;; SERVER: 10.7.26.228#53(10.7.26.228)
+;; WHEN: Mon Nov 23 14:39:56 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-23T09:09:57.004440+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.26.228 api.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 api.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 20813
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 30 msec
+;; SERVER: 10.7.26.228#53(10.7.26.228)
+;; WHEN: Mon Nov 23 14:39:56 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-23T09:09:57.450274+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.26.237 app.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44832
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 133 msec
+;; SERVER: 10.7.26.237#53(10.7.26.237)
+;; WHEN: Mon Nov 23 14:39:57 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-23T09:09:57.831958+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.26.237 api.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 11311
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 37 msec
+;; SERVER: 10.7.26.237#53(10.7.26.237)
+;; WHEN: Mon Nov 23 14:39:57 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+

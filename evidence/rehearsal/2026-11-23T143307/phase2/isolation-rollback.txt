@@ -1,0 +1,26 @@
+
+UTC: 2026-11-23T09:04:29.616183+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-off
+Exit: 0
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+rules cleared
+No ALTQ support in kernel
+ALTQ related functions disabled
+pf disabled
+
+
+UTC: 2026-11-23T09:04:29.649836+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-off
+Exit: 0
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+rules cleared
+No ALTQ support in kernel
+ALTQ related functions disabled
+pf disabled
+

@@ -1,0 +1,13 @@
+{
+  "finished_utc": "2026-11-23T09:11:26.777054+00:00",
+  "all_controlled_test_groups_passed": true,
+  "previous_evidence_files_checked": 249,
+  "previous_evidence_changed": [],
+  "phase2": "six groups passed",
+  "phase1": "three failure demonstrations passed on both clients",
+  "extra_cases": "wrong port, wrong TLS hostname, 304 caching, both active DNS stopped: passed on both clients",
+  "isolated_ttl": "countdown, expiry and flush passed",
+  "final_state": "primary and backup DNS restored; primary edge and standby both A/B; default TLS trust passed; project PF rules removed; legacy DNS stopped",
+  "initial_supplement": "retained harness-precondition failure; corrected repeat passed",
+  "scope": "No laptop/Wi-Fi shutdown or primary nginx restart; no independent third-source Backend B rejection test added"
+}

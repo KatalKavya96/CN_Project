@@ -1,0 +1,88 @@
+
+UTC: 2026-11-23T09:04:26.062356+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-status
+Exit: 0
+Status: Enabled for 0 days 00:00:06           Debug: Urgent
+
+State Table                          Total             Rate
+  current entries                        5               
+  searches                            6323         1053.8/s
+  inserts                               24            4.0/s
+  removals                              19            3.2/s
+Counters
+  match                               4811          801.8/s
+  bad-offset                             0            0.0/s
+  fragment                               0            0.0/s
+  short                                  0            0.0/s
+  normalize                              0            0.0/s
+  memory                                 0            0.0/s
+  bad-timestamp                          0            0.0/s
+  congestion                             0            0.0/s
+  ip-option                              6            1.0/s
+  proto-cksum                            0            0.0/s
+  state-mismatch                         0            0.0/s
+  state-insert                           0            0.0/s
+  state-limit                            0            0.0/s
+  src-limit                              0            0.0/s
+  synproxy                               0            0.0/s
+  dummynet                               0            0.0/s
+  invalid-port                           0            0.0/s
+@0 pass in quick on en0 inet proto tcp from 10.7.18.166 to 10.7.26.228 port = 3002 flags S/SA keep state
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 614       Packets: 61        Bytes: 5123        States: 5     ]
+  [ Inserted: uid 0 pid 21011 ]
+@1 block drop in quick on en0 inet proto tcp from any to 10.7.26.228 port = 3002
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 41        Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: uid 0 pid 21011 ]
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+No ALTQ support in kernel
+ALTQ related functions disabled
+
+
+UTC: 2026-11-23T09:04:29.277606+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-status
+Exit: 0
+Status: Enabled for 0 days 00:00:08           Debug: Urgent
+
+State Table                          Total             Rate
+  current entries                        0               
+  searches                            8740         1092.5/s
+  inserts                                0            0.0/s
+  removals                               0            0.0/s
+Counters
+  match                               6524          815.5/s
+  bad-offset                             0            0.0/s
+  fragment                               0            0.0/s
+  short                                  0            0.0/s
+  normalize                              0            0.0/s
+  memory                                 0            0.0/s
+  bad-timestamp                          0            0.0/s
+  congestion                             0            0.0/s
+  ip-option                             13            1.6/s
+  proto-cksum                            0            0.0/s
+  state-mismatch                         0            0.0/s
+  state-insert                           0            0.0/s
+  state-limit                            0            0.0/s
+  src-limit                              0            0.0/s
+  synproxy                               0            0.0/s
+  dummynet                               0            0.0/s
+  invalid-port                           0            0.0/s
+@0 pass in quick on en0 inet proto tcp from 10.7.18.166 to 10.7.18.166 port = 3001 flags S/SA keep state
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 1936      Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: uid 0 pid 31001 ]
+@1 block drop in quick on en0 inet proto tcp from any to 10.7.18.166 port = 3001
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 441       Packets: 3         Bytes: 192         States: 0     ]
+  [ Inserted: uid 0 pid 31001 ]
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+No ALTQ support in kernel
+ALTQ related functions disabled
+

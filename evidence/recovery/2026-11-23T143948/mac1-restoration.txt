@@ -1,0 +1,41 @@
+
+UTC: 2026-11-23T09:09:48.690015+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-23T09:09:48.706590+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-start
+Exit: 0
+Project DNS already running
+
+
+
+UTC: 2026-11-23T09:09:48.720341+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-off
+Exit: 0
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+rules cleared
+
+
+UTC: 2026-11-23T09:09:48.746232+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:09:48.789504+00:00
+Mac 1
+Command: /usr/bin/python3 phase2/services.py start b
+Exit: 0
+backend-b already running 21535
+
+

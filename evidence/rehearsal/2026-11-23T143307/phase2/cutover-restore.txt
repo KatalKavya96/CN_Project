@@ -1,0 +1,38 @@
+
+UTC: 2026-11-23T09:04:04.474169+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-23T09:04:04.512699+00:00
+Mac 1
+Command: /usr/bin/ssh -i /Users/kavyakatal/.ssh/id_ed25519_cn_project -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/Users/kavyakatal/Desktop/CN_Project/phase2/ssh-known-hosts priyanshutomar@10.7.26.237 'sudo -n /usr/local/sbin/cn-project-backup dns-primary'
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-23T09:04:04.779081+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-23T09:04:05.100568+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:04:05.273971+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+

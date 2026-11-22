@@ -1,0 +1,5 @@
+{
+  "wrong port versus TLS hostname mismatch, both clients": "PASS",
+  "cache headers and real conditional 304, both clients": "PASS",
+  "both active DNS services stopped; direct edge healthy; DNS restored": "FAIL: "
+}
