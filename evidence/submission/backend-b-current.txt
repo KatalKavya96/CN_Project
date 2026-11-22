@@ -1,0 +1,20 @@
+UTC: 2026-11-22T20:05:34.128678+00:00
+Command: /usr/bin/curl --noproxy '*' --max-time 5 -sS -i http://127.0.0.1:3002/
+Exit: 7
+
+curl: (7) Failed to connect to 127.0.0.1 port 3002 after 0 ms: Couldn't connect to server
+
+
+UTC: 2026-11-22T20:05:34.138970+00:00
+Command: /usr/bin/curl --noproxy '*' --max-time 5 -sS -i http://127.0.0.1:3002/api/status
+Exit: 7
+
+curl: (7) Failed to connect to 127.0.0.1 port 3002 after 0 ms: Couldn't connect to server
+
+
+UTC: 2026-11-22T20:05:34.147831+00:00
+Command: /usr/bin/curl --noproxy '*' --max-time 5 -sS -I http://127.0.0.1:3002/api/status
+Exit: 7
+
+curl: (7) Failed to connect to 127.0.0.1 port 3002 after 0 ms: Couldn't connect to server
+

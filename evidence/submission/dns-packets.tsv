@@ -1,0 +1,3 @@
+frame.number	ip.src	udp.srcport	ip.dst	udp.dstport	dns.qry.name	dns.a	dns.resp.ttl	_ws.col.info
+1	10.7.26.228	49723	10.7.18.166	53	app.cn-project.test			Standard query 0xf90d A app.cn-project.test OPT
+2	10.7.18.166	53	10.7.26.228	49723	app.cn-project.test	10.7.18.166	30	Standard query response 0xf90d A app.cn-project.test A 10.7.18.166 OPT
