@@ -1,0 +1,39 @@
+* Added wrong.cn-project.test:8443:10.7.26.228 to DNS cache
+* Hostname wrong.cn-project.test was found in DNS cache
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 10.7.26.228:8443...
+* Connected to wrong.cn-project.test (10.7.26.228) port 8443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [326 bytes data]
+*  CAfile: .runtime/ca.crt
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [983 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: CN=app.cn-project.test; O=CN Project; OU=Standby Edge
+*  start date: Nov 22 17:14:43 2026 GMT
+*  expire date: Feb 20 17:14:43 2027 GMT
+*  subjectAltName does not match host name wrong.cn-project.test
+* SSL: no alternative certificate subject name matches target host name 'wrong.cn-project.test'
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* Closing connection
+curl: (60) SSL: no alternative certificate subject name matches target host name 'wrong.cn-project.test'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.

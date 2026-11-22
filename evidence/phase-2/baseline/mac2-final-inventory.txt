@@ -1,0 +1,72 @@
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
+	ether b2:1c:b4:ca:38:9a
+	inet6 fe80::8c0:a478:853d:1bf6%en0 prefixlen 64 secured scopeid 0xb 
+	inet 10.7.18.166 netmask 0xffffe000 broadcast 10.7.31.255
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+   route to: default
+destination: default
+       mask: default
+    gateway: 10.7.0.1
+  interface: en0
+      flags: <UP,GATEWAY,DONE,STATIC,PRCLONING,GLOBAL>
+ recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire
+       0         0         0         0         0         0      1500         0 
+Status: Disabled for 0 days 00:16:43          Debug: Urgent
+
+State Table                          Total             Rate
+  current entries                        0               
+  searches                            2251            2.2/s
+  inserts                                0            0.0/s
+  removals                               0            0.0/s
+Counters
+  match                               1005            1.0/s
+  bad-offset                             0            0.0/s
+  fragment                               0            0.0/s
+  short                                  0            0.0/s
+  normalize                              0            0.0/s
+  memory                                 0            0.0/s
+  bad-timestamp                          0            0.0/s
+  congestion                             0            0.0/s
+  ip-option                              9            0.0/s
+  proto-cksum                            0            0.0/s
+  state-mismatch                         0            0.0/s
+  state-insert                           0            0.0/s
+  state-limit                            0            0.0/s
+  src-limit                              0            0.0/s
+  synproxy                               0            0.0/s
+  dummynet                               0            0.0/s
+  invalid-port                           0            0.0/s
+No ALTQ support in kernel
+ALTQ related functions disabled
+No ALTQ support in kernel
+ALTQ related functions disabled
+9151
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 22 22:50:55 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 22 22:51:36 dnsmasq[9151]: query[SVCB] _dns.resolver.arpa from 10.7.26.228
+Nov 22 22:51:36 dnsmasq[9151]: config error is REFUSED (EDE: not ready)
+Nov 22 22:51:38 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.18.166
+Nov 22 22:51:38 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 22 22:54:01 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 22 22:54:01 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 22 22:54:01 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.26.228
+Nov 22 22:54:01 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 22 22:58:04 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 22 22:58:04 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 22 23:06:40 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 22 23:06:41 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 22 23:06:41 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 22 23:06:41 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 22 23:06:42 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 22 23:06:42 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.26.228
+Nov 22 23:06:42 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 22 23:06:42 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.26.228
+Nov 22 23:07:12 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 22 23:07:12 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.26.228
+Nov 22 23:07:18 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 22 23:07:19 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 22 23:07:19 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 22 23:07:19 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names

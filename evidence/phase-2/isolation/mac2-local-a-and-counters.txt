@@ -1,0 +1,46 @@
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 17:23:17 GMT
+Content-Type: application/json
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+Content-Length: 32
+
+{"backend": "A", "status": "ok"}Status: Enabled for 0 days 00:00:18           Debug: Urgent
+
+State Table                          Total             Rate
+  current entries                        0               
+  searches                            1702           94.6/s
+  inserts                                0            0.0/s
+  removals                               0            0.0/s
+Counters
+  match                                770           42.8/s
+  bad-offset                             0            0.0/s
+  fragment                               0            0.0/s
+  short                                  0            0.0/s
+  normalize                              0            0.0/s
+  memory                                 0            0.0/s
+  bad-timestamp                          0            0.0/s
+  congestion                             0            0.0/s
+  ip-option                              6            0.3/s
+  proto-cksum                            0            0.0/s
+  state-mismatch                         0            0.0/s
+  state-insert                           0            0.0/s
+  state-limit                            0            0.0/s
+  src-limit                              0            0.0/s
+  synproxy                               0            0.0/s
+  dummynet                               0            0.0/s
+  invalid-port                           0            0.0/s
+No ALTQ support in kernel
+ALTQ related functions disabled
+No ALTQ support in kernel
+ALTQ related functions disabled
+@0 pass in quick on en0 inet proto tcp from 10.7.18.166 to 10.7.18.166 port = 3001 flags S/SA keep state
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 768       Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: uid 0 pid 9233 ]
+@1 block drop in quick on en0 inet proto tcp from any to 10.7.18.166 port = 3001
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 91        Packets: 10        Bytes: 640         States: 0     ]
+  [ Inserted: uid 0 pid 9233 ]

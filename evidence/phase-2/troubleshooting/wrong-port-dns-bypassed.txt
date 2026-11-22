@@ -1,0 +1,10 @@
+* Added app.cn-project.test:8444:10.7.18.166 to DNS cache
+* Hostname app.cn-project.test was found in DNS cache
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 10.7.18.166:8444...
+* connect to 10.7.18.166 port 8444 from 10.7.26.228 port 50519 failed: Connection refused
+* Failed to connect to app.cn-project.test port 8444 after 326 ms: Couldn't connect to server
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* Closing connection
+curl: (7) Failed to connect to app.cn-project.test port 8444 after 326 ms: Couldn't connect to server

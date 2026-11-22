@@ -1,0 +1,13 @@
+{
+  "utc": "2026-11-22T18:13:33.286482+00:00",
+  "results": {
+    "wrong_dns_mac1": "PASS (client-scoped resolver; system DNS unchanged)",
+    "wrong_dns_mac2": "PASS (client-scoped resolver; system DNS unchanged)",
+    "wrong_record_mac1": "PASS",
+    "wrong_record_mac2": "PASS",
+    "both_backends_mac1": "PASS",
+    "both_backends_mac2": "PASS",
+    "restored_mac1": "PASS (plain HTTPS and A/B)",
+    "restored_mac2": "PASS (plain HTTPS and A/B)"
+  }
+}

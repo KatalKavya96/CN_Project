@@ -1,0 +1,30 @@
+
+UTC: 2026-11-22T17:48:21.080254+00:00
+Mac 1
+Command: /usr/bin/dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.18.166
+
+
+
+
+UTC: 2026-11-22T17:48:23.106642+00:00
+Mac 1
+Command: /usr/bin/dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.26.228
+
+
+
+
+UTC: 2026-11-22T17:48:23.145683+00:00
+Mac 2
+Command: /usr/bin/dscacheutil -q host -a name app.cn-project.test
+Exit: 0
+name: app.cn-project.test
+ip_address: 10.7.26.228
+
+
+
