@@ -1,5 +1,10 @@
 # Phase 2 Final Report
 
+> Historical detailed notes from the original tests. For submission, use the
+> [current three-member final report](final-project-report.md), its
+> [LaTeX source](final-project-report.tex), or the
+> [compiled PDF](../output/pdf/CN_Project_Final_Report.pdf).
+
 Team: Kavya Katal and Ronit Singh. Lab session: 22 November 2026.
 
 Live acceptance tests were completed on both Macs. The acceptance summary is
