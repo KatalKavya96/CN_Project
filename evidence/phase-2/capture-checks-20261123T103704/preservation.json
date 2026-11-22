@@ -1,0 +1,9 @@
+{
+  "pre_cleanup_commit": "dab95014db5376a454c5296f65f692fa019a081d",
+  "original_source_evidence_pdf_files_checked": 340,
+  "original_source_evidence_pdf_changed": [],
+  "runtime_nonlog_files_checked": 16,
+  "runtime_nonlog_changed": [],
+  "live_service_changes": "none; one verified TLS 1.2 request captured",
+  "removed": "seven obsolete root scripts, obsolete DNS-start alias, unused CSR and serial"
+}

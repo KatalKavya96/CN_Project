@@ -9,8 +9,8 @@
   "original_evidence_changed": [],
   "files": {
     "README.md": {
-      "bytes": 5870,
-      "sha256": "ec7ab19226b04378a194174232d9d991510c89457244b313faea9c59cfacc95e"
+      "bytes": 6031,
+      "sha256": "5060355e29194da299a36e4861ab6edafcf50e9b5f7c4f0d4ccc32803199ab73"
     },
     "docs/final-project-report.md": {
       "bytes": 19800,
@@ -43,6 +43,18 @@
     ".gitattributes": {
       "bytes": 87,
       "sha256": "8782f87556a3278871a41d2e022da0cf432f535c3df37b15aeaa1fcfa44e220b"
+    },
+    "docs/repository-map.md": {
+      "bytes": 3249,
+      "sha256": "23475921ef6d7aba0643739ad6ed26c30c0bd54c11b85522a3902578eb6d0ada"
+    },
+    "docs/capture-evidence.md": {
+      "bytes": 3245,
+      "sha256": "c5621fab2e07eaca3157acafef440008e65cf2ef459d02cf339bdc0488b9e470"
+    },
+    "tls/README.md": {
+      "bytes": 1813,
+      "sha256": "2c1fd1e99b980034f3f8d2419187500d51fc4840dfaeb004e9014d6acf8f397c"
     }
   }
 }

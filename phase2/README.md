@@ -2,7 +2,8 @@
 
 Both Macs use the addresses in `lab.env`. Current network: Mac 1
 `10.7.26.228/19`, Mac 2 `10.7.18.166/19`, interface `en0`.
-Run commands from the repository root. Never run `setup_repo.sh` over this checkout.
+Run commands from the repository root. Obsolete scaffold/repair scripts were
+removed; use [the repository map](../docs/repository-map.md) for current tools.
 
 Updated 23 November: backup DNS is now Priyanshu's Mac 3, `10.7.26.237:53`.
 Only DNS moved. Both client resolvers list Mac 1 then Mac 3; Ronit's legacy DNS
@@ -63,6 +64,25 @@ and sends SIGHUP to its own dnsmasq, so it does not restart DNS for record chang
 It never accepts arbitrary shell commands, paths, IPs, or process IDs.
 
 ## Evidence and troubleshooting
+
+Saved captures can be checked read-only with `phase2/check-capture.py`; it uses
+TShark from Wireshark to reassemble TCP and TLS messages. A PASS reports visible
+ordered packet evidence only. It does not decrypt TLS 1.3, identify encrypted
+Finished/HTTP messages, verify certificate trust, or prove HTTP success. DNS
+must be a captured UDP query/response for the same client before that stream's
+SYN. Use `--skip-dns` explicitly for captures that bypass DNS or start with a
+cached answer; that output makes no DNS claim.
+
+```bash
+/usr/bin/python3 phase2/check-capture.py evidence/phase-2/baseline/dns-tcp-tls-current.pcap
+/usr/bin/python3 phase2/capture-tls12.py
+```
+
+The second command, run only on Kavya, captures one certificate-verified TLS 1.2
+request in a unique new evidence directory. It exposes the Certificate message
+and separately requires HTTP 200 and successful certificate verification. It
+changes no service/TLS/DNS settings and uses `--resolve`, so it does not test DNS.
+See [the capture guide](../docs/capture-evidence.md) for observed results and filters.
 
 ```bash
 python3 phase2/probe.py --count 8 --expect both --out evidence/phase-2/baseline/os-resolver.txt
