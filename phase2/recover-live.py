@@ -8,6 +8,7 @@ import shlex
 import subprocess
 import time
 from zoneinfo import ZoneInfo
+from dns_control import augment_lab, control_commands
 
 ROOT = Path(__file__).resolve().parent.parent
 REMOTE_ROOT = "/Users/ronitsingh/Desktop/CN_Project"
@@ -16,6 +17,7 @@ OUT = ROOT / "evidence/recovery" / stamp
 OUT.mkdir(parents=True, exist_ok=False)
 env = dict(line.split("=", 1) for line in (ROOT / "phase2/lab.env").read_text().splitlines()
            if line and not line.startswith("#"))
+env = augment_lab(ROOT, env)
 SSH = ["/usr/bin/ssh", "-i", str(Path.home() / ".ssh/id_ed25519_cn_project"),
        "-o", "BatchMode=yes", "-o", "ConnectTimeout=6", "-o", "StrictHostKeyChecking=yes",
        "-o", "UserKnownHostsFile=/private/tmp/cn-project-ronit-known-hosts", "ronitsingh@" + env["MAC2_IP"]]
@@ -35,7 +37,9 @@ def run(mac, command, filename, expected=0):
     return result
 
 def admin(mac, action):
-    return run(mac, HELPER + [action], f"mac{mac}-restoration.txt")
+    for target, command in control_commands(env, mac, action):
+        result = run(target, command, f"mac{mac}-restoration.txt")
+    return result
 
 def probe(mac, edge=None):
     filename = f"mac{mac}-" + ("standby" if edge else "primary") + "-https.txt"
@@ -61,7 +65,7 @@ try:
         run(mac, ["/sbin/ifconfig", "en0"], f"mac{mac}-inventory.txt")
         run(mac, ["/sbin/route", "-n", "get", "default"], f"mac{mac}-inventory.txt")
         run(mac, ["/sbin/ping", "-c", "3", env["MAC2_IP"] if mac == 1 else env["MAC1_IP"]], f"mac{mac}-ping.txt")
-        for server in (env["MAC1_IP"], env["MAC2_IP"]):
+        for server in (env["MAC1_IP"], env["BACKUP_DNS_IP"]):
             for name in ("app.cn-project.test", "api.cn-project.test"):
                 answer = run(mac, ["/usr/bin/dig", "@" + server, name, "+time=2", "+tries=1"], f"mac{mac}-dns.txt")
                 rows = [line.split()[-1] for line in answer.stdout.splitlines() if line.startswith(name + ".") and "\tA\t" in line]

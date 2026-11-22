@@ -1,0 +1,24 @@
+frame.number	ip.src	udp.srcport	ip.dst	udp.dstport	dns.qry.name	dns.a	dns.resp.ttl	_ws.col.info
+1	10.7.26.228	60744	10.7.26.237	53	app.cn-project.test			Standard query 0x81d1 AAAA app.cn-project.test
+2	10.7.26.237	53	10.7.26.228	60744	app.cn-project.test			Standard query response 0x81d1 AAAA app.cn-project.test
+3	10.7.26.228	57485	10.7.26.237	53	app.cn-project.test			Standard query 0xd8f8 A app.cn-project.test
+4	10.7.26.237	53	10.7.26.228	57485	app.cn-project.test	10.7.18.166	30	Standard query response 0xd8f8 A app.cn-project.test A 10.7.18.166
+194	10.7.18.166	54174	10.7.26.228	53	app.cn-project.test			Standard query 0xb1f3 A app.cn-project.test OPT
+195	10.7.26.228	54079	10.7.26.237	53	app.cn-project.test			Standard query 0xc22f AAAA app.cn-project.test
+196	10.7.26.237	53	10.7.26.228	54079	app.cn-project.test			Standard query response 0xc22f AAAA app.cn-project.test
+197	10.7.26.228	49825	10.7.26.237	53	app.cn-project.test			Standard query 0x32a5 A app.cn-project.test
+198	10.7.26.237	53	10.7.26.228	49825	app.cn-project.test	10.7.18.166	30	Standard query response 0x32a5 A app.cn-project.test A 10.7.18.166
+224	10.7.26.228	52084	10.7.26.237	53	app.cn-project.test			Standard query 0x3544 A app.cn-project.test
+225	10.7.26.237	53	10.7.26.228	52084	app.cn-project.test	10.7.18.166	30	Standard query response 0x3544 A app.cn-project.test A 10.7.18.166
+248	10.7.26.228	59849	10.7.26.237	53	app.cn-project.test			Standard query 0xf813 A app.cn-project.test OPT
+249	10.7.26.237	53	10.7.26.228	59849	app.cn-project.test	10.7.26.228	30	Standard query response 0xf813 A app.cn-project.test A 10.7.26.228 OPT
+250	10.7.26.228	57451	10.7.26.237	53	app.cn-project.test			Standard query 0x128f AAAA app.cn-project.test
+251	10.7.26.237	53	10.7.26.228	57451	app.cn-project.test			Standard query response 0x128f AAAA app.cn-project.test
+303	10.7.18.166	54464	10.7.26.228	53	app.cn-project.test			Standard query 0x270b AAAA app.cn-project.test
+304	10.7.26.228	53	10.7.18.166	54464	app.cn-project.test			Standard query response 0x270b AAAA app.cn-project.test
+347	10.7.18.166	57030	10.7.26.228	53	app.cn-project.test			Standard query 0x548a A app.cn-project.test
+348	10.7.26.228	53	10.7.18.166	57030	app.cn-project.test	10.7.18.166	30	Standard query response 0x548a A app.cn-project.test A 10.7.18.166
+536	10.7.18.166	57445	10.7.26.228	53	app.cn-project.test			Standard query 0x4d9b A app.cn-project.test
+537	10.7.26.228	53	10.7.18.166	57445	app.cn-project.test	10.7.18.166	30	Standard query response 0x4d9b A app.cn-project.test A 10.7.18.166
+1110	10.7.18.166	57916	10.7.26.228	53	app.cn-project.test			Standard query 0xa411 A app.cn-project.test
+1111	10.7.26.228	53	10.7.18.166	57916	app.cn-project.test	10.7.18.166	30	Standard query response 0xa411 A app.cn-project.test A 10.7.18.166

@@ -1,0 +1,288 @@
+
+UTC: 2026-11-22T21:21:03.983876+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.056124+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.119313+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.175324+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.231724+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.287461+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.342246+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.398175+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.451252+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.711644+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:04 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:04.955783+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:05 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:05.208965+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:05 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:05.470788+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:05 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:05.709169+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:05 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:05.948763+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:06 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T21:21:06.212339+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --cacert /Users/ronitsingh/Desktop/CN_Project/.runtime/ca.crt --connect-timeout 10 --max-time 35 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 21:21:06 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+

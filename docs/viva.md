@@ -1,6 +1,6 @@
 # Phase 2 Viva Preparation
 
-Both students should explain these from understanding, then swap machine roles
+All three members should explain these from understanding, then swap machine roles
 in a spoken rehearsal. Use the real evidence rather than memorizing a claim.
 
 1. **What fails when primary DNS stops?** Only that DNS service. A flushed
@@ -25,7 +25,7 @@ in a spoken rehearsal. Use the real evidence rather than memorizing a claim.
 7. **Why do refusal and packet loss differ?** A TCP RST fails quickly. Silent
    drops wait for a timeout, which makes explicit upstream timeouts useful.
 8. **Can we stop the whole Mac to simulate stopping A?** On Mac 2 that also
-   removes primary nginx and backup DNS. The experiment stops only Backend A's
+   removes primary nginx. Backup DNS stays on Priyanshu's Mac. The experiment stops only Backend A's
    process. Combined roles share host failures, called fate sharing.
 9. **What remains a single point of failure?** The primary edge until traffic
    is manually moved; also shared LAN/router infrastructure. Standby plus DNS
@@ -33,10 +33,11 @@ in a spoken rehearsal. Use the real evidence rather than memorizing a claim.
 10. **What do the PF rules do?** On each backend's LAN interface, allow Mac 2's
     source IP and block other sources to the backend port. State tracks replies.
     The project uses a dedicated anchor and releases only its own PF reference.
-11. **What cannot two Macs prove independently?** Backend B's unrelated-client
+11. **What did the original two-Mac firewall test not prove independently?** Backend B's unrelated-client
     rejection needs a third source IP. Mac 1's local access uses loopback, and
     Mac 2 shares the allowed edge IP. We prove A rejection, B allowed access,
-    counters, and continuing HTTPS and document that limitation.
+    counters, and continuing HTTPS and document that limitation. Mac 3 now
+    supplies DNS only; the migration did not add a third-source firewall test.
 12. **Why does `--cacert` differ from `-k`?** The public CA file establishes
     trust while still verifying chain, hostname and validity. `-k` disables
     checks and is not used. Both Macs now also pass plain HTTPS with default

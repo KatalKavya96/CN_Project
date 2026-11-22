@@ -1,0 +1,9 @@
+
+UTC: 2026-11-22T21:23:32.116955+00:00
+Mac 1
+Command: /usr/bin/pmset -g batt
+Exit: 0
+Now drawing from 'Battery Power'
+ -InternalBattery-0 (id=23461987)	99%; discharging; 8:29 remaining present: true
+
+

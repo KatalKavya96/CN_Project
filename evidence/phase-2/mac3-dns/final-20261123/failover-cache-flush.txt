@@ -1,0 +1,14 @@
+
+UTC: 2026-11-22T21:20:18.409579+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-22T21:20:18.577086+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+

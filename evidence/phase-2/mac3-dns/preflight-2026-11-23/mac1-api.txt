@@ -1,0 +1,21 @@
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 -p 1053 api.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39035
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 15 msec
+;; SERVER: 10.7.26.237#1053(10.7.26.237)
+;; WHEN: Mon Nov 23 02:33:59 IST 2026
+;; MSG SIZE  rcvd: 64
+

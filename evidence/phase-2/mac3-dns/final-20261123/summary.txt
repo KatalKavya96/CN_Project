@@ -1,0 +1,2 @@
+UTC: 2026-11-22T21:21:26.875545+00:00
+PASSED: by-name baseline on both Macs; primary DNS stop and OS failover; OS cache TTL and DNS edge migration; by-name backend failover and recovery; backend isolation and rollback; final by-name health

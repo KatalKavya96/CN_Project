@@ -1,0 +1,12 @@
+
+UTC: 2026-11-22T21:20:17.063060+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.26.228 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
