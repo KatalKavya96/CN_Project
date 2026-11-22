@@ -22,6 +22,8 @@ does not represent them as screenshots of a live terminal.
 Scope notes are preserved: wrong DNS uses a temporary client-scoped resolver;
 independent Backend B rejection needs an unrelated third source IP; faculty
 challenge, spoken presentation and viva must happen during evaluation.
-Fresh direct-root Backend A evidence and final remote Git synchronization
-depend on restoring SSH access to Ronit's Mac. Earlier passing remote results
-are historical observations, not a claim that the current connection is healthy.
+`recovery/2026-11-23T015853/` contains the restored live setup's current
+inventories, peer pings, all backend endpoints, both DNS names/servers,
+default-trust HTTPS through both edges and A/B responses from both clients.
+The recovery summary verifies that all 137 existing evidence files were
+unchanged during recovery. Older results retain their original collection dates.

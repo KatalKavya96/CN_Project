@@ -1,0 +1,6 @@
+Sun Nov 22 20:32:45 UTC 2026
+Now drawing from 'Battery Power'
+ -InternalBattery-0 (id=36372579)	52%; discharging; 5:19 remaining present: true
+  |   "AppleClamshellCausesSleep" = No
+  |   "AppleClamshellState" = No
+13191 /usr/bin/caffeinate -dimsu

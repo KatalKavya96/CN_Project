@@ -1,0 +1,48 @@
+
+UTC: 2026-11-22T20:28:56.243321+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --max-time 5 -sS -i http://127.0.0.1:3002/
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:28:56 GMT
+Content-Type: application/json
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+Content-Length: 32
+
+{"message": "Backend B running"}
+
+
+UTC: 2026-11-22T20:28:56.256337+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --max-time 5 -sS -i http://127.0.0.1:3002/api/status
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:28:56 GMT
+Content-Type: application/json
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+Content-Length: 32
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-22T20:28:56.267676+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --max-time 5 -sS -I http://127.0.0.1:3002/api/status
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:28:56 GMT
+Content-Type: application/json
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+Content-Length: 32
+
+
+

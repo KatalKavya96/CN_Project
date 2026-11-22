@@ -167,6 +167,13 @@ live sessions; DNS and TLS packet indexes identify relevant frames.
 
 ## Evaluation caveats
 
+A fresh live recovery on 23 November verified both Macs again after Ronit's
+closed-lid/battery network availability issue. The repository configuration
+was intact. See `docs/live-recovery.md` and
+`evidence/recovery/2026-11-23T015853/` for peer pings, both DNS names/servers,
+direct root/status/HEAD responses from both backends, and default-trust A/B
+responses through both edges from both clients. Saved evidence was preserved.
+
 - Both students still need to rehearse the spoken 11-step demonstration and
   answer the individual viva; the faculty-injected fault occurs at evaluation.
 - CA trust is resolved: after approval and native macOS authorization on Mac 1,

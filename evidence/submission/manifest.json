@@ -1,5 +1,5 @@
 {
-  "assembled_utc": "2026-11-22T20:05:34.811211+00:00",
+  "assembled_utc": "2026-11-22T20:32:05.466916+00:00",
   "note": "Original tests retain their original collection dates. Generated HTML displays log excerpts, not terminal screenshots.",
   "requirements": [
     {
@@ -12,7 +12,11 @@
         "evidence/phase-2/baseline/mac1-final-inventory.txt",
         "evidence/phase-2/baseline/mac2-final-inventory.txt",
         "evidence/phase-1/failures-2026-11-22/wrong-dns-mac1.txt",
-        "evidence/phase-1/failures-2026-11-22/wrong-dns-mac2.txt"
+        "evidence/phase-1/failures-2026-11-22/wrong-dns-mac2.txt",
+        "evidence/recovery/2026-11-23T015853/mac1-inventory.txt",
+        "evidence/recovery/2026-11-23T015853/mac1-ping.txt",
+        "evidence/recovery/2026-11-23T015853/mac2-inventory.txt",
+        "evidence/recovery/2026-11-23T015853/mac2-ping.txt"
       ]
     },
     {
@@ -25,19 +29,23 @@
         "evidence/phase-2/final/mac2-resolver.txt",
         "evidence/phase-2/final/baseline-os-lookups.txt",
         "evidence/phase-2/dns-failover/backup-api-direct.txt",
-        "evidence/phase-2/dns-failover/backup-direct.txt"
+        "evidence/phase-2/dns-failover/backup-direct.txt",
+        "evidence/recovery/2026-11-23T015853/mac1-dns.txt",
+        "evidence/recovery/2026-11-23T015853/mac2-dns.txt"
       ]
     },
     {
       "code": "P1-C",
       "title": "Backend source, interfaces, ports and endpoints",
-      "status": "Source and status evidence",
-      "note": "Both sources implement / and /api/status and bind to 0.0.0.0. Direct status responses for A and B are saved. Fresh /, /api/status and HEAD evidence for B is collected here. A separate direct-root A capture needs Ronit's live connection; it is not fabricated.",
+      "status": "Recorded",
+      "note": "Both backends bind to 0.0.0.0 and implement / and /api/status. The recovery logs record successful direct GET /, GET /api/status and HEAD on the correct local backend port from each service host.",
       "files": [
         "backend-a/app.py",
         "backend-b/app.py",
         "evidence/phase-2/final/isolation-allowed-edge.txt",
-        "evidence/submission/backend-b-current.txt"
+        "evidence/submission/backend-b-current.txt",
+        "evidence/recovery/2026-11-23T015853/mac1-backend-endpoints.txt",
+        "evidence/recovery/2026-11-23T015853/mac2-backend-endpoints.txt"
       ]
     },
     {
@@ -48,7 +56,9 @@
       "files": [
         "evidence/phase-2/final/baseline-by-name.txt",
         "evidence/phase-2/baseline/mac2-upstream-log.txt",
-        "phase2/render.sh"
+        "phase2/render.sh",
+        "evidence/recovery/2026-11-23T015853/mac1-primary-https.txt",
+        "evidence/recovery/2026-11-23T015853/mac2-primary-https.txt"
       ]
     },
     {
@@ -59,7 +69,9 @@
       "files": [
         "evidence/phase-2/final/default-trust-mac1-verified.txt",
         "evidence/phase-2/final/default-trust-mac2-verified.txt",
-        "tls/generated/server.ext"
+        "tls/generated/server.ext",
+        "evidence/recovery/2026-11-23T015853/mac1-plain-trust.txt",
+        "evidence/recovery/2026-11-23T015853/mac2-plain-trust.txt"
       ]
     },
     {
@@ -284,6 +296,22 @@
       "bytes": 7290,
       "sha256": "49bc91383b584fed4d4b1117de517d30ffdfd9a4b2aa93f8b48657e96b42c324"
     },
+    "evidence/recovery/2026-11-23T015853/mac1-inventory.txt": {
+      "bytes": 849,
+      "sha256": "e9ab2c6d2289181ee6357fe92e73c1d7383364d2414bcf061579108b9ff9d382"
+    },
+    "evidence/recovery/2026-11-23T015853/mac1-ping.txt": {
+      "bytes": 476,
+      "sha256": "27db39f196e3ffc1b348a2647e7a754bbea12b09039f309067e07e9e3a7cab8a"
+    },
+    "evidence/recovery/2026-11-23T015853/mac2-inventory.txt": {
+      "bytes": 849,
+      "sha256": "c0b4a48e6c296061da8d57cbc79a1cef717a04071d3a114a630f7336869eed3c"
+    },
+    "evidence/recovery/2026-11-23T015853/mac2-ping.txt": {
+      "bytes": 473,
+      "sha256": "61270b02338838bdf20831f3671e302efa66ececdc28ce2b6145357d648c2587"
+    },
     "evidence/phase-2/final/mac1-resolver.txt": {
       "bytes": 1660,
       "sha256": "d93aff603b4da8937a1b7ac162808bb504c021e6942758de8e3c0313add968ed"
@@ -304,6 +332,14 @@
       "bytes": 557,
       "sha256": "7413ba5c93f83cd5bc63be69262e69a9d80df67295284065b19682553d9f1d76"
     },
+    "evidence/recovery/2026-11-23T015853/mac1-dns.txt": {
+      "bytes": 2733,
+      "sha256": "2d35e8738d969b7d2322abfcc17600e6f0e9ee3f5812ed2ad58ffcb9ba06fc00"
+    },
+    "evidence/recovery/2026-11-23T015853/mac2-dns.txt": {
+      "bytes": 2733,
+      "sha256": "a34e189c8de5652d9133b33f2d6eb3150bd9eb17d0181c8796774a66b62295b7"
+    },
     "backend-a/app.py": {
       "bytes": 1621,
       "sha256": "6b3cb4d87ec862062ac7eaef97db3b48a4da870ce6cc4bdb2b87e8bc7ba55231"
@@ -320,6 +356,14 @@
       "bytes": 676,
       "sha256": "61e9e395b32b4c3bdfa6ab5a746274dbc3323e360019c79ec4b40cb2c15c8de2"
     },
+    "evidence/recovery/2026-11-23T015853/mac1-backend-endpoints.txt": {
+      "bytes": 1056,
+      "sha256": "032cd7bb67247142eff060dba46fc19689328c21d3935b3a6417b345a829572b"
+    },
+    "evidence/recovery/2026-11-23T015853/mac2-backend-endpoints.txt": {
+      "bytes": 1056,
+      "sha256": "2141d8a1765b9772ab7c790b22b42bc638840d0c28dc08f8db3a04a4b7a35495"
+    },
     "evidence/phase-2/final/baseline-by-name.txt": {
       "bytes": 7904,
       "sha256": "0ffb4e8e85bf58253b4249493ab6a8ea70e3cf3a33e03393f6d93131f49f1a21"
@@ -332,6 +376,14 @@
       "bytes": 2479,
       "sha256": "b00571bdc4f4eabf8d7410b9270f6d5de8e802f566419f0d1869ba7228e2dc4f"
     },
+    "evidence/recovery/2026-11-23T015853/mac1-primary-https.txt": {
+      "bytes": 3448,
+      "sha256": "19cbd64e4b9ce147033986d2b5c09ecbbe5493ead03c480b79a2eed26d9ef0e8"
+    },
+    "evidence/recovery/2026-11-23T015853/mac2-primary-https.txt": {
+      "bytes": 3448,
+      "sha256": "a6b89d0fd4b5bc418626be93cb0dea1a72e19f3737ca186c9c65c2012c13b7b9"
+    },
     "evidence/phase-2/final/default-trust-mac1-verified.txt": {
       "bytes": 2129,
       "sha256": "927a35295d46028e7ff6a9e429f0140c5fd0ccf1429f41b4e2d6f95d42fe30fd"
@@ -343,6 +395,14 @@
     "tls/generated/server.ext": {
       "bytes": 223,
       "sha256": "a4dbacbb7aa86b19c53aab30f7fcc2aab6873fad0b81b67c6e488308d8d5d309"
+    },
+    "evidence/recovery/2026-11-23T015853/mac1-plain-trust.txt": {
+      "bytes": 4396,
+      "sha256": "cdb86bf8bdc26c8a3ecb223af2bab5a03774af714579fdb4395544924c039601"
+    },
+    "evidence/recovery/2026-11-23T015853/mac2-plain-trust.txt": {
+      "bytes": 4396,
+      "sha256": "f141d309fcf7f5c54275dd6a116b7278cb165cdaf783fe1198a20d4d31547191"
     },
     "evidence/phase-2/baseline/cache-headers.txt": {
       "bytes": 223,
@@ -473,8 +533,8 @@
       "sha256": "dab39bcd791b2a0f490ba13d56347a9b691a7a192babf6f94bc7e402f7b69a03"
     },
     "docs/phase2-report.md": {
-      "bytes": 11052,
-      "sha256": "a34ace7837cef02c2638c4dd103a11823837fd4f09c9905358b37ef303db2d1e"
+      "bytes": 11482,
+      "sha256": "bd7a2edea06d7a07cbcbc277224bdf3ccb232fdb8acfa430e8741681b583272f"
     },
     "evidence/phase-2/final-cutover-recheck/cutover-authoritative.txt": {
       "bytes": 1367,

@@ -434,6 +434,104 @@ X-Edge: mac2
 &lt; ETag: &quot;A-v1&quot;
 &lt; X-Edge: mac2
 &lt; </pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac1-inventory.txt">evidence/recovery/2026-11-23T015853/mac1-inventory.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:28:54.067346+00:00
+Mac 1
+Command: /sbin/ifconfig en0
+Exit: 0
+en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
+	options=6460&lt;TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM&gt;
+	ether 42:05:ea:c7:56:e5
+	inet6 fe80::87f:c3b7:678e:62fa%en0 prefixlen 64 secured scopeid 0xe 
+	inet 10.7.26.228 netmask 0xffffe000 broadcast 10.7.31.255
+	nd6 options=201&lt;PERFORMNUD,DAD&gt;
+	media: autoselect
+	status: active
+
+
+
+UTC: 2026-11-22T20:28:54.070071+00:00
+Mac 1
+Command: /sbin/route -n get default
+Exit: 0
+   route to: default
+destination: default
+       mask: default
+    gateway: 10.7.0.1
+  interface: en0
+      flags: &lt;UP,GATEWAY,DONE,STATIC,PRCLONING,GLOBAL&gt;
+ recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire
+       0         0         0         0         0         0      1500         0 
+
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac1-ping.txt">evidence/recovery/2026-11-23T015853/mac1-ping.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:28:56.141144+00:00
+Mac 1
+Command: /sbin/ping -c 3 10.7.18.166
+Exit: 0
+PING 10.7.18.166 (10.7.18.166): 56 data bytes
+64 bytes from 10.7.18.166: icmp_seq=0 ttl=64 time=7.180 ms
+64 bytes from 10.7.18.166: icmp_seq=1 ttl=64 time=34.901 ms
+64 bytes from 10.7.18.166: icmp_seq=2 ttl=64 time=55.918 ms
+
+--- 10.7.18.166 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 7.180/32.666/55.918/19.960 ms
+
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac2-inventory.txt">evidence/recovery/2026-11-23T015853/mac2-inventory.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:28:58.012439+00:00
+Mac 2
+Command: /sbin/ifconfig en0
+Exit: 0
+en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
+	options=6460&lt;TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM&gt;
+	ether b2:1c:b4:ca:38:9a
+	inet6 fe80::8c0:a478:853d:1bf6%en0 prefixlen 64 secured scopeid 0xb 
+	inet 10.7.18.166 netmask 0xffffe000 broadcast 10.7.31.255
+	nd6 options=201&lt;PERFORMNUD,DAD&gt;
+	media: autoselect
+	status: active
+
+
+
+UTC: 2026-11-22T20:28:58.224166+00:00
+Mac 2
+Command: /sbin/route -n get default
+Exit: 0
+   route to: default
+destination: default
+       mask: default
+    gateway: 10.7.0.1
+  interface: en0
+      flags: &lt;UP,GATEWAY,DONE,STATIC,PRCLONING,GLOBAL&gt;
+ recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire
+       0         0         0         0         0         0      1500         0 
+
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac2-ping.txt">evidence/recovery/2026-11-23T015853/mac2-ping.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:29:00.449854+00:00
+Mac 2
+Command: /sbin/ping -c 3 10.7.26.228
+Exit: 0
+PING 10.7.26.228 (10.7.26.228): 56 data bytes
+64 bytes from 10.7.26.228: icmp_seq=0 ttl=64 time=4.983 ms
+64 bytes from 10.7.26.228: icmp_seq=1 ttl=64 time=9.784 ms
+64 bytes from 10.7.26.228: icmp_seq=2 ttl=64 time=11.820 ms
+
+--- 10.7.26.228 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 4.983/8.862/11.820/2.866 ms
+
+
+</pre></details>
 </section>
 <section id="P1-B"><h2>P1-B - Private DNS and two client resolvers</h2>
 <p class="status">Recorded</p><p>Both clients&#x27; scoped resolvers list primary and backup. Both private names have DNS proof; the final by-name requests use the OS resolver.</p>
@@ -667,9 +765,237 @@ app.cn-project.test.	30	IN	A	10.7.18.166
 ;; MSG SIZE  rcvd: 64
 
 </pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac1-dns.txt">evidence/recovery/2026-11-23T015853/mac1-dns.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:28:56.163569+00:00
+Mac 1
+Command: /usr/bin/dig @10.7.26.228 app.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.26.228 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 6908
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 6 msec
+;; SERVER: 10.7.26.228#53(10.7.26.228)
+;; WHEN: Mon Nov 23 01:58:56 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-22T20:28:56.177844+00:00
+Mac 1
+Command: /usr/bin/dig @10.7.26.228 api.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.26.228 api.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 56850
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 4 msec
+;; SERVER: 10.7.26.228#53(10.7.26.228)
+;; WHEN: Mon Nov 23 01:58:56 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-22T20:28:56.206757+00:00
+Mac 1
+Command: /usr/bin/dig @10.7.18.166 app.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.18.166 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 48573
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 20 msec
+;; SERVER: 10.7.18.166#53(10.7.18.166)
+;; WHEN: Mon Nov 23 01:58:56 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-22T20:28:56.227268+00:00
+Mac 1
+Command: /usr/bin/dig @10.7.18.166 api.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.18.166 api.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 15103
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 11 msec
+;; SERVER: 10.7.18.166#53(10.7.18.166)
+;; WHEN: Mon Nov 23 01:58:56 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac2-dns.txt">evidence/recovery/2026-11-23T015853/mac2-dns.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:29:00.681405+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.26.228 app.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.26.228 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 27905
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 10 msec
+;; SERVER: 10.7.26.228#53(10.7.26.228)
+;; WHEN: Mon Nov 23 01:59:00 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-22T20:29:00.902686+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.26.228 api.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.26.228 api.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 2149
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 10 msec
+;; SERVER: 10.7.26.228#53(10.7.26.228)
+;; WHEN: Mon Nov 23 01:59:00 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-22T20:29:01.122373+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.18.166 app.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.18.166 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 20306
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 3 msec
+;; SERVER: 10.7.18.166#53(10.7.18.166)
+;; WHEN: Mon Nov 23 01:59:01 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+
+UTC: 2026-11-22T20:29:01.344680+00:00
+Mac 2
+Command: /usr/bin/dig @10.7.18.166 api.cn-project.test +time=2 +tries=1
+Exit: 0
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @10.7.18.166 api.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 20183
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 5 msec
+;; SERVER: 10.7.18.166#53(10.7.18.166)
+;; WHEN: Mon Nov 23 01:59:01 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+
+</pre></details>
 </section>
 <section id="P1-C"><h2>P1-C - Backend source, interfaces, ports and endpoints</h2>
-<p class="status">Source and status evidence</p><p>Both sources implement / and /api/status and bind to 0.0.0.0. Direct status responses for A and B are saved. Fresh /, /api/status and HEAD evidence for B is collected here. A separate direct-root A capture needs Ronit&#x27;s live connection; it is not fabricated.</p>
+<p class="status">Recorded</p><p>Both backends bind to 0.0.0.0 and implement / and /api/status. The recovery logs record successful direct GET /, GET /api/status and HEAD on the correct local backend port from each service host.</p>
 <p><a href="../../backend-a/app.py">backend-a/app.py</a></p>
 <details><summary>View recorded output or source</summary><pre>from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
@@ -828,6 +1154,106 @@ Command: /usr/bin/curl --noproxy &#x27;*&#x27; --max-time 5 -sS -I http://127.0.
 Exit: 7
 
 curl: (7) Failed to connect to 127.0.0.1 port 3002 after 0 ms: Couldn&#x27;t connect to server
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac1-backend-endpoints.txt">evidence/recovery/2026-11-23T015853/mac1-backend-endpoints.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:28:56.243321+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --max-time 5 -sS -i http://127.0.0.1:3002/
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:28:56 GMT
+Content-Type: application/json
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+Content-Length: 32
+
+{&quot;message&quot;: &quot;Backend B running&quot;}
+
+
+UTC: 2026-11-22T20:28:56.256337+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --max-time 5 -sS -i http://127.0.0.1:3002/api/status
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:28:56 GMT
+Content-Type: application/json
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+Content-Length: 32
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:28:56.267676+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --max-time 5 -sS -I http://127.0.0.1:3002/api/status
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:28:56 GMT
+Content-Type: application/json
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+Content-Length: 32
+
+
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac2-backend-endpoints.txt">evidence/recovery/2026-11-23T015853/mac2-backend-endpoints.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:29:01.590848+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --max-time 5 -sS -i http://127.0.0.1:3001/
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:29:01 GMT
+Content-Type: application/json
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+Content-Length: 32
+
+{&quot;message&quot;: &quot;Backend A running&quot;}
+
+
+UTC: 2026-11-22T20:29:01.801155+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --max-time 5 -sS -i http://127.0.0.1:3001/api/status
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:29:01 GMT
+Content-Type: application/json
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+Content-Length: 32
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:02.044165+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --max-time 5 -sS -I http://127.0.0.1:3001/api/status
+Exit: 0
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.9.6
+Date: Sun, 22 Nov 2026 20:29:02 GMT
+Content-Type: application/json
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+Content-Length: 32
+
+
 
 </pre></details>
 </section>
@@ -1062,6 +1488,298 @@ printf &#x27;%s\n&#x27; &quot;$ROLE&quot; &gt; &quot;$RUNTIME/role&quot;
 /opt/homebrew/sbin/dnsmasq --test --conf-file=&quot;$RUNTIME/dnsmasq.conf&quot;
 echo &quot;Rendered $ROLE configs in $RUNTIME&quot;
 </pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac1-primary-https.txt">evidence/recovery/2026-11-23T015853/mac1-primary-https.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:29:08.204779+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:08.250118+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:08.311952+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:08.355930+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:08.413136+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:08.460138+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:08.516531+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:08.560338+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac2-primary-https.txt">evidence/recovery/2026-11-23T015853/mac2-primary-https.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:29:09.190391+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:09 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:09.434423+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:09 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:09.678189+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:09 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:09.895286+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:09 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:10.186988+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:10 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:10.439677+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:10 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:10.715897+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:10 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: &quot;B-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+
+UTC: 2026-11-22T20:29:10.946869+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sun, 22 Nov 2026 20:29:10 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: &quot;A-v1&quot;
+X-Edge: mac2
+
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+
+</pre></details>
 </section>
 <section id="P1-E"><h2>P1-E - Default-trust HTTPS on both Macs</h2>
 <p class="status">Recorded</p><p>These final curl commands use neither --cacert nor -k. Both logs show hostname match, SSL certificate verify ok, HTTP 200 and exit 0.</p>
@@ -1196,6 +1914,262 @@ subjectAltName=@alt_names
 [alt_names]
 DNS.1=app.cn-project.test
 DNS.2=api.cn-project.test
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac1-plain-trust.txt">evidence/recovery/2026-11-23T015853/mac1-plain-trust.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:29:08.827995+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --connect-timeout 4 --max-time 12 -v https://app.cn-project.test:8443/api/status
+Exit: 0
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [324 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host &quot;app.cn-project.test&quot; matched cert&#x27;s &quot;app.cn-project.test&quot;
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+&gt; GET /api/status HTTP/1.1
+&gt; Host: app.cn-project.test:8443
+&gt; User-Agent: curl/8.7.1
+&gt; Accept: */*
+&gt; 
+* Request completely sent off
+&lt; HTTP/1.1 200 OK
+&lt; Server: nginx/1.31.6
+&lt; Date: Sun, 22 Nov 2026 20:29:08 GMT
+&lt; Content-Type: application/json
+&lt; Content-Length: 32
+&lt; Connection: keep-alive
+&lt; X-Backend: B
+&lt; Cache-Control: max-age=60
+&lt; ETag: &quot;B-v1&quot;
+&lt; X-Edge: mac2
+&lt; 
+{ [32 bytes data]
+
+100    32  100    32    0     0    754      0 --:--:-- --:--:-- --:--:--   761
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-22T20:29:08.872237+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --connect-timeout 4 --max-time 12 -v https://api.cn-project.test:8443/api/status
+Exit: 0
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host api.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to api.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [324 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host &quot;api.cn-project.test&quot; matched cert&#x27;s &quot;api.cn-project.test&quot;
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+&gt; GET /api/status HTTP/1.1
+&gt; Host: api.cn-project.test:8443
+&gt; User-Agent: curl/8.7.1
+&gt; Accept: */*
+&gt; 
+* Request completely sent off
+&lt; HTTP/1.1 200 OK
+&lt; Server: nginx/1.31.6
+&lt; Date: Sun, 22 Nov 2026 20:29:08 GMT
+&lt; Content-Type: application/json
+&lt; Content-Length: 32
+&lt; Connection: keep-alive
+&lt; X-Backend: A
+&lt; Cache-Control: max-age=60
+&lt; ETag: &quot;A-v1&quot;
+&lt; X-Edge: mac2
+&lt; 
+{ [32 bytes data]
+
+100    32  100    32    0     0    941      0 --:--:-- --:--:-- --:--:--   969
+* Connection #0 to host api.cn-project.test left intact
+
+</pre></details>
+<p><a href="../recovery/2026-11-23T015853/mac2-plain-trust.txt">evidence/recovery/2026-11-23T015853/mac2-plain-trust.txt</a></p>
+<details><summary>View recorded output or source</summary><pre>
+UTC: 2026-11-22T20:29:13.260638+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --connect-timeout 4 --max-time 12 -v https://app.cn-project.test:8443/api/status
+Exit: 0
+{&quot;backend&quot;: &quot;B&quot;, &quot;status&quot;: &quot;ok&quot;}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [324 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host &quot;app.cn-project.test&quot; matched cert&#x27;s &quot;app.cn-project.test&quot;
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+&gt; GET /api/status HTTP/1.1
+&gt; Host: app.cn-project.test:8443
+&gt; User-Agent: curl/8.7.1
+&gt; Accept: */*
+&gt; 
+* Request completely sent off
+&lt; HTTP/1.1 200 OK
+&lt; Server: nginx/1.31.6
+&lt; Date: Sun, 22 Nov 2026 20:29:13 GMT
+&lt; Content-Type: application/json
+&lt; Content-Length: 32
+&lt; Connection: keep-alive
+&lt; X-Backend: B
+&lt; Cache-Control: max-age=60
+&lt; ETag: &quot;B-v1&quot;
+&lt; X-Edge: mac2
+&lt; 
+{ [32 bytes data]
+
+100    32  100    32    0     0   1084      0 --:--:-- --:--:-- --:--:--  1103
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-22T20:29:13.517124+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy &#x27;*&#x27; --connect-timeout 4 --max-time 12 -v https://api.cn-project.test:8443/api/status
+Exit: 0
+{&quot;backend&quot;: &quot;A&quot;, &quot;status&quot;: &quot;ok&quot;}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host api.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to api.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [324 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host &quot;api.cn-project.test&quot; matched cert&#x27;s &quot;api.cn-project.test&quot;
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+&gt; GET /api/status HTTP/1.1
+&gt; Host: api.cn-project.test:8443
+&gt; User-Agent: curl/8.7.1
+&gt; Accept: */*
+&gt; 
+* Request completely sent off
+&lt; HTTP/1.1 200 OK
+&lt; Server: nginx/1.31.6
+&lt; Date: Sun, 22 Nov 2026 20:29:13 GMT
+&lt; Content-Type: application/json
+&lt; Content-Length: 32
+&lt; Connection: keep-alive
+&lt; X-Backend: A
+&lt; Cache-Control: max-age=60
+&lt; ETag: &quot;A-v1&quot;
+&lt; X-Edge: mac2
+&lt; 
+{ [32 bytes data]
+
+100    32  100    32    0     0   1129      0 --:--:-- --:--:-- --:--:--  1142
+* Connection #0 to host api.cn-project.test left intact
+
 </pre></details>
 </section>
 <section id="P1-F"><h2>P1-F - Cache-Control, ETags and conditional 304</h2>
@@ -5416,4 +6390,4 @@ both DNS services and backends, clear test PF anchors, and verify A/B HTTPS
 before ending any rehearsal.
 </pre></details>
 </section>
-<footer><p>Generated UTC: 2026-11-22T20:05:34.811211+00:00. File provenance and hashes: <a href="manifest.json">manifest.json</a>.</p></footer></body></html>
+<footer><p>Generated UTC: 2026-11-22T20:32:05.466916+00:00. File provenance and hashes: <a href="manifest.json">manifest.json</a>.</p></footer></body></html>

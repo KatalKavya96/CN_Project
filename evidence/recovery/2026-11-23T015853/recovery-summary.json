@@ -1,0 +1,19 @@
+{
+  "started_utc": "2026-11-22T20:28:53.926662+00:00",
+  "tests": {
+    "mac1_dns_and_lan": "PASS",
+    "mac1_backend_endpoints": "PASS: GET /, GET /api/status, HEAD",
+    "mac2_dns_and_lan": "PASS",
+    "mac2_backend_endpoints": "PASS: GET /, GET /api/status, HEAD",
+    "mac1_primary": "PASS: default-trust HTTPS with A/B",
+    "mac1_standby": "PASS: default-trust HTTPS with A/B",
+    "mac1_both_hostnames_plain_https": "PASS",
+    "mac2_primary": "PASS: default-trust HTTPS with A/B",
+    "mac2_standby": "PASS: default-trust HTTPS with A/B",
+    "mac2_both_hostnames_plain_https": "PASS"
+  },
+  "evidence_preserved": true,
+  "status": "LIVE SETUP RESTORED AND VERIFIED ON BOTH MACS",
+  "original_files_checked": 137,
+  "finished_utc": "2026-11-22T20:29:13.841502+00:00"
+}
