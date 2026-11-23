@@ -1,0 +1,439 @@
+2026-11-23T09:08:56.228650+00:00 Client caching resolver: dnsmasq on Mac 1 127.0.0.1:1053; upstream backup DNS. This is NOT the macOS OS-cache test.
+2026-11-23T09:08:56.717655+00:00 command=['/usr/bin/ssh', '-i', '/Users/kavyakatal/.ssh/id_ed25519_cn_project', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=5', '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=/Users/kavyakatal/Desktop/CN_Project/phase2/ssh-known-hosts', 'priyanshutomar@10.7.26.237', 'sudo -n /usr/local/sbin/cn-project-backup dns-primary']
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:08:57.189708+00:00 command=['/usr/bin/ssh', '-i', '/Users/kavyakatal/.ssh/id_ed25519_cn_project', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=5', '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=/private/tmp/cn-project-ronit-known-hosts', 'ronitsingh@10.7.18.166', 'sudo -n /usr/local/sbin/cn-project-admin dns-primary']
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:08:57.237217+00:00 command=['sudo', '-n', '/usr/local/sbin/cn-project-admin', 'dns-primary']
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:08:58.218426+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 59295
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 49 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:38:58 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:08:58.219208+00:00 DNS answer=10.7.18.166 TTL=30 cached=True
+2026-11-23T09:08:58.562326+00:00 command=['/usr/bin/ssh', '-i', '/Users/kavyakatal/.ssh/id_ed25519_cn_project', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=5', '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=/Users/kavyakatal/Desktop/CN_Project/phase2/ssh-known-hosts', 'priyanshutomar@10.7.26.237', 'sudo -n /usr/local/sbin/cn-project-backup dns-standby']
+10.7.26.228 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:08:58.994758+00:00 command=['/usr/bin/ssh', '-i', '/Users/kavyakatal/.ssh/id_ed25519_cn_project', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=5', '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=/private/tmp/cn-project-ronit-known-hosts', 'ronitsingh@10.7.18.166', 'sudo -n /usr/local/sbin/cn-project-admin dns-standby']
+10.7.26.228 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:08:59.036828+00:00 command=['sudo', '-n', '/usr/local/sbin/cn-project-admin', 'dns-standby']
+10.7.26.228 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:08:59.468940+00:00 command=['/usr/bin/dig', '@10.7.26.237', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49747
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.26.228
+
+;; Query time: 21 msec
+;; SERVER: 10.7.26.237#53(10.7.26.237)
+;; WHEN: Mon Nov 23 14:38:59 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:08:59.469240+00:00 DNS answer=10.7.26.228 TTL=30 cached=False
+2026-11-23T09:08:59.474260+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25353
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	29	IN	A	10.7.18.166
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:38:59 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:08:59.474538+00:00 DNS answer=10.7.18.166 TTL=29 cached=True
+2026-11-23T09:08:59.573855+00:00 command=['/usr/bin/curl', '--noproxy', '*', '--http1.1', '--cacert', '/Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt', '--resolve', 'app.cn-project.test:8443:10.7.18.166', '--connect-timeout', '3', '--max-time', '10', '-sS', '-i', 'https://app.cn-project.test:8443/api/status']
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:08:59 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+2026-11-23T09:08:59.596700+00:00 command=['/usr/bin/dig', '@10.7.26.237', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 63193
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.26.228
+
+;; Query time: 16 msec
+;; SERVER: 10.7.26.237#53(10.7.26.237)
+;; WHEN: Mon Nov 23 14:38:59 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:08:59.596984+00:00 DNS answer=10.7.26.228 TTL=30 cached=False
+2026-11-23T09:08:59.679042+00:00 command=['/usr/bin/curl', '--noproxy', '*', '--http1.1', '--cacert', '/Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt', '--resolve', 'app.cn-project.test:8443:10.7.26.228', '--connect-timeout', '3', '--max-time', '10', '-sS', '-i', 'https://app.cn-project.test:8443/api/status']
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Mon, 23 Nov 2026 09:08:59 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac1
+
+{"backend": "A", "status": "ok"}
+2026-11-23T09:08:59.679338+00:00 PASS: cached client still reaches old edge; fresh DNS client reaches standby edge
+2026-11-23T09:09:04.702981+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53452
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	24	IN	A	10.7.18.166
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:04 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:04.703620+00:00 DNS answer=10.7.18.166 TTL=24 cached=True
+2026-11-23T09:09:09.728927+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21750
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	19	IN	A	10.7.18.166
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:09 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:09.729592+00:00 DNS answer=10.7.18.166 TTL=19 cached=True
+2026-11-23T09:09:14.748373+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60552
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	14	IN	A	10.7.18.166
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:14 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:14.749026+00:00 DNS answer=10.7.18.166 TTL=14 cached=True
+2026-11-23T09:09:19.768477+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42187
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	9	IN	A	10.7.18.166
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:19 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:19.769905+00:00 DNS answer=10.7.18.166 TTL=9 cached=True
+2026-11-23T09:09:24.797154+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 4677
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	4	IN	A	10.7.18.166
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:24 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:24.797686+00:00 DNS answer=10.7.18.166 TTL=4 cached=True
+2026-11-23T09:09:29.843581+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5845
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.26.228
+
+;; Query time: 29 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:29 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:29.844564+00:00 DNS answer=10.7.26.228 TTL=30 cached=True
+2026-11-23T09:09:34.864642+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44840
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	25	IN	A	10.7.26.228
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:34 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:34.865301+00:00 DNS answer=10.7.26.228 TTL=25 cached=True
+2026-11-23T09:09:34.875860+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 47385
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	25	IN	A	10.7.26.228
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:34 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:34.876371+00:00 DNS answer=10.7.26.228 TTL=25 cached=True
+2026-11-23T09:09:34.876707+00:00 PASS: expired cached answer adopted standby address
+2026-11-23T09:09:35.231087+00:00 command=['/usr/bin/ssh', '-i', '/Users/kavyakatal/.ssh/id_ed25519_cn_project', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=5', '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=/Users/kavyakatal/Desktop/CN_Project/phase2/ssh-known-hosts', 'priyanshutomar@10.7.26.237', 'sudo -n /usr/local/sbin/cn-project-backup dns-primary']
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:09:35.481870+00:00 command=['/usr/bin/ssh', '-i', '/Users/kavyakatal/.ssh/id_ed25519_cn_project', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=5', '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=/private/tmp/cn-project-ronit-known-hosts', 'ronitsingh@10.7.18.166', 'sudo -n /usr/local/sbin/cn-project-admin dns-primary']
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:09:35.511384+00:00 command=['sudo', '-n', '/usr/local/sbin/cn-project-admin', 'dns-primary']
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:09:35.933736+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10543
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	24	IN	A	10.7.26.228
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:35 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:35.935209+00:00 DNS answer=10.7.26.228 TTL=24 cached=True
+2026-11-23T09:09:36.391788+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 14220
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 33 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:36 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:36.392914+00:00 DNS answer=10.7.18.166 TTL=30 cached=True
+2026-11-23T09:09:36.410633+00:00 command=['/usr/bin/dig', '@127.0.0.1', '-p', '1053', 'app.cn-project.test', '+time=2', '+tries=1']
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 1053 app.cn-project.test +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36934
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.cn-project.test.		IN	A
+
+;; ANSWER SECTION:
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#1053(127.0.0.1)
+;; WHEN: Mon Nov 23 14:39:36 IST 2026
+;; MSG SIZE  rcvd: 64
+
+
+2026-11-23T09:09:36.411241+00:00 DNS answer=10.7.18.166 TTL=30 cached=True
+2026-11-23T09:09:36.543465+00:00 command=['/usr/bin/curl', '--noproxy', '*', '--http1.1', '--cacert', '/Users/kavyakatal/Desktop/CN_Project/.runtime/ca.crt', '--resolve', 'app.cn-project.test:8443:10.7.18.166', '--connect-timeout', '3', '--max-time', '10', '-sS', '-i', 'https://app.cn-project.test:8443/api/status']
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:09:36 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+2026-11-23T09:09:36.544813+00:00 PASS: manual client DNS-cache flush immediately adopted restored primary edge
+2026-11-23T09:09:36.923331+00:00 Restore primary records: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:09:37.325518+00:00 Restore primary records: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+2026-11-23T09:09:37.372999+00:00 Restore primary records: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+

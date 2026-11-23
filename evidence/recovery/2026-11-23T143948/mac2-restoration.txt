@@ -1,0 +1,49 @@
+
+UTC: 2026-11-23T09:09:51.794534+00:00
+Mac 1
+Command: /usr/bin/ssh -i /Users/kavyakatal/.ssh/id_ed25519_cn_project -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/Users/kavyakatal/Desktop/CN_Project/phase2/ssh-known-hosts priyanshutomar@10.7.26.237 'sudo -n /usr/local/sbin/cn-project-backup dns-primary'
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-23T09:09:52.134276+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin dns-primary
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+
+
+
+UTC: 2026-11-23T09:09:52.430900+00:00
+Mac 1
+Command: /usr/bin/ssh -i /Users/kavyakatal/.ssh/id_ed25519_cn_project -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/Users/kavyakatal/Desktop/CN_Project/phase2/ssh-known-hosts priyanshutomar@10.7.26.237 'sudo -n /usr/local/sbin/cn-project-backup dns-start'
+Exit: 0
+Mac 3 backup DNS already running
+
+
+
+UTC: 2026-11-23T09:09:52.755624+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-off
+Exit: 0
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+rules cleared
+
+
+UTC: 2026-11-23T09:09:53.119695+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:09:53.433038+00:00
+Mac 2
+Command: /usr/bin/python3 phase2/services.py start a
+Exit: 0
+backend-a already running 31278
+
+

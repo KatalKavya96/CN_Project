@@ -1,0 +1,62 @@
+
+UTC: 2026-11-23T09:04:20.732495+00:00
+Mac 1
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-on
+Exit: 0
+No ALTQ support in kernel
+ALTQ related functions disabled
+pf enabled
+Token : 10375411076421269012
+@0 pass in quick on en0 inet proto tcp from 10.7.18.166 to 10.7.26.228 port = 3002 flags S/SA keep state
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: uid 0 pid 21011 ]
+@1 block drop in quick on en0 inet proto tcp from any to 10.7.26.228 port = 3002
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: uid 0 pid 21011 ]
+
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+No ALTQ support in kernel
+ALTQ related functions disabled
+
+
+UTC: 2026-11-23T09:04:20.793777+00:00
+Mac 2
+Command: sudo -n /usr/local/sbin/cn-project-admin firewall-on
+Exit: 0
+No ALTQ support in kernel
+ALTQ related functions disabled
+pf enabled
+Token : 4009142524084153801
+@0 pass in quick on en0 inet proto tcp from 10.7.18.166 to 10.7.18.166 port = 3001 flags S/SA keep state
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 1         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: uid 0 pid 31001 ]
+@1 block drop in quick on en0 inet proto tcp from any to 10.7.18.166 port = 3001
+  [ Owner : nil          Priority : 0     ]
+  [ Evaluations: 0         Packets: 0         Bytes: 0           States: 0     ]
+  [ Inserted: uid 0 pid 31001 ]
+
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+No ALTQ support in kernel
+ALTQ related functions disabled
+No ALTQ support in kernel
+ALTQ related functions disabled
+

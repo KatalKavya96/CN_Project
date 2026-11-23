@@ -1,0 +1,1201 @@
+
+UTC: 2026-11-23T09:05:08.643059+00:00
+Mac 1
+Command: /usr/bin/python3 phase2/services.py start b
+Exit: 0
+backend-b started 21535
+
+
+
+UTC: 2026-11-23T09:05:09.484036+00:00
+Mac 2
+Command: /usr/bin/python3 phase2/services.py start a
+Exit: 0
+backend-a started 31278
+
+
+
+UTC: 2026-11-23T09:05:15.609141+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:15 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:15 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    301      0 --:--:-- --:--:-- --:--:--   301
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:15.721584+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:15 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:15 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    324      0 --:--:-- --:--:-- --:--:--   326
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:15.801972+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:15 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:15 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "A-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    483      0 --:--:-- --:--:-- --:--:--   484
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:15.907213+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:15 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:15 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    345      0 --:--:-- --:--:-- --:--:--   347
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:15.961682+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:15 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:15 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "A-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    808      0 --:--:-- --:--:-- --:--:--   820
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:16.167419+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:16 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:16 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    168      0 --:--:-- --:--:-- --:--:--   168
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:16.230683+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:16 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:16 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "A-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    669      0 --:--:-- --:--:-- --:--:--   680
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:16.315333+00:00
+Mac 1
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:16 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:16 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    454      0 --:--:-- --:--:-- --:--:--   457
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:16.661293+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:16 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:16 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "A-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0   2236      0 --:--:-- --:--:-- --:--:--  2285
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:17.025644+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:17 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:17 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    569      0 --:--:-- --:--:-- --:--:--   571
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:17.338134+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:17 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:17 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "A-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0   2375      0 --:--:-- --:--:-- --:--:--  2461
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:17.654707+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:17 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:17 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    804      0 --:--:-- --:--:-- --:--:--   820
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:17.998888+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:17 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:17 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "A-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0   2209      0 --:--:-- --:--:-- --:--:--  2285
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:18.378859+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:18 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:18 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0    691      0 --:--:-- --:--:-- --:--:--   695
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:18.673912+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:18 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:18 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "A-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0   2014      0 --:--:-- --:--:-- --:--:--  2133
+* Connection #0 to host app.cn-project.test left intact
+
+
+UTC: 2026-11-23T09:05:19.044731+00:00
+Mac 2
+Command: /usr/bin/curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -v -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:19 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.cn-project.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.18.166
+*   Trying 10.7.18.166:8443...
+* Connected to app.cn-project.test (10.7.18.166) port 8443
+* ALPN: curl offers http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [53 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [1085 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [264 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted http/1.1
+* Server certificate:
+*  subject: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Computer Networks; CN=app.cn-project.test
+*  start date: Oct  5 09:07:02 2026 GMT
+*  expire date: Oct  5 09:07:02 2027 GMT
+*  subjectAltName: host "app.cn-project.test" matched cert's "app.cn-project.test"
+*  issuer: C=IN; ST=Haryana; L=Sonipat; O=CN Project; OU=Local CA; CN=CN Project Local CA
+*  SSL certificate verify ok.
+* using HTTP/1.x
+> GET /api/status HTTP/1.1
+> Host: app.cn-project.test:8443
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 200 OK
+< Server: nginx/1.31.6
+< Date: Mon, 23 Nov 2026 09:05:19 GMT
+< Content-Type: application/json
+< Content-Length: 32
+< Connection: keep-alive
+< X-Backend: B
+< Cache-Control: max-age=60
+< ETag: "B-v1"
+< X-Edge: mac2
+< 
+{ [32 bytes data]
+
+100    32  100    32    0     0   1019      0 --:--:-- --:--:-- --:--:--  1032
+* Connection #0 to host app.cn-project.test left intact
+

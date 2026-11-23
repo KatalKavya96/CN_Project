@@ -1,0 +1,549 @@
+
+UTC: 2026-11-23T09:05:55.180058+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8444/api/status
+Exit: 7
+
+curl: (7) Failed to connect to app.cn-project.test port 8444 after 1015 ms: Couldn't connect to server
+
+
+UTC: 2026-11-23T09:05:55.259820+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i --resolve wrong.cn-project.test:8443:10.7.18.166 https://wrong.cn-project.test:8443/api/status
+Exit: 60
+
+curl: (60) SSL: no alternative certificate subject name matches target host name 'wrong.cn-project.test'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+
+
+UTC: 2026-11-23T09:05:55.325427+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:55 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:55.627469+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8444/api/status
+Exit: 7
+
+curl: (7) Failed to connect to app.cn-project.test port 8444 after 14 ms: Couldn't connect to server
+
+
+UTC: 2026-11-23T09:05:55.928207+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i --resolve wrong.cn-project.test:8443:10.7.18.166 https://wrong.cn-project.test:8443/api/status
+Exit: 60
+
+curl: (60) SSL: no alternative certificate subject name matches target host name 'wrong.cn-project.test'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+
+
+UTC: 2026-11-23T09:05:56.248012+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:56.301286+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:56.372468+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:56.418006+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:56.492706+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:56.548914+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:56.623876+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:56.678005+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:56.773519+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:56 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:57.051082+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:57 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:57.364251+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:57 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:57.676102+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:57 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:58.009374+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:57 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:58.330892+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:58 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:58.723951+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:58 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:05:58.995202+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 304 Not Modified
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:58 GMT
+Connection: keep-alive
+ETag: "A-v1"
+Cache-Control: max-age=60
+X-Backend: A
+X-Edge: mac2
+
+
+
+
+UTC: 2026-11-23T09:05:59.345692+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i -H 'If-None-Match: "A-v1"' https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:05:59 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:06:00.372628+00:00
+Mac 1: dig @10.7.18.166 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.18.166 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-23T09:06:00.419978+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-stop
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:06:00.823887+00:00
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-stop
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:06:01.885762+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:06:02.900584+00:00
+Mac 1: dig @10.7.26.228 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-23T09:06:03.925329+00:00
+Mac 1: dig @10.7.26.237 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-23T09:06:07.949325+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 28
+
+curl: (28) Resolving timed out after 4005 milliseconds
+
+
+UTC: 2026-11-23T09:06:08.012315+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i http://10.7.18.166:8080/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:06:07 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-23T09:06:08.115646+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i --resolve app.cn-project.test:8443:10.7.18.166 https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:06:08 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:06:08.483599+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:06:10.109195+00:00
+Mac 2: dig @10.7.26.228 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-23T09:06:11.698416+00:00
+Mac 2: dig @10.7.26.237 app.cn-project.test +time=1 +tries=1
+Exit: 9
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +time=1 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+
+
+UTC: 2026-11-23T09:06:16.052739+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 28
+
+curl: (28) Resolving timed out after 4005 milliseconds
+
+
+UTC: 2026-11-23T09:06:16.414025+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i http://10.7.18.166:8080/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:06:16 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-23T09:06:16.866707+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i --resolve app.cn-project.test:8443:10.7.18.166 https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:06:16 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+
+
+UTC: 2026-11-23T09:06:17.008909+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin dns-start
+Exit: 0
+
+dnsmasq: syntax check OK.
+
+
+UTC: 2026-11-23T09:06:17.503874+00:00
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-start
+Exit: 0
+
+dnsmasq: syntax check OK.
+
+
+UTC: 2026-11-23T09:06:17.551226+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:06:17.976943+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin cache-flush
+Exit: 0
+
+
+
+UTC: 2026-11-23T09:06:18.089518+00:00
+Mac 1: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:06:18 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-age=60
+ETag: "A-v1"
+X-Edge: mac2
+
+{"backend": "A", "status": "ok"}
+
+
+UTC: 2026-11-23T09:06:18.569090+00:00
+Mac 2: curl --noproxy '*' --http1.1 --connect-timeout 4 --max-time 12 -sS -i https://app.cn-project.test:8443/api/status
+Exit: 0
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Mon, 23 Nov 2026 09:06:18 GMT
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: B
+Cache-Control: max-age=60
+ETag: "B-v1"
+X-Edge: mac2
+
+{"backend": "B", "status": "ok"}
+

@@ -1,0 +1,9 @@
+
+UTC: 2026-11-23T09:09:48.668386+00:00
+Mac 1
+Command: /usr/bin/pmset -g batt
+Exit: 0
+Now drawing from 'AC Power'
+ -InternalBattery-0 (id=23461987)	58%; charging; 1:12 remaining present: true
+
+

@@ -1,0 +1,348 @@
+{
+  "files": {
+    "evidence/phase-1/failures-20261123T090450/baseline.txt": {
+      "bytes": 4840,
+      "sha256": "5ada3d6d14afde80cc5dbde8d4898748de201bce1bd4c0c60862abc6cfe0d508"
+    },
+    "evidence/phase-1/failures-20261123T090450/both-backends-actions.txt": {
+      "bytes": 250,
+      "sha256": "d424c07090b5ab74e5dd233c4347d30a91ceb57d31ecd6f186a01f83c782fbc1"
+    },
+    "evidence/phase-1/failures-20261123T090450/both-backends-down-mac1.txt": {
+      "bytes": 3118,
+      "sha256": "c67ac1ddefd6063b944bbaa4cf4cb94d97fe2f4dab67b9ba044abe84a6ba0f96"
+    },
+    "evidence/phase-1/failures-20261123T090450/both-backends-down-mac2.txt": {
+      "bytes": 3119,
+      "sha256": "48ea111b53cc22221dfcc2f9d25ddeebb91b6b07c9b134269ce3143b32e08a0f"
+    },
+    "evidence/phase-1/failures-20261123T090450/both-backends-restoration.txt": {
+      "bytes": 39063,
+      "sha256": "a7ed463a6e70142e5e84ca2b8a0479873a2b2cef96dd3b82036d2ed9e7791a05"
+    },
+    "evidence/phase-1/failures-20261123T090450/restoration.txt": {
+      "bytes": 1960,
+      "sha256": "73c52907d4e33965e029ea64a8c18713a96629b08935b60abca8831b4392bcf6"
+    },
+    "evidence/phase-1/failures-20261123T090450/summary.json": {
+      "bytes": 457,
+      "sha256": "6be89c7ca2097586b2c680f30fcb0ba0f37d91816b611be9c886c590ac0badab"
+    },
+    "evidence/phase-1/failures-20261123T090450/wrong-dns-mac1.txt": {
+      "bytes": 7298,
+      "sha256": "919d79b06fa0bb7f7fb940754de1460c00d2f13b6c4666407dcaac36532beb27"
+    },
+    "evidence/phase-1/failures-20261123T090450/wrong-dns-mac2.txt": {
+      "bytes": 7296,
+      "sha256": "fcd87a34b1fb50b57e598f37888e0879db6ac1e15ea2511239549178b1a98a6e"
+    },
+    "evidence/phase-1/failures-20261123T090450/wrong-record-actions.txt": {
+      "bytes": 980,
+      "sha256": "588839eb0a63f3838310ddf5f358c22ead90435ae14b8014962fd6c26435d44b"
+    },
+    "evidence/phase-1/failures-20261123T090450/wrong-record-mac1.txt": {
+      "bytes": 4271,
+      "sha256": "f2f63cc740948cdf25fe032d711cb407ad2e280ae0005e1b290a70a742136a27"
+    },
+    "evidence/phase-1/failures-20261123T090450/wrong-record-mac2.txt": {
+      "bytes": 4276,
+      "sha256": "04f7b5c1fc8f41716cbb48c9dde0a3b8bac573c9fe090265309a4e49974983ec"
+    },
+    "evidence/phase-1/failures-20261123T090450/wrong-record-preparation.txt": {
+      "bytes": 329,
+      "sha256": "a93814898e9ade0bdce3a09927e5cbc747081a9de4fddce0244bc45074947d3c"
+    },
+    "evidence/phase-1/failures-20261123T090450/wrong-record-restoration.txt": {
+      "bytes": 5067,
+      "sha256": "3e1911a546149638434e33aa128938f06e0d50d1d3e57a1ce6394888408cd010"
+    },
+    "evidence/phase-2/mac3-dns/ttl-20261123T090856/client-cache-and-cutover.txt": {
+      "bytes": 16899,
+      "sha256": "7363152f1df76d1a150b7cd3cb9aec609f373f6106e0abbf85ade9ade8fa1c51"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-backend-endpoints.txt": {
+      "bytes": 1056,
+      "sha256": "0a85d92b36375e66faaaca14eb3a2726f7017babf98f5f2fab323354bb29b805"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-dns.txt": {
+      "bytes": 2734,
+      "sha256": "d03fafdce3d8f2c0160ab8c7b8868855b1059c569cbaad10ecfee62c922229e8"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-firewall-final.txt": {
+      "bytes": 1625,
+      "sha256": "27c9e6a2604ca3c584778d5d3098788e309d6d14f5d39be24aa2cb4dc900bc9f"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-inventory.txt": {
+      "bytes": 849,
+      "sha256": "67717c47f2f1d50a034cf6587826b4510f9b891ceeab0ea5edcd909d1c767971"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-ping.txt": {
+      "bytes": 482,
+      "sha256": "66edfb2a0b9000fde8e3f4e1cdf1cd656121cb2a2acf0a0cf62fdd2196142547"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-plain-trust.txt": {
+      "bytes": 4396,
+      "sha256": "375521c96731c0da340b68a9fd73a62a0e3e8439f9bd8d89a40c76ae138d6841"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-power.txt": {
+      "bytes": 193,
+      "sha256": "49a23279ead56881c930b9d5994845214980e4a8058f17c98a0baefc61506172"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-primary-https.txt": {
+      "bytes": 3448,
+      "sha256": "1a9a278b1b4a469a32df95eccc2bdc1b6de40d10b39f5943eee3bc75650bb8a3"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-restoration.txt": {
+      "bytes": 759,
+      "sha256": "79f41566a509c36a2e97adac024f699e3caddee7f6d694e91b7d41f3d18c4eaf"
+    },
+    "evidence/recovery/2026-11-23T143948/mac1-standby-https.txt": {
+      "bytes": 3824,
+      "sha256": "834a785c7f7ab1bf6aa0ef974fbfa7c19915d3ffdb9f1d4485d8b3bf8ed88a9a"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-backend-endpoints.txt": {
+      "bytes": 1056,
+      "sha256": "1460a33da3652dbd9daef8ce7d5b2c3964f28ff7bd183a1bac3a4f13c83bacbc"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-dns.txt": {
+      "bytes": 2737,
+      "sha256": "b1c91d5cf758a5406b3e457c2430a7424c343d5b4a10aa7f439b7cb791bd4455"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-firewall-final.txt": {
+      "bytes": 1625,
+      "sha256": "8c44434b2063fe7f1ed4a057d84661f2644bf0fdbd3c92b2d4542fe655645d64"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-inventory.txt": {
+      "bytes": 849,
+      "sha256": "be8356b4c0b9c4b41d44abdf758bf511c1c091f2c0497719b3c955030d1a4c3b"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-ping.txt": {
+      "bytes": 476,
+      "sha256": "1bffb22a42c080c1a9f248e7006dbe5c6c6307ae37227d01a1be0b88236a44c3"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-plain-trust.txt": {
+      "bytes": 4396,
+      "sha256": "6e98c57bf09cf74b50d11ec0587130bac9c91e39ca656f045696f87d279a8ce5"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-power.txt": {
+      "bytes": 201,
+      "sha256": "8fcb0a235331556a2731b65e04275330d0e7553922c7477b8580e0f8abbe6d49"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-primary-https.txt": {
+      "bytes": 3448,
+      "sha256": "a66f3a226df1d46c88d9f24b7623130441840d07baea63ff4263495be61a09c9"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-restoration.txt": {
+      "bytes": 1411,
+      "sha256": "5c425ebdbbef26c1bf9ee5fa7eee7a8f38d82958eed16a3a82da385af88c7adc"
+    },
+    "evidence/recovery/2026-11-23T143948/mac2-standby-https.txt": {
+      "bytes": 3824,
+      "sha256": "4969e03036e6859652879922b990edd51af354ff5a8fc5cf7aa64742ad767221"
+    },
+    "evidence/recovery/2026-11-23T143948/preserved-evidence-hashes.json": {
+      "bytes": 40525,
+      "sha256": "c1718446eaf8d8dc36674f58983a725a1d5f3736532f668ab015e1e0e4b366fc"
+    },
+    "evidence/recovery/2026-11-23T143948/recovery-summary.json": {
+      "bytes": 777,
+      "sha256": "87fed0c1cd7263374479b85d4ffa9499799ae690a6eadf98c246121337b20179"
+    },
+    "evidence/rehearsal/2026-11-23T143307/README.md": {
+      "bytes": 3903,
+      "sha256": "51dcac68cb2dcb6434f722ffdb4ec608a4b4a7c309a99bc7997e72166802bc87"
+    },
+    "evidence/rehearsal/2026-11-23T143307/extra-cases/commands.txt": {
+      "bytes": 9634,
+      "sha256": "d75d5d46cbf9b089b6015d56db4041e535d4f32d94dc751a541d71c329c7de5a"
+    },
+    "evidence/rehearsal/2026-11-23T143307/extra-cases/summary.json": {
+      "bytes": 219,
+      "sha256": "d91c3561630a8062ee620dbfcca6b54f454cfdea85c18ef2080f0ac52663cf85"
+    },
+    "evidence/rehearsal/2026-11-23T143307/extra-recheck/extra-cases/commands.txt": {
+      "bytes": 14362,
+      "sha256": "85319542bf1fbf70361dbd509153103fbe1c61cf33ba6b46267a4305ed681d5d"
+    },
+    "evidence/rehearsal/2026-11-23T143307/extra-recheck/extra-cases/summary.json": {
+      "bytes": 217,
+      "sha256": "1c6d29664ebc298caa77654dfd78cfb6564ee4a626bbb4008fa65d5982d975bc"
+    },
+    "evidence/rehearsal/2026-11-23T143307/extra-recheck/extra-test-source.py": {
+      "bytes": 5213,
+      "sha256": "afda1e8dad16963ac2b316b411ed7e198ecdbde14b1121d8309bccfeb0187e12"
+    },
+    "evidence/rehearsal/2026-11-23T143307/extra-test-source.py": {
+      "bytes": 5046,
+      "sha256": "3f2dd84d95db661aebf5bb502d1c928751d0d11feace6bfddb740e61c2a5d535"
+    },
+    "evidence/rehearsal/2026-11-23T143307/final-state.txt": {
+      "bytes": 10550,
+      "sha256": "33a065aff6c5e189e5a8eb7f121eb0535ca8944088762d09d38753d3efc372aa"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/admin-actions.txt": {
+      "bytes": 3894,
+      "sha256": "5eac12b194f615fdf2826f87e84e26df554af3effca42b89e0089cf1499ea0aa"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/backend-a-down-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "db0c229b4f99a66f572101dbd5a3f1996b3fdb3e80c314809099bc98d4b36d9e"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/backend-a-restored-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "2c16335ed5cd07b2337893a4340234c23e65b1a1874954a57f84bc951459dc0f"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/backend-a-start.txt": {
+      "bytes": 132,
+      "sha256": "9a18af6618f050bdb8837fb7b9eee148b2ebaa417d7834a96a8bf2fb39f580b7"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/backend-a-stop.txt": {
+      "bytes": 125,
+      "sha256": "bce587eac2f272505037dc2a61c857af4884a3fce58b721c3adaf81f3b21e3ad"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/backup-query-log.txt": {
+      "bytes": 3040,
+      "sha256": "7ec403cb0e686d57a188a0b4dba3bac065292b89761545b136771f9d749700ea"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/baseline-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "3447531c1da87ac7d7de90213a4a77e29552c2aa3e88167c82b02e1c51ab0213"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/baseline-os-lookups.txt": {
+      "bytes": 344,
+      "sha256": "bb4e516374e05e701001ff2d74ee4ba729bd16444693b139d3bd91e3e67dcd9d"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-actions.txt": {
+      "bytes": 746,
+      "sha256": "72ebd5200062722c27f747f09f5063f59f15f8c27b8f4be61a5db982ab6c0cbd"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-after-ttl-by-name.txt": {
+      "bytes": 988,
+      "sha256": "2ca3e47fdde18945029ba87a32bfc8ad8363c7e7d75139632e68640cccfd95ad"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-after-ttl-os-cache.txt": {
+      "bytes": 344,
+      "sha256": "0527d178a8748f4b4e07d2c99cad07abe9171b207c13e586c65b52042e4fdc43"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-authoritative.txt": {
+      "bytes": 1367,
+      "sha256": "e4375770f49d6c4782cefe78d399892c0511d3c82334b81f3fe63bc517fee150"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-final-restore.txt": {
+      "bytes": 980,
+      "sha256": "34ffcfabde4ed0f3a3c9151151c945eeb67c7bd005691db693082a4ac9bdc8b3"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-fresh-client-by-name.txt": {
+      "bytes": 494,
+      "sha256": "965d9b078c26d7b2e2b0d628a59bbfe5d259838c475d48af6caf9b7e0636b832"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-fresh-client-flush.txt": {
+      "bytes": 117,
+      "sha256": "f2d08e0dd8d668ac20bf8891f3d007d15d34a6f6bdab848531495a4d827a238f"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-immediate-by-name.txt": {
+      "bytes": 988,
+      "sha256": "f1b7bea53525463d7739e35a1f812cd5f594f86648b5f8e5f8636a4020058323"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-immediate-os-cache.txt": {
+      "bytes": 344,
+      "sha256": "2115232a511bf85d2b149615d0ddee03fad746ff937a2088c6161945d0c6a53e"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-prime.txt": {
+      "bytes": 1222,
+      "sha256": "9fc294258d14aec95129d5cf5e20e6c4e76270be617c0977087844d4d2d274fc"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-restore.txt": {
+      "bytes": 980,
+      "sha256": "fe7bd0ff8dec7851eaa67e27f8cef8d263c1082c7e52805aca7496b1f293a3ac"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/cutover-restored-by-name.txt": {
+      "bytes": 988,
+      "sha256": "309a9767d4963a1de2bdeb6e07423a841d2d54f232340a373f019ae7f020fd3f"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/dns-failover-cutover.pcap": {
+      "bytes": 236530,
+      "sha256": "09a6283983898ebaa56409f57695e6b4a1dc77ebb3da5aeb56a9eed34ae80abe"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/dns-packets.tsv": {
+      "bytes": 2564,
+      "sha256": "b3854e255ecde55f30646c11d26dac411e5f57a1d171a64878938b39e3f19075"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/failover-cache-flush.txt": {
+      "bytes": 234,
+      "sha256": "8aa3f643c47f5966a1f8eec4f12b26da030250de0ecb751315f45df598777e52"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/final-by-name-health.txt": {
+      "bytes": 7904,
+      "sha256": "1af4eb1a758cca17becba5bec4d7073eaca06bd1206de34d015a79f2e082838f"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/isolation-allowed-edge.txt": {
+      "bytes": 774,
+      "sha256": "6238c76ac4fe92bb35b85bcb8b208cc5f148e12b685b05602a56e120af389eb9"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/isolation-blocked-client.txt": {
+      "bytes": 728,
+      "sha256": "194d46b52d50808b8104b6704bbc4389250fd6d63ceef97a65c021b84b39082f"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/isolation-counters.txt": {
+      "bytes": 4250,
+      "sha256": "fc39740673d9fdd60c52b47d97bf4163c497b75c28d48e2bf3568cbd2bcebe8f"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/isolation-https-by-name.txt": {
+      "bytes": 7904,
+      "sha256": "ac3b2f4a27cfb7e435978159c1b511798fc1638e0ccf35713db7c5d16e248ee7"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/isolation-rollback.txt": {
+      "bytes": 520,
+      "sha256": "915ec0028849e61f03986a539e944bdfb2a9a57c0d261a90c73bcb33f493d14c"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/isolation-rules.txt": {
+      "bytes": 2293,
+      "sha256": "8fbf3d0db8a4b48be70e0708a34299cf60cefbca2a57a5cd4efac6ea11fd3c64"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/mac1-resolver.txt": {
+      "bytes": 1660,
+      "sha256": "754e77fd7ab17d5dc889b5cf6675c4799cf979b765ebf022cd36fccce49bbd81"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/mac2-resolver.txt": {
+      "bytes": 1646,
+      "sha256": "da52dbbc6684035cd4635c845532b5eb6bc6f02304129d2c885e748a416d9372"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/packet-capture.log": {
+      "bytes": 168,
+      "sha256": "c00a11a9ae4c70448132ecb9521d470bb3d52db965095e3514d8aed8ab5a1631"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/primary-down-by-name-https.txt": {
+      "bytes": 988,
+      "sha256": "746da9e4a5f015f5183c989f438b93ab1f6826592466694532d33c3135033862"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/primary-down-os-lookup.txt": {
+      "bytes": 344,
+      "sha256": "5b8f33d19adf2ba9292b380b3ffe44ff6ea942287d288a9ec50a60c2d6b8293d"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/primary-restored.txt": {
+      "bytes": 375,
+      "sha256": "69a960385e99157c8be5e645c76fd0c8b260077d463d9b47e9fa27f40bc3b29a"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/primary-stopped-direct-query.txt": {
+      "bytes": 297,
+      "sha256": "db27c3b612f7466f79cefa1d86f8cf16aa408a7f865be721a35b71154a7482ee"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/summary.txt": {
+      "bytes": 240,
+      "sha256": "1b73dd32076d12a1c2d5af5e21bc891d1a7c5c4be17d3103a16b886cd49b78c6"
+    },
+    "evidence/rehearsal/2026-11-23T143307/phase2/tcp-tls-packets.tsv": {
+      "bytes": 113465,
+      "sha256": "4dfbad58628ec3e4c6778501782a292d0120e74278c0a170d3f243c4b5033af7"
+    },
+    "evidence/rehearsal/2026-11-23T143307/prior-evidence-hashes.json": {
+      "bytes": 31957,
+      "sha256": "b9d84a13c0602b33855e97a005c7d3f548533568aea2f7f0935a8ed60f802a47"
+    },
+    "evidence/rehearsal/2026-11-23T143307/summary.json": {
+      "bytes": 821,
+      "sha256": "7965d4d84698ab912bce609b447f266d44ea3786d453a5beb625b93794da2a78"
+    }
+  }
+}

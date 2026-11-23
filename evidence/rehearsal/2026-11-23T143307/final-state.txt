@@ -1,0 +1,262 @@
+
+UTC: 2026-11-23T09:11:06.162319+00:00
+Mac 1: sudo -n /usr/local/sbin/cn-project-resolver status
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.26.237
+
+
+
+UTC: 2026-11-23T09:11:06.173022+00:00
+Mac 1: dig @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.183774+00:00
+Mac 1: dig @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.193071+00:00
+Mac 1: dig @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.204309+00:00
+Mac 1: dig @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.233462+00:00
+Mac 1: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.263466+00:00
+Mac 1: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.290132+00:00
+Mac 1: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.337118+00:00
+Mac 1: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:06.683336+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-resolver status
+Exit: 0
+nameserver 10.7.26.228
+nameserver 10.7.26.237
+
+
+
+UTC: 2026-11-23T09:11:06.989267+00:00
+Mac 2: dig @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:07.307637+00:00
+Mac 2: dig @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:07.589316+00:00
+Mac 2: dig @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:07.922472+00:00
+Mac 2: dig @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.228 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:08.236142+00:00
+Mac 2: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:08.554323+00:00
+Mac 2: dig @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 app.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+app.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:08.813069+00:00
+Mac 2: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:09.116047+00:00
+Mac 2: dig @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+Exit: 0
+
+; <<>> DiG 9.10.6 <<>> @10.7.26.237 api.cn-project.test +noall +answer +time=2 +tries=1 +tcp
+; (1 server found)
+;; global options: +cmd
+api.cn-project.test.	30	IN	A	10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:09.570407+00:00
+Mac 3: sudo -n /usr/local/sbin/cn-project-backup dns-status
+Exit: 0
+59144
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 14:39:29 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.26.228
+Nov 23 14:39:35 dnsmasq[59144]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 14:39:36 dnsmasq[59144]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 14:39:36 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 14:39:36 dnsmasq[59144]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 14:39:50 dnsmasq[59144]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 14:39:50 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 14:39:51 dnsmasq[59144]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 14:39:51 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 14:39:51 dnsmasq[59144]: read /private/var/db/cn-project-backup/records.hosts - 2 names
+Nov 23 14:39:57 dnsmasq[59144]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 14:39:57 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 14:39:57 dnsmasq[59144]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 14:39:57 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 14:41:06 dnsmasq[59144]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 14:41:06 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 14:41:06 dnsmasq[59633]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 14:41:06 dnsmasq[59633]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 14:41:06 dnsmasq[59144]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 14:41:06 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 14:41:06 dnsmasq[59635]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 14:41:06 dnsmasq[59635]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 14:41:08 dnsmasq[59144]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 14:41:08 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 14:41:08 dnsmasq[59638]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 14:41:08 dnsmasq[59638]: /private/var/db/cn-project-backup/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 14:41:08 dnsmasq[59144]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 14:41:08 dnsmasq[59144]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 14:41:09 dnsmasq[59639]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 14:41:09 dnsmasq[59639]: /private/var/db/cn-project-backup/records.hosts api.cn-project.test is 10.7.18.166
+
+
+
+UTC: 2026-11-23T09:11:09.855973+00:00
+Mac 2: sudo -n /usr/local/sbin/cn-project-admin dns-status
+Exit: 0
+10.7.18.166 app.cn-project.test api.cn-project.test
+Nov 23 01:58:56 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 01:58:56 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 01:58:56 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 01:58:56 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 01:58:56 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 01:59:01 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 01:59:01 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 01:59:01 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 01:59:01 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 01:59:09 dnsmasq[9151]: query[SVCB] _dns.resolver.arpa from 10.7.18.166
+Nov 23 01:59:09 dnsmasq[9151]: config error is REFUSED (EDE: not ready)
+Nov 23 02:06:19 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.26.228
+Nov 23 02:06:19 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:06:19 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.26.228
+Nov 23 02:06:19 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: query[A] app.cn-project.test from 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: /private/var/db/cn-project/records.hosts app.cn-project.test is 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: query[A] api.cn-project.test from 10.7.18.166
+Nov 23 02:06:22 dnsmasq[9151]: /private/var/db/cn-project/records.hosts api.cn-project.test is 10.7.18.166
+Nov 23 02:32:52 dnsmasq[9151]: query[SVCB] _dns.resolver.arpa from 10.7.26.228
+Nov 23 02:32:52 dnsmasq[9151]: config error is REFUSED (EDE: not ready)
+Nov 23 02:49:28 dnsmasq[9151]: query[SVCB] _dns.resolver.arpa from 10.7.18.166
+Nov 23 02:49:28 dnsmasq[9151]: config error is REFUSED (EDE: not ready)
+Nov 23 02:49:30 dnsmasq[9151]: read /private/var/db/cn-project/records.hosts - 2 names
+Nov 23 02:49:50 dnsmasq[9151]: exiting on receipt of SIGTERM
+
+

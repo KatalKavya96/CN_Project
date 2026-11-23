@@ -1,0 +1,30 @@
+
+UTC: 2026-11-23T09:09:48.793535+00:00
+Mac 1
+Command: /sbin/ifconfig en0
+Exit: 0
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
+	ether 02:00:00:00:00:00
+	inet6 fe80::87f:c3b7:678e:62fa%en0 prefixlen 64 secured scopeid 0xe 
+	inet 10.7.26.228 netmask 0xffffe000 broadcast 10.7.31.255
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+
+
+
+UTC: 2026-11-23T09:09:48.796597+00:00
+Mac 1
+Command: /sbin/route -n get default
+Exit: 0
+   route to: default
+destination: default
+       mask: default
+    gateway: 10.7.0.1
+  interface: en0
+      flags: <UP,GATEWAY,DONE,STATIC,PRCLONING,GLOBAL>
+ recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire
+       0         0         0         0         0         0      1500         0 
+
+
