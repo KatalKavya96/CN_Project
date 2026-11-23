@@ -2,9 +2,12 @@
 
 ## Final project report: Phase 1 and Phase 2
 
-**Team:** Kavya Katal, Ronit Singh and Priyanshu Tomar  
-**Submission date:** 23 November 2026  
-**Deployment:** Three macOS laptops on a private LAN; no cloud service in the request path  
+**Team:** Kavya Katal, Ronit Singh and Priyanshu Tomar
+
+**Submission date:** 23 November 2026
+
+**Deployment:** Three macOS laptops on a private LAN; no cloud service in the request path
+
 **Repository:** https://github.com/KatalKavya96/CN_Project
 
 ### Abstract
