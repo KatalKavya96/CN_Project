@@ -9,7 +9,10 @@ deployment; Phase 2 uses Priyanshu's third Mac only for backup DNS.
 - [End-to-end request flow](docs/request-flow.md)
 - [Phase 2 operating commands](phase2/README.md)
 - [Final demonstration runbook](docs/runbook.md)
-- [Phase 2 final report](docs/phase2-report.md)
+- [Final report - PDF](output/pdf/CN_Project_Final_Report.pdf)
+- [Final report - editable LaTeX](docs/final-project-report.tex)
+- [Final report - Markdown](docs/final-project-report.md)
+- [Viva command menu](docs/viva-command-menu.md) and [shareable PDF](output/pdf/CN_Project_Viva_Command_Menu.pdf)
 - [Evidence index](evidence/phase-2/README.md)
 - [Evidence for every Phase 1 and Phase 2 requirement](evidence/submission/README.md)
 - [Current Mac 3 DNS migration and fresh acceptance evidence](evidence/phase-2/mac3-dns/README.md)
@@ -113,7 +116,13 @@ The repeatable live suite on Mac 1 is `python3 phase2/final-tests.py`; it
 deliberately stops primary DNS and Backend A, changes DNS, and applies PF
 rules, saving observations and restoring service. Read its summary under
 `evidence/phase-2/final/`. Run it only during a planned demonstration window.
-The course's individual viva and faculty-injected fault still require both
+The course's individual viva and faculty-injected fault still require all three
 members to understand and operate the system. Historical evidence books and
 manifests describe their original two-Mac capture; new migration evidence is
 saved separately, preserving every original artifact.
+
+The final report reflects the three-Mac deployment and latest real-system
+rehearsal. `docs/phase2-report.md` is retained as historical detailed test notes.
+The supplied course brief requires the report's content but does not prescribe
+IEEE formatting or LaTeX. The `.tex` source follows the team's supplied A4
+article template and can be compiled as a standalone Overleaf main document.

@@ -1,0 +1,379 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=25mm,headheight=16pt]{geometry}
+\usepackage{graphicx,amsmath,amssymb}
+\usepackage{booktabs,array,longtable,tabularx}
+\usepackage[table]{xcolor}
+\usepackage{titlesec,fancyhdr,enumitem,microtype}
+\usepackage{setspace,xurl,tcolorbox,fvextra}
+\usepackage[hidelinks]{hyperref}
+
+% Standalone A4 article matching the supplied visual style; not IEEEtran.
+% No external images, bibliography files, or private credentials are required.
+\definecolor{Ink}{HTML}{183449}
+\definecolor{Teal}{HTML}{147D92}
+\definecolor{Pale}{HTML}{EDF5F7}
+\definecolor{Muted}{HTML}{526775}
+\definecolor{Gold}{HTML}{BE9851}
+\definecolor{Line}{HTML}{D5E2E7}
+\color{Ink}
+\setstretch{1.10}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.18}
+\setlength{\tabcolsep}{5pt}
+\setlist[itemize]{leftmargin=*,itemsep=3pt,topsep=4pt}
+\titleformat{\section}{\Large\bfseries\color{Ink}}{\textcolor{Teal}{\thesection}}{.7em}{}[\vspace{3pt}\color{Line}\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{Teal}}{\thesubsection}{.6em}{}
+\titlespacing*{\section}{0pt}{18pt}{9pt}
+\titlespacing*{\subsection}{0pt}{12pt}{5pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{Muted}{PRIVATE NETWORK SERVICE PLATFORM}}
+\fancyhead[R]{\small\textcolor{Muted}{PHASES 1 AND 2}}
+\fancyfoot[L]{\footnotesize\textcolor{Muted}{Computer Networks / Three-Mac Deployment}}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\hypersetup{pdftitle={CN Project: Phase 1 and Phase 2 Final Report},pdfauthor={Kavya Katal, Ronit Singh, Priyanshu Tomar}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\codepath}[1]{\path{#1}}
+\newcommand{\tablehead}{\rowcolor{Pale}}
+\newtcolorbox{insight}[1]{colback=Pale,colframe=Teal,boxrule=.5pt,arc=2mm,left=10pt,right=10pt,top=7pt,bottom=7pt,title={#1},fonttitle=\bfseries,colbacktitle=Teal,coltitle=white}
+\newcommand{\metric}[3]{\begin{minipage}[t]{.30\linewidth}\centering{\small\color{Muted}#1\par}\vspace{3pt}{\LARGE\bfseries\color{Teal}#2\par}\vspace{2pt}{\footnotesize #3\par}\end{minipage}}
+\DefineVerbatimEnvironment{codeblock}{Verbatim}{fontsize=\footnotesize,breaklines=true,breakanywhere=false,frame=single,rulecolor=\color{Line},framesep=6pt}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+
+\begin{document}
+\begin{titlepage}
+\thispagestyle{empty}
+{\small\bfseries\color{Teal}COMPUTER NETWORKS \hfill PHASE 1 + PHASE 2\par}
+\vspace{9mm}
+{\color{Teal}\hrule height 2pt}
+\vspace{12mm}
+{\Huge\bfseries Private Network\\[3pt]Service Platform\par}
+\vspace{5mm}
+{\Large\color{Teal}Build, Observe, Harden and Recover\par}
+\vspace{8mm}
+{\large DNS / TCP / TLS / HTTP / nginx / Resilience\par}
+\vspace{10mm}
+\begin{tabularx}{\linewidth}{lY}
+\toprule\tablehead\textbf{Team Member}&\textbf{Final Deployment Responsibility}\\\midrule
+Kavya Katal&Primary DNS, Backend B, standby edge and client\\
+Ronit Singh&Primary nginx edge, TLS, Backend A and client\\
+Priyanshu Tomar&Independent Phase 2 backup DNS\\
+\bottomrule
+\end{tabularx}
+\vspace{10mm}
+\begin{center}
+\metric{PHYSICAL MACS}{3}{One private LAN}\hfill
+\metric{APPLICATION BACKENDS}{2}{Round-robin and recovery}\hfill
+\metric{DNS SERVERS}{2}{Primary plus backup}
+\end{center}
+\vfill
+\begin{insight}{Scope and evidence}
+The original application and edges stay on Kavya's and Ronit's Macs.
+Priyanshu hosts backup DNS only. Controlled tests and restoration are recorded;
+automatic host failover and the live faculty challenge are not claimed.
+\end{insight}
+\vspace{5mm}
+{\small\color{Muted}FINAL PROJECT REPORT \hfill 23 NOVEMBER 2026\par}
+\end{titlepage}
+
+\pagenumbering{roman}
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+
+This project implements and observes a private network application accessed through DNS, TCP, TLS, HTTP and an nginx reverse proxy. Two Python backends provide identifiable responses, cache headers and conditional validation. Phase 2 extends the original two-Mac deployment with redundant DNS, a standby edge, controlled DNS cutover, passive backend failure handling and reversible backend firewall rules. The final arrangement uses Kavya's Mac for primary DNS, Backend B and standby nginx; Ronit's Mac for primary nginx and Backend A; and Priyanshu's Mac only for backup DNS. Controlled tests passed from both original client Macs, including DNS loss, backend failures, cache behavior and recovery. Raw logs, packet captures, field exports and preservation manifests accompany the report. Automatic host failover, an independent third-source Backend B rejection test, and completion of the live faculty challenge are not claimed.
+
+
+
+\vspace{4mm}
+\textbf{Keywords:} private DNS, HTTPS, TLS, nginx, load balancing, DNS failover,
+cache validation, backend isolation, controlled recovery.
+
+\vspace{4mm}
+\textbf{Repository:} \url{https://github.com/KatalKavya96/CN_Project}
+
+\clearpage
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+
+\section{Introduction and Objectives}
+
+The principal objectives were:
+\begin{itemize}
+\item Provide application access through private domain names.
+\item Observe the DNS, TCP, TLS and HTTP request path.
+\item Distribute requests across two identifiable backends.
+\item Verify trusted HTTPS without bypassing certificate checks.
+\item Maintain service during selected DNS and backend failures.
+\item Demonstrate controlled migration to a standby edge.
+\item Restrict direct backend access and provide safe rollback.
+\item Diagnose failures systematically and preserve evidence.
+\end{itemize}
+
+
+The course principle is that the application remains simple while the network is built, observed and defended. Phase 1 established private LAN connectivity, private DNS records, two HTTP backends, nginx round-robin distribution, local CA-signed HTTPS, HTTP caching behavior and DNS/TCP/TLS packet evidence. Phase 2 retained that infrastructure and added recovery and isolation mechanisms.
+
+
+Both backends implement GET \codepath{/}, GET \codepath{/api/status}, and HEAD responses. Backend A listens on port 3001 and Backend B on 3002. \codepath{X-Backend} identifies A or B, while nginx adds \codepath{X-Edge} to identify the serving proxy. The normal client URL is \codepath{https://app.cn-project.test:8443/api/status}. The second private name, \codepath{api.cn-project.test}, resolves to the same edge.
+
+
+\section{Final architecture and ownership}
+
+
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.23\linewidth}>{\raggedright\arraybackslash}p{0.26\linewidth}>{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
+\toprule
+\tablehead \textbf{Member and machine} & \textbf{LAN address} & \textbf{Responsibilities}\\\midrule
+\endfirsthead
+\toprule
+\tablehead \textbf{Member and machine} & \textbf{LAN address} & \textbf{Responsibilities}\\\midrule
+\endhead
+Kavya - Mac 1 & 10.7.26.228/19 & Primary DNS :53, Backend B :3002, standby nginx :8080/:8443, client\\
+Ronit - Mac 2 & 10.7.18.166/19 & Primary nginx :8080/:8443, TLS termination, Backend A :3001, client\\
+Priyanshu - Mac 3 & 10.7.26.237/19 & Phase 2 backup DNS over UDP/TCP :53 only\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+All three use interface \codepath{en0}. The observed subnet mask is 255.255.224.0 and gateway 10.7.0.1. These DHCP addresses describe the tested LAN, not permanently assigned identities. Both existing clients have a domain-specific resolver:
+
+
+\begin{codeblock}
+/etc/resolver/cn-project.test
+nameserver 10.7.26.228
+nameserver 10.7.26.237
+\end{codeblock}
+
+
+Both DNS servers normally return 10.7.18.166 for both project names, with TTL 30. Ronit's former backup DNS is stopped, with its configuration retained for rollback. Mac 3 received no application, nginx configuration or project TLS private key. Its participation is confined to backup DNS.
+
+
+\begin{codeblock}
+Client on Kavya or Ronit
+  |-- DNS lookup --> Kavya primary / Priyanshu backup
+  |<-- A record: 10.7.18.166, TTL 30
+  |
+  +-- TCP :8443 --> TLS --> HTTP --> Ronit's nginx
+                                     |-- A: 127.0.0.1:3001
+                                     +-- B: 10.7.26.228:3002
+
+Controlled cutover: both DNS servers advertise 10.7.26.228
+Client --> Kavya's standby nginx :8443
+            |-- A: 10.7.18.166:3001
+            +-- B: 127.0.0.1:3002
+\end{codeblock}
+
+
+DNS supplies an address; it does not forward the HTTPS request. TCP establishes the connection before TLS. TLS authenticates the server and protects traffic; application user login or authorization was not implemented. nginx creates a separate upstream HTTP connection to the selected backend.
+
+
+\section{Changes from Phase 1}
+
+
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}@{}}
+\toprule
+\tablehead \textbf{Area} & \textbf{Phase 1 baseline} & \textbf{Final Phase 2 behavior}\\\midrule
+\endfirsthead
+\toprule
+\tablehead \textbf{Area} & \textbf{Phase 1 baseline} & \textbf{Final Phase 2 behavior}\\\midrule
+\endhead
+Physical roles & Two Macs combine clients, DNS, edge and backends & Same services retained; Priyanshu added only for backup DNS\\
+Name resolution & Primary private DNS & Primary Mac 1 plus backup Mac 3 in both client resolvers\\
+Edge availability & Primary nginx on Ronit & Additional certified standby nginx on Kavya; manual DNS cutover\\
+Backend recovery & Round-robin responses & Explicit passive failure parameters and retries; A-down/B-only proof\\
+Isolation & Direct backend paths available & Reversible project PF rules restrict backend LAN access\\
+Observation & Protocol captures and response headers & Failure/cutover PCAPs, upstream logs, edge headers and hash manifests\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+Backup DNS was initially tested on Ronit, then moved to Priyanshu without moving the edges or backends. Both clients passed fresh resolution and plain HTTPS with primary DNS and the retired Mac 2 backup simultaneously unavailable. Historical two-Mac observations and older captures retain their collection dates and addresses. They are preserved alongside the final three-Mac evidence.
+
+
+\section{Configuration and security controls}
+
+
+Primary and backup dnsmasq services use fixed root-owned configurations and reloadable hosts records. Both receive the same record change. Root-owned helpers expose exact project operations through limited sudoers rules. They do not grant unrestricted password-free sudo. The active IP inventory is \codepath{phase2/lab.env}; \codepath{phase2/mac3.env} records the backup DNS host.
+
+
+nginx enables TLS 1.2 and 1.3. Each edge has a separate private key and a server certificate covering both project hostnames, signed by the same local CA. The CA private key stays on Ronit. Both client Macs passed default-trust HTTPS without \codepath{-k} or \codepath{--cacert}; explicit public-CA validation remains supported. Private keys and generated certificate/runtime files are ignored by Git.
+
+
+The upstreams use \codepath{max_fails=1}, \codepath{fail_timeout=5s}, a two-second connection timeout, a five-second read timeout and retries on configured upstream errors. Backend responses use \codepath{Cache-Control: max-age=60} and per-backend ETags \codepath{"A-v1"} and \codepath{"B-v1"}. HTTP freshness and DNS TTL govern different cached data.
+
+
+\section{Phase 2 extensions and learning summaries}
+
+
+\subsection{Extension A - Backup DNS resolver}
+
+
+Priyanshu's dnsmasq answers both names over UDP and TCP on port 53. Both client resolvers list Kavya and Priyanshu. Tests stopped primary DNS, confirmed a direct query failed, flushed client caches, and obtained successful OS lookups and by-name HTTPS from both clients. Backup query logs recorded the client requests. The active-pair outage test also stopped both DNS services: fresh hostname requests failed while direct HTTP and verified DNS-bypassed HTTPS remained healthy. DNS was restored afterward. Evidence: E1, E2 and E3.
+
+
+\textbf{Learning summary:} DNS redundancy protects name resolution when a DNS service becomes unavailable. A direct successful query to a backup is readiness evidence; failover requires observing the normal client resolver during primary failure with cached answers removed. An NXDOMAIN reply is a valid negative answer and differs from a timeout. DNS redundancy cannot make a failed web service healthy, and it does not move website traffic through the DNS server.
+
+
+\subsection{Extension B - DNS TTL and controlled record change}
+
+
+The project uses TTL 30. Both DNS servers were updated from Ronit's edge to Kavya's standby. Direct queries returned the new address, while OS-cache tests recorded client adoption and by-name HTTPS destination changes. The suite used a bounded refresh window rather than an exact expiry assertion. A separate temporary caching dnsmasq on Kavya's loopback port 1053 showed a real countdown, retention of the old address, adoption after expiry, and immediate return to the restored address after manual flushing. That isolated cache is distinct from the macOS resolver test. Evidence: E1 and E4.
+
+
+\textbf{Learning summary:} A changed authoritative answer does not immediately replace every client cache entry. Direct \codepath{dig @server} queries and application resolution answer different questions. macOS may return an old answer while initiating a refresh shortly after nominal TTL expiry, so results should be measured. DNS TTL controls cached name data; it neither expires HTTP content nor terminates an existing TCP connection. A flush demonstrates immediate adoption.
+
+
+\subsection{Extension C - Service isolation}
+
+
+Project PF anchors on the original Macs restrict backend LAN ports to the primary edge's source address. With both rule sets applied, Kavya's direct request to Backend A timed out, while Ronit's loopback A request, remote B request and client HTTPS remained successful. Rules and counters were exported. Rollback removed only the project rules and released the project's PF enable reference. Isolation was removed before standby cutover. Evidence: E1.
+
+
+\textbf{Learning summary:} IP/port filtering controls network paths, not process identity. An edge and client sharing a source address cannot be separated by these rules; loopback success is not proof of LAN rejection. The recorded test proves Backend A rejection, allowed access to B and HTTPS continuity. An independent third-source rejection probe against B was not added: Mac 3's requested role remained DNS only. This evidence limit is explicit. The primary-only policy must be removed when the standby needs access to A.
+
+
+\subsection{Extension D - Backend availability and recovery}
+
+
+Both clients first observed A/B responses through the primary edge. Backend A was stopped; all tested requests succeeded through B. After A restarted and the failure interval elapsed, A/B distribution resumed. Additional failure tests stopped both backends, producing HTTP 502 with verified TLS still available. Both backends were restarted and normal balancing rechecked. Evidence: E1, E5 and E6.
+
+
+\textbf{Learning summary:} nginx's configured checks are passive and request-driven. An upstream connection failure can trigger retry of the other backend; a later request can try a recovered backend after the failure interval. These GET request tests demonstrate backend process resilience, not complete host HA. Stopping Ronit's whole Mac would also remove primary nginx. Shared host roles and the LAN/router remain failure dependencies even with two backend processes.
+
+
+\subsection{Extension E - Controlled edge migration}
+
+
+Kavya's standby has its own CA-signed certificate and can reach both backends. Tests changed both DNS servers to Kavya's address, compared server answers with cached client results, flushed one client for immediate migration, and observed the other client's eventual adoption. Verified HTTPS returned \codepath{X-Edge: mac1}. Restoring both records and flushing clients returned requests to \codepath{mac2}. Both edges passed A/B checks in the final recovery. Evidence: E1, E4 and E6.
+
+
+\textbf{Learning summary:} Keep the old edge serving during a DNS transition because cached clients and established connections can continue using it. Updating only one DNS server creates inconsistent answers. The standby reduces manual recovery work, but automatic edge failover would additionally require health monitoring and traffic steering. This project demonstrates controlled cutover; it does not claim that DNS changes migrate live TCP sessions or automatically remove the primary edge as an operational dependency.
+
+
+\subsection{Extension F - Troubleshooting preparation}
+
+
+\codepath{phase2/diagnose.sh} checks scoped resolver configuration, OS lookup, each DNS server, TCP connectivity, DNS-independent verified HTTPS and normal by-name HTTPS. Drills distinguished wrong client DNS, a wrong record, an unused TCP port, a certificate hostname mismatch, unavailable backends and loss of both active DNS services. The actual faculty-injected challenge remains a live evaluation task. Evidence: E3 and E5; operating commands are in E7.
+
+
+\textbf{Learning summary:} Diagnose the failing layer before making changes. ICMP reachability does not prove DNS or HTTPS. Refusal concerns a listener/path, timeouts can reflect availability or filtering, certificate errors concern TLS, and 502 indicates that the edge could not obtain a valid upstream response. \codepath{--resolve} bypasses DNS while retaining the TLS hostname; \codepath{-k} would hide a trust failure. Fixing one known cause and rechecking is more informative than restarting every component at once.
+
+
+\section{Latest controlled test results}
+
+
+The latest complete real-system rehearsal ran on 23 November 2026. The restoration snapshot completed at approximately 14:40 IST. The following are recorded test observations, not a guarantee that services cannot later sleep or change address. No simulated Newton results are used as acceptance evidence.
+
+
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}>{\raggedright\arraybackslash}p{0.56\linewidth}>{\raggedright\arraybackslash}p{0.14\linewidth}@{}}
+\toprule
+\tablehead \textbf{Test} & \textbf{Observed result} & \textbf{Evidence}\\\midrule
+\endfirsthead
+\toprule
+\tablehead \textbf{Test} & \textbf{Observed result} & \textbf{Evidence}\\\midrule
+\endhead
+Baseline DNS and HTTPS & Both clients receive 200 through mac2 and observe A/B & E1\\
+Primary DNS unavailable & Both clients resolve via backup and use HTTPS & E1\\
+Both active DNS services unavailable & Fresh name requests fail; direct edge HTTP and verified HTTPS still succeed & E3\\
+TTL and standby migration & Updated/flushed clients reach mac1; restored clients return to mac2 & E1, E4\\
+Backend A unavailable/recovered & B-only success, then A/B recovery on both clients & E1\\
+Both backends unavailable & Verified TLS plus HTTP 502; A/B restored afterward & E5\\
+Incorrect client DNS/record & Expected lookup or destination failure, followed by successful restoration & E5\\
+Backend PF isolation & Direct A blocked; edge paths and HTTPS work; rollback recorded & E1\\
+Wrong TCP port & Expected connection failure at unused port 8444 & E3\\
+Wrong TLS hostname & Expected certificate rejection, curl error 60 & E3\\
+HTTP validator & Matching A ETag returns 304; B's different representation returns 200 & E3\\
+Final recovery & DNS, local endpoints, both edges, both names, default trust and A/B pass & E6\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+The Phase 2 capture recorded 1,089 packets with zero kernel drops. TShark exports contain 23 DNS packets and 1,066 TCP/TLS packets. Captures were taken on Kavya's interface; remote-client behavior is additionally supported by its command logs. Encryption limits what can be read from TLS packet payloads.
+
+
+\section{Troubleshooting findings and retained failures}
+
+
+\begin{itemize}
+\item An obsolete dnsmasq listener previously occupied primary DNS port 53. The managed service could not bind until that conflicting process was stopped.
+\item Detached primary-edge launches produced EHOSTUNREACH for remote Backend B. A foreground nginx process in a persistent authenticated session passed. The precise macOS policy cause was not established; the working launch and its session dependency are documented rather than presented as a general fix.
+\item An early exact-35-second OS-cache assertion failed. A bounded refresh recheck passed; both original failure and later observations remain saved.
+\item The latest supplemental test initially halted because stopping an already stopped legacy DNS returned exit 1. This was a test-precondition failure. The corrected precondition verified that legacy DNS did not answer; the repeated outage test passed. Both attempts and exact test sources are retained.
+\end{itemize}
+
+
+No claim of success is based on an initial failed attempt. Corrections and successful repeats are identified separately in the evidence indexes.
+
+
+\section{Evidence, reproducibility and restoration}
+
+
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.7\linewidth}@{}}
+\toprule
+\tablehead \textbf{Reference} & \textbf{Repository location}\\\midrule
+\endfirsthead
+\toprule
+\tablehead \textbf{Reference} & \textbf{Repository location}\\\midrule
+\endhead
+E1 - Latest Phase 2 results & \href{https://github.com/KatalKavya96/CN_Project/blob/main/evidence/rehearsal/2026-11-23T143307/README.md}{Rehearsal index}, including \codepath{phase2/summary.txt}, failure/cutover logs, PCAP and packet fields\\
+E2 - Third-Mac migration & \href{https://github.com/KatalKavya96/CN_Project/blob/main/evidence/phase-2/mac3-dns/README.md}{Migration index}, including primary-plus-legacy-down proof and original evidence hashes\\
+E3 - Supplemental drills & \href{https://github.com/KatalKavya96/CN_Project/blob/main/evidence/rehearsal/2026-11-23T143307/extra-recheck/extra-cases/summary.json}{Corrected results} and \href{https://github.com/KatalKavya96/CN_Project/blob/main/evidence/rehearsal/2026-11-23T143307/extra-recheck/extra-cases/commands.txt}{raw commands}\\
+E4 - Isolated cache TTL & \href{https://github.com/KatalKavya96/CN_Project/blob/main/evidence/phase-2/mac3-dns/ttl-20261123T090856/client-cache-and-cutover.txt}{Countdown and cutover log}\\
+E5 - Phase 1 failure tests & \href{https://github.com/KatalKavya96/CN_Project/blob/main/evidence/phase-1/failures-20261123T090450/summary.json}{Failure summary} and paired per-client logs\\
+E6 - Final recovery & \href{https://github.com/KatalKavya96/CN_Project/blob/main/evidence/recovery/2026-11-23T143948/recovery-summary.json}{Recovery summary} and DNS, endpoints, TLS, edge and PF exports\\
+E7 - Live operating guide & \href{https://github.com/KatalKavya96/CN_Project/blob/main/docs/viva-command-menu.md}{Viva command menu}, \href{https://github.com/KatalKavya96/CN_Project/blob/main/docs/tomorrow-demo.md}{demo guide}, \href{https://github.com/KatalKavya96/CN_Project/blob/main/phase2/MAC3-SETUP.md}{DNS setup/rollback}\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+The rehearsal preservation check verified all 249 pre-existing evidence files unchanged. The final recovery independently checked its 310-file pre-recovery snapshot. These counts refer to different capture boundaries. Historical books and manifests retain their original snapshot; new report files are additional submission artifacts, not replacements for raw test evidence.
+
+
+Repeatable orchestration runs from Kavya's Mac using the established SSH connection and scoped helpers. \codepath{phase2/final-tests.py} exercises Phase 2; \codepath{phase2/phase1-failures.py} covers the three additional failures; \codepath{phase2/ttl-cutover.py} measures the isolated cache; \codepath{phase2/recover-live.py} restores and checks the normal deployment. Do not run these concurrently with manual faults. Per-person commands and expected outputs are in E7.
+
+
+Normal restoration starts primary DNS on Kavya and backup DNS on Priyanshu, sets both record sets to Ronit's edge, restores A and B, removes project PF rules, flushes both client caches and verifies 200/mac2/A/B. Ronit's legacy DNS remains stopped. Existing healthy nginx sessions are retained; a second nginx instance must not be started on occupied ports.
+
+
+\section{Limitations and live evaluation status}
+
+
+The controlled acceptance tests and saved artifacts are complete within their stated scope. The independent Backend B rejection test was not performed, whole-host power/network failures were not injected, and no automatic edge health monitor or traffic-steering service is implemented. Retry safety for arbitrary non-idempotent application operations was not evaluated.
+
+
+Both original clients trust a project CA locally; this is not public-CA trust. The tested network addresses must be rechecked before presenting. Changing the ordinary inventory file does not update installed root-owned DNS configuration. Keep all laptops open, powered and on the same Wi-Fi, and preserve the serving primary-edge session. The faculty-injected challenge, final spoken presentation and each member's individual viva remain live assessment activities.
+
+
+\section{Team Responsibilities}
+
+\begin{tabularx}{\linewidth}{lY}
+\toprule\tablehead\textbf{Member}&\textbf{Demonstration Responsibility}\\\midrule
+Kavya Katal&Explain topology and request flow; demonstrate primary DNS, Backend B, standby edge, client requests and packet evidence.\\
+Ronit Singh&Explain nginx, TLS and upstream connections; demonstrate Backend A failure/recovery, load balancing and firewall evidence.\\
+Priyanshu Tomar&Explain backup DNS; demonstrate matching records, backup query logs, DNS failover and synchronized cutover updates.\\
+\bottomrule
+\end{tabularx}
+
+These are operational responsibilities. Each member must also understand and
+explain the complete system.
+
+\section{Conclusion}
+
+
+The project demonstrates a complete private request path and controlled recovery across three Macs, with Priyanshu contributing independent backup DNS while the original edges and backends retain their placement. Recorded experiments separate name-resolution failures, transport failures, TLS verification errors and upstream application failures. Restoration checks and preserved evidence support the reported results. The final learning outcome is the ability to explain each layer, select an appropriate test and recover the system without concealing its remaining operational dependencies.
+
+
+\end{document}

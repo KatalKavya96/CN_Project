@@ -1,0 +1,44 @@
+{
+  "assembled_utc": "2026-11-23T10:25:03.927276+00:00",
+  "final_report_pdf_origin": "User-supplied CN_PROJECT_REPORT.pdf; unchanged copy",
+  "pdf_pages": {
+    "final_report": 15,
+    "viva_guide": 20
+  },
+  "original_rehearsal_evidence_files_checked": 249,
+  "original_evidence_changed": [],
+  "files": {
+    "README.md": {
+      "bytes": 5870,
+      "sha256": "ec7ab19226b04378a194174232d9d991510c89457244b313faea9c59cfacc95e"
+    },
+    "docs/final-project-report.md": {
+      "bytes": 19803,
+      "sha256": "3f7e32724e872ad75a6c7bed3904170a3c9ec3fea9b54007bb6c8a4a57620909"
+    },
+    "docs/final-project-report.tex": {
+      "bytes": 26720,
+      "sha256": "1da5b6c28d9118d0adf4471a9b9383b13b5daa0673b9daac4cc0e347d8c17a74"
+    },
+    "docs/phase2-report.md": {
+      "bytes": 12391,
+      "sha256": "b28f2c910916fceb99df80c11de35259a89e2723cbaf88b30ece2befeefbda39"
+    },
+    "docs/viva-command-menu.md": {
+      "bytes": 19465,
+      "sha256": "c625bce585f5c45dfaa74a0f51b4ba50cc04fce91242345a8c15550118102f66"
+    },
+    "output/pdf/README.md": {
+      "bytes": 968,
+      "sha256": "82dee35c89e636ece14627f064fb2283c150349a0ace60c07da95b8f17f51bc4"
+    },
+    "output/pdf/CN_Project_Final_Report.pdf": {
+      "bytes": 251530,
+      "sha256": "f119de4c60eb2b021823239e8c2f2417b8a3137241f41c9b5530d2c922eeafc0"
+    },
+    "output/pdf/CN_Project_Viva_Command_Menu.pdf": {
+      "bytes": 140970,
+      "sha256": "8096effe71d3056cbdbf8aa134e3be9c96e2cb1810d7ba97132da897e88f170a"
+    }
+  }
+}
