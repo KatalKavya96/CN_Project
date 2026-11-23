@@ -1,0 +1,52 @@
+{
+  "result": "PASS",
+  "https_verified_http_200": true,
+  "visible_certificate": true,
+  "capture": "evidence/phase-2/tls12-certificate-20261123T103526-hb_yht3c/tls12-handshake.pcap",
+  "packet_checks": {
+    "result": "PASS",
+    "scope": "VISIBLE PACKET SEQUENCE ONLY",
+    "dns_required": false,
+    "certificate_required": true,
+    "streams_checked": 1,
+    "matching_streams": 1,
+    "matches": [
+      {
+        "stream": "0",
+        "client": "10.7.26.228",
+        "edge": "10.7.18.166",
+        "dns_response_frame": null,
+        "tcp_handshake_frames": [
+          1,
+          2,
+          3
+        ],
+        "client_hello_frame": 4,
+        "server_hello_frame": 7,
+        "tls_version": "TLS 1.2 or earlier",
+        "certificate_frame": 7,
+        "encrypted_record_frames": [
+          14,
+          16
+        ]
+      }
+    ],
+    "limitations": [
+      "Encrypted TLS 1.3 inner message types, Finished and HTTP content are not identified.",
+      "Record length does not establish an encrypted alert, handshake success or HTTP success.",
+      "Pair with certificate-verified curl output for trust and HTTP status evidence.",
+      "DNS correlation currently covers captured IPv4 UDP query/response pairs; cached/DNS-TCP lookups need --skip-dns."
+    ],
+    "capture": "/Users/kavyakatal/Desktop/CN_Project/evidence/phase-2/tls12-certificate-20261123T103526-hb_yht3c/tls12-handshake.pcap",
+    "sha256": "e9ed6d6f5f22940dc088e446884c79d75c877bb4df5bd74213339a23a3943bc8"
+  },
+  "services_changed": false,
+  "dns_bypassed": true,
+  "files": {
+    "check.txt": "a002010fedcb518c0a8c14c680c57c219a5528da40f3a44e8b6b238a1d2f5df8",
+    "check.json": "a002010fedcb518c0a8c14c680c57c219a5528da40f3a44e8b6b238a1d2f5df8",
+    "capture-tool.log": "d4b300cd8d4620b83c4d9f112880f5dc3e5fc0d9577717004e6047cd6132dd98",
+    "capture-request.txt": "c2638ec52945b6500788373c22c5f487dd330e2c4b9d9a8e08871f0582f2ad28",
+    "tls12-handshake.pcap": "e9ed6d6f5f22940dc088e446884c79d75c877bb4df5bd74213339a23a3943bc8"
+  }
+}

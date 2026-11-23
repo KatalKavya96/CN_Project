@@ -6,6 +6,8 @@ deployment; Phase 2 uses Priyanshu's third Mac only for backup DNS.
 ## Start here
 
 - [Architecture and topology](docs/architecture.md)
+- [Repository structure and current tools](docs/repository-map.md)
+- [Packet checks and visible Certificate evidence](docs/capture-evidence.md)
 - [End-to-end request flow](docs/request-flow.md)
 - [Phase 2 operating commands](phase2/README.md)
 - [Final demonstration runbook](docs/runbook.md)
@@ -82,9 +84,9 @@ SSH session. Detached daemon launches produced upstream routing errors in this
 lab. Do not close the serving foreground session during the demonstration.
 Do not start a second nginx when ports 8080/8443 are already in use.
 
-`setup_repo.sh` is a historical Phase 1 scaffold that overwrites files; do not
-run it on either existing checkout. Old repair scripts are also historical;
-use the Phase 2 operating commands for this deployment.
+The obsolete root-level scaffold/repair scripts have been removed. Current
+service controls and diagnostics are under `phase2/`; use the viva command
+menu for demonstrations. Historical versions remain available in Git history.
 
 ## TLS and backend behavior
 
